@@ -1,0 +1,6815 @@
+# Umoria Japanese (ja) message catalog
+#
+# This is the Japanese translation catalog for the umoria-jp localization
+# fork. Covers UI messages, monster/item/race/class names, class rank
+# titles, and unidentified-item flavor words. See docs/TRANSLATING.md
+# for the catalog format and the i18n mechanism this file is loaded by.
+#
+# Format: a small subset of the gettext .po format (msgid/msgstr pairs,
+# multi-line string concatenation, and \\ \" \n \t escapes). Untranslated
+# entries (empty msgstr, or simply absent) fall back to the English msgid.
+#
+# Hengband attribution: a portion of the monster/item/class-rank-title
+# vocabulary below was originally adapted from Hengband
+# (https://hengband.github.io/), a separate, unrelated project
+# distributed under a non-commercial-only license that is not
+# GPL-compatible. Each borrowed entry was individually reviewed for
+# creative content: entries that are plain dictionary-level translations
+# or pure katakana phonetic transliterations (i.e. not creative/original
+# expression, and so not considered Hengband's copyrightable work) were
+# kept and are credited to Hengband here as a courtesy; entries that
+# involved a creative or interpretive translation choice were replaced
+# with original wording not derived from Hengband. See README.md's
+# "Japanese translation data and Hengband attribution" section for more.
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Umoria\n"
+"PO-Revision-Date: 2026-07-24\n"
+"Last-Translator: Umoria i18n project\n"
+"Language-Team: Japanese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+
+msgid "[ press any key to continue ]"
+msgstr "[ 何かキーを押すと続けます ]"
+
+# Phase 3 verification seed: exercises _() message wrapping (task 4) and
+# the "no more" framework string used by the &/~ grammar mechanism (task 3).
+msgid "You fell into a pit!"
+msgstr "あなたは落とし穴に落ちた！"
+
+msgid "no more"
+msgstr "もう手持ちがない"
+
+# Phase 4 verification seed: exercises the display-boundary _() wrapping
+# added for creature names, item base-name templates (with "&"/"~" markers
+# kept in place), and race/class labels (task 1-3). Translations reused
+# from Hengband's lib/edit/MonraceDefinitions.jsonc where the English name
+# matches exactly, per the phase 5 vocabulary decision.
+# ("Filthy Street Urchin" duplicated a later batch entry and was removed
+# from here during a .po hygiene pass)
+
+msgid "& Mushroom~"
+msgstr "& マッシュルーム~"
+
+msgid "Human"
+msgstr "人間"
+
+# Task 1: base terminology (races, classes). Attribute names (Strength,
+# Intelligence, Wisdom, Dexterity, Constitution, Charisma) are already
+# covered via the item-name matching below (they're also potion/ring
+# names in data_treasure.cpp, e.g. "Potion of Strength"), reusing
+# Hengband's terms (e.g. Strength -> "腕力") rather than jmoria's
+# (筋力/器用度/体力), consistent with the phase 5 decision to prefer
+# Hengband's vocabulary. Race/class names below are from Hengband's
+# src/player/race-info-table.cpp and src/player-info/class-info.cpp.
+#
+# Note: Umoria's race is named "Halfling" (data_player.cpp) while
+# Hengband's equivalent race is named "Hobbit" (an old vs. new Angband
+# naming difference, likely a Tolkien-trademark rename upstream at some
+# point) -- same race concept, so Hengband's Japanese term for it
+# ("ホビット") is reused for Umoria's "Halfling" msgid. Flagged for
+# review since the English labels don't match even though the race is
+# the same.
+# Half-Elf/Half-Orc/Half-Troll: Hengband's own terms are the fuller
+# katakana forms (ハーフエルフ/ハーフオーク/ハーフトロル), but those hit
+# exactly the 15-display-column width of character.cpp's race-selection
+# grid slot (coord.x += 15 per entry, not displayWidth-aware -- a known
+# display-width limitation of that fixed-column layout), leaving zero visual gap before the
+# next entry. Shortened to the kanji+katakana hybrid forms below
+# (matching jmoria's original vocabulary for these three races) so the
+# grid keeps a comfortable margin. This is a UI-layout-driven exception
+# to the "prefer Hengband" policy, not a reversal of it.
+msgid "Half-Elf"
+msgstr "半エルフ"
+
+msgid "Elf"
+msgstr "エルフ"
+
+msgid "Halfling"
+msgstr "ホビット"
+
+msgid "Gnome"
+msgstr "ノーム"
+
+msgid "Dwarf"
+msgstr "ドワーフ"
+
+msgid "Half-Orc"
+msgstr "半オーク"
+
+msgid "Half-Troll"
+msgstr "半トロル"
+
+msgid "Rogue"
+msgstr "盗賊"
+
+msgid "Ranger"
+msgstr "レンジャー"
+
+msgid "Paladin"
+msgstr "パラディン"
+
+msgid "Warrior"
+msgstr "戦士"
+
+# Phase 5: monster names (data_creatures.cpp) and item names/basenm
+# templates (data_treasure.cpp), machine-matched against Hengband's
+# lib/edit/MonraceDefinitions.jsonc / BaseitemDefinitions.jsonc by
+# exact (case-insensitive) English name, per the phase 5 vocabulary
+# decision. Entries with no Hengband counterpart (Hengband's roster
+# has diverged from vanilla Moria over many revisions) are original
+# translations. See scripts/hengband_match.py / build_ja_data_names.py.
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Filthy Street Urchin"
+msgstr "薄汚い浮浪児"
+
+msgid "Blubbering Idiot"
+msgstr "泣きじゃくる白痴"
+
+msgid "Singing, Happy Drunk"
+msgstr "鼻歌まじりのご機嫌な酔漢"
+
+msgid "Giant White Centipede"
+msgstr "大型の白ムカデ"
+
+msgid "Giant White Mouse"
+msgstr "大型の白ハツカネズミ"
+
+msgid "Large Brown Snake"
+msgstr "大型の茶色ヘビ"
+
+msgid "Large White Snake"
+msgstr "大型の白ヘビ"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Kobold"
+msgstr "コボルド"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "White Worm mass"
+msgstr "白いワームの群れ"
+
+msgid "Floating Eye"
+msgstr "フローティング・アイ"
+
+msgid "Shrieker Mushroom patch"
+msgstr "悲鳴キノコの群れ"
+
+msgid "Metallic Green Centipede"
+msgstr "鋼色の緑ムカデ"
+
+msgid "Novice Warrior"
+msgstr "見習戦士"
+
+msgid "Novice Rogue"
+msgstr "見習盗賊"
+
+msgid "Novice Priest"
+msgstr "見習プリースト"
+
+msgid "Novice Mage"
+msgstr "見習メイジ"
+
+msgid "Yellow Mushroom patch"
+msgstr "黄色いキノコの群れ"
+
+msgid "White Jelly"
+msgstr "ホワイト・ゼリー"
+
+msgid "Giant Green Frog"
+msgstr "大型の緑ガエル"
+
+msgid "Giant Black Ant"
+msgstr "大型の黒アリ"
+
+msgid "White Harpy"
+msgstr "ホワイト・ハーピー"
+
+msgid "Blue Yeek"
+msgstr "ブルー・イーク"
+
+msgid "Green Worm mass"
+msgstr "緑色のワームの群れ"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Poltergeist"
+msgstr "ポルターガイスト"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Metallic Blue Centipede"
+msgstr "鋼色の青ムカデ"
+
+msgid "Giant White Louse"
+msgstr "大型の白シラミ"
+
+msgid "Black Naga"
+msgstr "ブラック・ナーガ"
+
+msgid "Spotted Mushroom patch"
+msgstr "まだら模様のキノコの群れ"
+
+msgid "Yellow Jelly"
+msgstr "イエロー・ゼリー"
+
+msgid "Giant White Ant"
+msgstr "大型の白色アリ"
+
+msgid "Yellow Mold"
+msgstr "イエロー・モルド"
+
+msgid "Metallic Red Centipede"
+msgstr "鋼色の赤ムカデ"
+
+msgid "Yellow Worm mass"
+msgstr "黄色いワームの群れ"
+
+msgid "Radiation Eye"
+msgstr "発光アイ"
+
+msgid "Blue Jelly"
+msgstr "ブルー・ゼリー"
+
+msgid "Creeping Copper Coins"
+msgstr "銅のクリーピングコイン"
+
+msgid "Giant White Rat"
+msgstr "大型の白ネズミ"
+
+msgid "Blue Worm mass"
+msgstr "青いワームの群れ"
+
+msgid "Large Grey Snake"
+msgstr "大型の灰色ヘビ"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Jackal"
+msgstr "ジャッカル"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Green Naga"
+msgstr "グリーン・ナーガ"
+
+msgid "Green Glutton Ghost"
+msgstr "大食いの緑幽霊"
+
+msgid "Green Jelly"
+msgstr "グリーン・ゼリー"
+
+msgid "Skeleton Kobold"
+msgstr "スケルトン・コボルド"
+
+msgid "Silver Jelly"
+msgstr "シルバー・ゼリー"
+
+msgid "Disenchanter Eye"
+msgstr "劣化アイ"
+
+msgid "Red Worm mass"
+msgstr "赤いワームの群れ"
+
+msgid "Copperhead Snake"
+msgstr "マムシ"
+
+msgid "Purple Mushroom patch"
+msgstr "紫色のキノコの群れ"
+
+msgid "Brown Mold"
+msgstr "ブラウン・モルド"
+
+msgid "Giant Brown Bat"
+msgstr "大型の茶色コウモリ"
+
+msgid "Creeping Silver Coins"
+msgstr "銀のクリーピングコイン"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Rattlesnake"
+msgstr "ガラガラヘビ"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Bloodshot Eye"
+msgstr "充血アイ"
+
+msgid "Red Naga"
+msgstr "レッド・ナーガ"
+
+msgid "Red Jelly"
+msgstr "レッド・ゼリー"
+
+msgid "Lost Soul"
+msgstr "浮遊霊"
+
+msgid "Brown Yeek"
+msgstr "ブラウン・イーク"
+
+msgid "Green Mold"
+msgstr "グリーン・モルド"
+
+msgid "Skeleton Orc"
+msgstr "スケルトン・オーク"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Bandit"
+msgstr "追い剥ぎ"
+
+msgid "Yeti"
+msgstr "イエティ"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Giant Grey Rat"
+msgstr "大型の灰色ネズミ"
+
+msgid "Black Harpy"
+msgstr "ブラック・ハーピー"
+
+msgid "Orc Shaman"
+msgstr "オーク・シャーマン"
+
+msgid "Giant Red Ant"
+msgstr "大型の赤アリ"
+
+msgid "King Cobra"
+msgstr "キング・コブラ"
+
+msgid "Clear Mushroom patch"
+msgstr "透き通ったキノコの群れ"
+
+msgid "Giant White Tick"
+msgstr "大型の白ダニ"
+
+msgid "Hairy Mold"
+msgstr "毛むくじゃらモルド"
+
+msgid "Disenchanter Mold"
+msgstr "劣化モルド"
+
+msgid "Creeping Gold Coins"
+msgstr "金のクリーピングコイン"
+
+msgid "Giant Fruit Fly"
+msgstr "大型の果実バエ"
+
+msgid "Vorpal Bunny"
+msgstr "ヴォーパル・バニー"
+
+msgid "Black Mamba"
+msgstr "ブラック・マンバ"
+
+msgid "Grape Jelly"
+msgstr "グレープ・ゼリー"
+
+msgid "Master Yeek"
+msgstr "マスター・イーク"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Priest"
+msgstr "プリースト"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Air Spirit"
+msgstr "風のスピリット"
+
+msgid "Skeleton Human"
+msgstr "スケルトン"
+
+msgid "Moaning Spirit"
+msgstr "唸るスピリット"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Swordsman"
+msgstr "ソードマン"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Killer Brown Beetle"
+msgstr "ブラウン・キラービートル"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Ogre"
+msgstr "オーガ"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Black Orc"
+msgstr "ブラック・オーク"
+
+msgid "Giant Flea"
+msgstr "巨大ノミ"
+
+msgid "Giant White Dragon Fly"
+msgstr "大型の白トンボ"
+
+msgid "Hill Giant"
+msgstr "丘ジャイアント"
+
+msgid "Flesh Golem"
+msgstr "肉ゴーレム"
+
+msgid "Guardian Naga"
+msgstr "ガーディアン・ナーガ"
+
+msgid "Giant Clear Centipede"
+msgstr "大型の透明ムカデ"
+
+msgid "Frost Giant"
+msgstr "フロスト・ジャイアント"
+
+msgid "Clay Golem"
+msgstr "土ゴーレム"
+
+msgid "Umber Hulk"
+msgstr "アンバーハルク"
+
+msgid "Gelatinous Cube"
+msgstr "ゼラチナス・キューブ"
+
+msgid "Giant Green Dragon Fly"
+msgstr "大型の緑トンボ"
+
+msgid "Fire Giant"
+msgstr "ファイアー・ジャイアント"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Quasit"
+msgstr "クアシト"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Water Spirit"
+msgstr "水のスピリット"
+
+msgid "Earth Spirit"
+msgstr "地のスピリット"
+
+msgid "Fire Spirit"
+msgstr "火のスピリット"
+
+msgid "Stone Giant"
+msgstr "ストーン・ジャイアント"
+
+msgid "Stone Golem"
+msgstr "石ゴーレム"
+
+msgid "Red Mold"
+msgstr "レッド・モルド"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Quylthulg"
+msgstr "クイルスルグ"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Giant Black Dragon Fly"
+msgstr "大型の黒トンボ"
+
+msgid "Cloud Giant"
+msgstr "クラウド・ジャイアント"
+
+msgid "Blue Dragon Bat"
+msgstr "ブルー・ドラゴンバット"
+
+msgid "Mummified Orc"
+msgstr "ミイラ・オーク"
+
+msgid "Killer Stag Beetle"
+msgstr "獰猛なクワガタ"
+
+msgid "Iron Golem"
+msgstr "鉄ゴーレム"
+
+msgid "Giant Yellow Scorpion"
+msgstr "大型の黄色サソリ"
+
+msgid "Green Ooze"
+msgstr "グリーン・ウーズ"
+
+msgid "Black Ooze"
+msgstr "ブラック・ウーズ"
+
+msgid "Red Dragon Bat"
+msgstr "レッド・ドラゴンバット"
+
+msgid "Mummified Human"
+msgstr "ミイラ"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Banshee"
+msgstr "バンシー"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Killer Red Beetle"
+msgstr "レッド・キラービートル"
+
+msgid "White Wraith"
+msgstr "ホワイト・レイス"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Vampire"
+msgstr "バンパイア"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Black Knight"
+msgstr "黒騎士"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Mage"
+msgstr "メイジ"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Ice Troll"
+msgstr "雪トロル"
+
+msgid "Giant Purple Worm"
+msgstr "大型の紫ワーム"
+
+msgid "Young Blue Dragon"
+msgstr "ヤング・ブルー・ドラゴン"
+
+msgid "Young White Dragon"
+msgstr "ヤング・ホワイト・ドラゴン"
+
+msgid "Young Green Dragon"
+msgstr "ヤング・グリーン・ドラゴン"
+
+msgid "Skeleton Troll"
+msgstr "スケルトン・トロル"
+
+msgid "Grave Wight"
+msgstr "墓ワイト"
+
+msgid "Killer Slicer Beetle"
+msgstr "キラー・スライス・ビートル"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Ghost"
+msgstr "ゴースト"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Death Watch Beetle"
+msgstr "死を告げる甲虫"
+
+msgid "Ogre Mage"
+msgstr "オーガ・メイジ"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Ninja"
+msgstr "ニンジャ"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Barrow Wight"
+msgstr "塚ワイト"
+
+msgid "Water Elemental"
+msgstr "水のエレメンタル"
+
+msgid "Fire Elemental"
+msgstr "火のエレメンタル"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Lich"
+msgstr "リッチ"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Master Vampire"
+msgstr "マスター・バンパイア"
+
+msgid "Spirit Troll"
+msgstr "スピリット・トロル"
+
+msgid "Giant Red Scorpion"
+msgstr "大型の赤サソリ"
+
+msgid "Earth Elemental"
+msgstr "地のエレメンタル"
+
+msgid "Young Black Dragon"
+msgstr "ヤング・ブラック・ドラゴン"
+
+msgid "Young Red Dragon"
+msgstr "ヤング・レッド・ドラゴン"
+
+msgid "Mummified Troll"
+msgstr "ミイラ・トロル"
+
+msgid "Mature White Dragon"
+msgstr "ホワイト・ドラゴン"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Xorn"
+msgstr "ゾーン"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Grey Wraith"
+msgstr "グレイ・レイス"
+
+msgid "Young Multi-Hued Dragon"
+msgstr "若き万華竜"
+
+msgid "Mature Blue Dragon"
+msgstr "ブルー・ドラゴン"
+
+msgid "Mature Green Dragon"
+msgstr "グリーン・ドラゴン"
+
+msgid "Mature Red Dragon"
+msgstr "レッド・ドラゴン"
+
+msgid "Mature Black Dragon"
+msgstr "ブラック・ドラゴン"
+
+msgid "Mature Multi-Hued Dragon"
+msgstr "成熟した万華竜"
+
+msgid "Ancient White Dragon"
+msgstr "太古の白竜"
+
+msgid "Emperor Wight"
+msgstr "エンペラー・ワイト"
+
+msgid "Black Wraith"
+msgstr "ブラック・レイス"
+
+msgid "Nether Wraith"
+msgstr "冥界レイス"
+
+# Source: Hengband MonraceDefinitions.jsonc (exact)
+msgid "Sorcerer"
+msgstr "ソーサラー"
+
+# Source: Hengband MonraceDefinitions.jsonc (case-insensitive)
+msgid "Ancient Blue Dragon"
+msgstr "太古の蒼竜"
+
+msgid "Ancient Green Dragon"
+msgstr "太古の緑竜"
+
+msgid "Ancient Black Dragon"
+msgstr "太古の黒竜"
+
+msgid "Rotting Quylthulg"
+msgstr "腐乱クイルスルグ"
+
+msgid "Ancient Red Dragon"
+msgstr "太古の紅竜"
+
+msgid "Death Quasit"
+msgstr "デス・クアシト"
+
+msgid "Ancient Multi-Hued Dragon"
+msgstr "太古の万華竜"
+
+# Source: new translation, no Hengband match
+msgid "Pitiful-Looking Beggar"
+msgstr "哀れな物乞い"
+
+msgid "Mangy-Looking Leper"
+msgstr "薄汚いハンセン病患者"
+
+msgid "Squint-Eyed Rogue"
+msgstr "薄目のならず者"
+
+msgid "Mean-Looking Mercenary"
+msgstr "意地悪そうな傭兵"
+
+msgid "Battle-Scarred Veteran"
+msgstr "歴戦の古参兵"
+
+msgid "Grey Mushroom patch"
+msgstr "灰色のキノコの群れ"
+
+msgid "Giant Yellow Centipede"
+msgstr "巨大な黄色いムカデ"
+
+msgid "White Icky-Thing"
+msgstr "白いヌルヌルしたもの"
+
+msgid "Clear Icky-Thing"
+msgstr "透明なヌルヌルしたもの"
+
+msgid "Blubbering Icky-Thing"
+msgstr "泣きわめくヌルヌルしたもの"
+
+msgid "Large Black Snake"
+msgstr "大きな黒いヘビ"
+
+msgid "Scruffy-Looking Hobbit"
+msgstr "みすぼらしいホビット"
+
+msgid "Huge Brown Bat"
+msgstr "巨大な茶色いコウモリ"
+
+msgid "Large Green Snake"
+msgstr "大きな緑のヘビ"
+
+msgid "Drooling Harpy"
+msgstr "よだれを垂らすハーピー"
+
+msgid "Silver Mouse"
+msgstr "銀色のネズミ"
+
+msgid "Black Mushroom patch"
+msgstr "黒いキノコの群れ"
+
+msgid "Giant Black Centipede"
+msgstr "巨大な黒いムカデ"
+
+msgid "Giant Blue Centipede"
+msgstr "巨大な青いムカデ"
+
+msgid "White Mushroom patch"
+msgstr "白いキノコの群れ"
+
+msgid "Giant Black Frog"
+msgstr "巨大な黒いカエル"
+
+msgid "Grey Icky-Thing"
+msgstr "灰色のヌルヌルしたもの"
+
+msgid "Black Yeek"
+msgstr "黒いイーク"
+
+msgid "Giant House Fly"
+msgstr "巨大なイエバエ"
+
+msgid "Rot Jelly"
+msgstr "腐ったゼリー"
+
+msgid "Orc"
+msgstr "オーク"
+
+msgid "Grey Harpy"
+msgstr "灰色のハーピー"
+
+msgid "Blue Icky-Thing"
+msgstr "青いヌルヌルしたもの"
+
+msgid "Giant Red Frog"
+msgstr "巨大な赤いカエル"
+
+msgid "Green Icky-Thing"
+msgstr "緑のヌルヌルしたもの"
+
+msgid "Zombie Kobold"
+msgstr "ゾンビ・コボルド"
+
+msgid "Greedy Little Gnome"
+msgstr "欲深い小さなノーム"
+
+msgid "Giant Green Fly"
+msgstr "巨大な緑のハエ"
+
+msgid "Seedy Looking Human"
+msgstr "うさんくさい人間"
+
+msgid "Red Icky-Thing"
+msgstr "赤いヌルヌルしたもの"
+
+msgid "Bloodshot Icky-Thing"
+msgstr "血走ったヌルヌルしたもの"
+
+msgid "Giant Black Bat"
+msgstr "巨大な黒いコウモリ"
+
+msgid "Clear Yeek"
+msgstr "透明なイーク"
+
+msgid "Giant Red Centipede"
+msgstr "巨大な赤いムカデ"
+
+msgid "Brigand"
+msgstr "山賊"
+
+msgid "Orc Zombie"
+msgstr "オーク・ゾンビ"
+
+msgid "Orc Warrior"
+msgstr "オーク戦士"
+
+msgid "Nasty Little Gnome"
+msgstr "意地悪な小さなノーム"
+
+msgid "Hobgoblin"
+msgstr "ホブゴブリン"
+
+msgid "Giant Clear Ant"
+msgstr "巨大な透明なアリ"
+
+msgid "Human Zombie"
+msgstr "人間のゾンビ"
+
+msgid "Giant Red Speckled Frog"
+msgstr "巨大な赤い斑点のカエル"
+
+msgid "Magic User"
+msgstr "魔法使い"
+
+msgid "Giant Long-Eared Bat"
+msgstr "巨大な耳長コウモリ"
+
+msgid "Giant Gnat"
+msgstr "巨大なブヨ"
+
+msgid "Killer Green Beetle"
+msgstr "殺人緑甲虫"
+
+msgid "Skeleton Hobgoblin"
+msgstr "スケルトン・ホブゴブリン"
+
+msgid "White Dragon Bat"
+msgstr "白いドラゴンコウモリ"
+
+msgid "Giant Black Louse"
+msgstr "巨大な黒いシラミ"
+
+msgid "Giant Grey Bat"
+msgstr "巨大な灰色のコウモリ"
+
+msgid "Giant Yellow Tick"
+msgstr "巨大な黄色いダニ"
+
+msgid "Giant Ebony Ant"
+msgstr "巨大な黒檀色のアリ"
+
+msgid "Huge White Bat"
+msgstr "巨大な白いコウモリ"
+
+msgid "Giant Tan Bat"
+msgstr "巨大な褐色のコウモリ"
+
+msgid "Violet Mold"
+msgstr "紫のカビ"
+
+msgid "Giant Black Rat"
+msgstr "巨大な黒いネズミ"
+
+msgid "Green Dragon Bat"
+msgstr "緑のドラゴンコウモリ"
+
+msgid "Troll"
+msgstr "トロル"
+
+msgid "Giant Brown Scorpion"
+msgstr "巨大な茶色いサソリ"
+
+msgid "Uruk-Hai Orc"
+msgstr "ウルク=ハイ・オーク"
+
+msgid "Grey Ooze"
+msgstr "灰色の軟泥"
+
+msgid "Disenchanter Ooze"
+msgstr "劣化軟泥"
+
+msgid "Giant Spotted Rat"
+msgstr "巨大な斑点ネズミ"
+
+msgid "Mummified Kobold"
+msgstr "ミイラ化したコボルド"
+
+msgid "Killer Black Beetle"
+msgstr "殺人黒甲虫"
+
+msgid "Giant Red Bat"
+msgstr "巨大な赤いコウモリ"
+
+msgid "Black Dragon Bat"
+msgstr "黒いドラゴンコウモリ"
+
+msgid "Killer Boring Beetle"
+msgstr "殺人穴掘り甲虫"
+
+msgid "Black Mold"
+msgstr "黒いカビ"
+
+msgid "Killer Blue Beetle"
+msgstr "殺人青甲虫"
+
+msgid "Giant Silver Ant"
+msgstr "巨大な銀色のアリ"
+
+msgid "Crimson Mold"
+msgstr "深紅のカビ"
+
+msgid "Forest Wight"
+msgstr "森のワイト"
+
+msgid "Berzerker"
+msgstr "バーサーカー"
+
+msgid "Giant Troll"
+msgstr "巨大トロル"
+
+msgid "Giant Brown Tick"
+msgstr "巨大な茶色いダニ"
+
+msgid "Wooden Mold"
+msgstr "木のカビ"
+
+msgid "Giant Blue Dragon Fly"
+msgstr "巨大な青いトンボ"
+
+msgid "Giant Grey Ant Lion"
+msgstr "巨大な灰色のアリジゴク"
+
+msgid "Disenchanter Bat"
+msgstr "劣化コウモリ"
+
+msgid "Giant Fire Tick"
+msgstr "巨大な火のダニ"
+
+msgid "Giant Black Scorpion"
+msgstr "巨大な黒いサソリ"
+
+msgid "Clear Ooze"
+msgstr "透明な軟泥"
+
+msgid "Killer Fire Beetle"
+msgstr "殺人火甲虫"
+
+msgid "Giant Red Dragon Fly"
+msgstr "巨大な赤いトンボ"
+
+msgid "Shimmering Mold"
+msgstr "きらめくカビ"
+
+msgid "Giant Fire Bat"
+msgstr "巨大な火のコウモリ"
+
+msgid "Giant Glowing Rat"
+msgstr "巨大な光るネズミ"
+
+msgid "Giant Lightning Bat"
+msgstr "巨大な電撃コウモリ"
+
+msgid "Giant Static Ant"
+msgstr "巨大な静電気アリ"
+
+msgid "Giant White Ant Lion"
+msgstr "巨大な白いアリジゴク"
+
+msgid "Giant Black Ant Lion"
+msgstr "巨大な黒いアリジゴク"
+
+msgid "Two-Headed Troll"
+msgstr "双頭トロル"
+
+msgid "Invisible Stalker"
+msgstr "見えざるもの"
+
+msgid "Giant Hunter Ant"
+msgstr "巨大な狩人アリ"
+
+msgid "Skeleton 2-Headed Troll"
+msgstr "スケルトン双頭トロル"
+
+msgid "Necromancer"
+msgstr "ネクロマンサー"
+
+msgid "Giant Red Ant Lion"
+msgstr "巨大な赤いアリジゴク"
+
+msgid "Giant Mottled Ant Lion"
+msgstr "巨大なまだらのアリジゴク"
+
+msgid "Iridescent Beetle"
+msgstr "玉虫色の甲虫"
+
+msgid "King Vampire"
+msgstr "ヴァンパイアキング"
+
+msgid "King Lich"
+msgstr "リッチキング"
+
+msgid "Crystal Ooze"
+msgstr "水晶の軟泥"
+
+msgid "Disenchanter Worm"
+msgstr "劣化ワーム"
+
+msgid "Emperor Lich"
+msgstr "リッチエンペラー"
+
+msgid "Evil Iggy"
+msgstr "邪悪なイギー"
+
+msgid "Balrog"
+msgstr "バルログ"
+
+# Source: Hengband BaseitemDefinitions.jsonc (exact)
+msgid "Poison"
+msgstr "毒"
+
+msgid "Blindness"
+msgstr "盲目"
+
+msgid "Paranoia"
+msgstr "恐怖"
+
+msgid "Confusion"
+msgstr "混乱"
+
+msgid "Hallucination"
+msgstr "幻覚"
+
+msgid "Cure Poison"
+msgstr "毒消し"
+
+msgid "Cure Blindness"
+msgstr "盲目治癒"
+
+msgid "Cure Paranoia"
+msgstr "恐怖除去"
+
+msgid "Cure Confusion"
+msgstr "混乱脱出"
+
+msgid "Weakness"
+msgstr "脆弱"
+
+msgid "Unhealth"
+msgstr "病弱"
+
+msgid "Restore Constitution"
+msgstr "耐久力復活"
+
+msgid "Restoration"
+msgstr "全復活"
+
+msgid "& Ration~ of Food"
+msgstr "携行食料"
+
+msgid "& Slime Mold~"
+msgstr "スライムモルド"
+
+msgid "& Piece~ of Elvish Waybread"
+msgstr "エルフ族の道中食"
+
+msgid "& Arrow~"
+msgstr "矢"
+
+msgid "& Bolt~"
+msgstr "クロスボウの矢"
+
+msgid "& Rounded Pebble~"
+msgstr "丸石"
+
+msgid "& Iron Shot~"
+msgstr "鉄の弾丸"
+
+msgid "& Iron Spike~"
+msgstr "鉄の杭"
+
+msgid "& Brass Lantern~"
+msgstr "真鍮製のランタン"
+
+msgid "& Wooden Torch~"
+msgstr "木製の松明"
+
+msgid "Strength"
+msgstr "腕力"
+
+msgid "Dexterity"
+msgstr "器用さ"
+
+msgid "Constitution"
+msgstr "耐久力"
+
+msgid "Intelligence"
+msgstr "知能"
+
+msgid "Speed"
+msgstr "スピード"
+
+msgid "Searching"
+msgstr "探索"
+
+msgid "Teleportation"
+msgstr "テレポート"
+
+msgid "Slow Digestion"
+msgstr "遅消化"
+
+msgid "Resist Fire"
+msgstr "耐火"
+
+msgid "Resist Cold"
+msgstr "耐冷"
+
+msgid "Adornment"
+msgstr "装飾"
+
+# Source: Hengband BaseitemDefinitions.jsonc (case-insensitive)
+msgid "WOE"
+msgstr "苦悩"
+
+# Source: Hengband BaseitemDefinitions.jsonc (exact)
+msgid "Stupidity"
+msgstr "無知"
+
+msgid "Protection"
+msgstr "守り"
+
+msgid "Aggravate Monster"
+msgstr "エキサイト・モンスター"
+
+msgid "See Invisible"
+msgstr "透明物体感知"
+
+msgid "Sustain Strength"
+msgstr "腕力維持"
+
+msgid "Sustain Intelligence"
+msgstr "知能維持"
+
+msgid "Sustain Wisdom"
+msgstr "賢さ維持"
+
+msgid "Sustain Constitution"
+msgstr "耐久力維持"
+
+msgid "Sustain Dexterity"
+msgstr "器用さ維持"
+
+msgid "Sustain Charisma"
+msgstr "魅力維持"
+
+msgid "Slaying"
+msgstr "殺戮"
+
+msgid "Wisdom"
+msgstr "賢さ"
+
+msgid "Charisma"
+msgstr "魅力"
+
+msgid "Resist Acid"
+msgstr "耐酸"
+
+msgid "the Magi"
+msgstr "賢者"
+
+msgid "Enchant Weapon To-Hit"
+msgstr "武器命中強化"
+
+msgid "Enchant Weapon To-Dam"
+msgstr "武器打撃力強化"
+
+msgid "Enchant Armor"
+msgstr "防具強化"
+
+msgid "Identify"
+msgstr "鑑定"
+
+msgid "Remove Curse"
+msgstr "解呪"
+
+msgid "Light"
+msgstr "光"
+
+msgid "Summon Monster"
+msgstr "サモン・モンスター"
+
+msgid "Phase Door"
+msgstr "ショート・テレポート"
+
+msgid "Teleport Level"
+msgstr "テレポート・レベル"
+
+msgid "Monster Confusion"
+msgstr "パニック・モンスター"
+
+msgid "Magic Mapping"
+msgstr "魔法の地図"
+
+msgid "Sleep Monster"
+msgstr "スリープ・モンスター"
+
+msgid "Rune of Protection"
+msgstr "護りの秘紋"
+
+msgid "Treasure Detection"
+msgstr "財宝感知"
+
+msgid "Object Detection"
+msgstr "アイテム感知"
+
+msgid "Trap Detection"
+msgstr "トラップ感知"
+
+msgid "Door/Stair Location"
+msgstr "ドア/階段感知"
+
+msgid "Mass Genocide"
+msgstr "周辺抹殺"
+
+msgid "Detect Invisible"
+msgstr "透明物体感知"
+
+msgid "Trap Creation"
+msgstr "トラップ創造"
+
+msgid "Trap/Door Destruction"
+msgstr "トラップ/ドア破壊"
+
+msgid "Recharging"
+msgstr "魔力充填"
+
+msgid "Genocide"
+msgstr "抹殺"
+
+msgid "Darkness"
+msgstr "暗闇"
+
+msgid "Protection from Evil"
+msgstr "邪悪防御の結界"
+
+msgid "Dispel Undead"
+msgstr "アンデッド退散"
+
+msgid "*Enchant Weapon*"
+msgstr "*武器強化*"
+
+msgid "Curse Weapon"
+msgstr "武器呪縛"
+
+msgid "*Enchant Armor*"
+msgstr "*防具強化*"
+
+msgid "Curse Armor"
+msgstr "防具呪縛"
+
+msgid "Summon Undead"
+msgstr "サモン・アンデッド"
+
+msgid "Blessing"
+msgstr "天恵"
+
+msgid "Holy Chant"
+msgstr "聖唱歌"
+
+msgid "Holy Prayer"
+msgstr "聖祈言"
+
+msgid "*Destruction*"
+msgstr "*破壊*"
+
+msgid "Slime Mold Juice"
+msgstr "スライムモルドジュース"
+
+msgid "Apple Juice"
+msgstr "リンゴジュース"
+
+msgid "Water"
+msgstr "水"
+
+msgid "Restore Strength"
+msgstr "腕力復活"
+
+msgid "Restore Intelligence"
+msgstr "知能復活"
+
+msgid "Restore Wisdom"
+msgstr "賢さ復活"
+
+msgid "Ugliness"
+msgstr "醜悪"
+
+msgid "Restore Charisma"
+msgstr "魅力復活"
+
+msgid "Cure Light Wounds"
+msgstr "軽い傷の治療"
+
+msgid "Cure Serious Wounds"
+msgstr "重い傷の治療"
+
+msgid "Cure Critical Wounds"
+msgstr "瀕死の傷の治療"
+
+msgid "Healing"
+msgstr "体力回復"
+
+msgid "Sleep"
+msgstr "眠り"
+
+msgid "Slowness"
+msgstr "のろま"
+
+msgid "Restore Dexterity"
+msgstr "器用さ復活"
+
+msgid "Salt Water"
+msgstr "塩水"
+
+msgid "Invulnerability"
+msgstr "無敵"
+
+msgid "Heroism"
+msgstr "ヒーロー"
+
+msgid "Boldness"
+msgstr "恐いもの知らず"
+
+msgid "Restore Life Levels"
+msgstr "経験値回復"
+
+msgid "Resist Heat"
+msgstr "耐火"
+
+msgid "Slow Poison"
+msgstr "減毒"
+
+msgid "Neutralize Poison"
+msgstr "解毒"
+
+msgid "Restore Mana"
+msgstr "魔力復活"
+
+# Source: Hengband BaseitemDefinitions.jsonc (case-insensitive)
+msgid "Infra-Vision"
+msgstr "赤外線視力"
+
+msgid "& Flask~ of Oil"
+msgstr "油の小瓶"
+
+# Source: Hengband BaseitemDefinitions.jsonc (exact)
+msgid "Lightning Bolts"
+msgstr "サンダー・ボルト"
+
+msgid "Frost Bolts"
+msgstr "アイス・ボルト"
+
+msgid "Fire Bolts"
+msgstr "ファイア・ボルト"
+
+msgid "Polymorph"
+msgstr "チェンジ・モンスター"
+
+msgid "Heal Monster"
+msgstr "回復モンスター"
+
+msgid "Haste Monster"
+msgstr "スピード・モンスター"
+
+msgid "Slow Monster"
+msgstr "スロウ・モンスター"
+
+msgid "Confuse Monster"
+msgstr "パニック・モンスター"
+
+msgid "Magic Missile"
+msgstr "マジック・ミサイル"
+
+msgid "Clone Monster"
+msgstr "クローン・モンスター"
+
+msgid "Disarming"
+msgstr "トラップ解除"
+
+msgid "Lightning Balls"
+msgstr "サンダー・ボール"
+
+msgid "Cold Balls"
+msgstr "アイス・ボール"
+
+msgid "Fire Balls"
+msgstr "ファイア・ボール"
+
+msgid "Stinking Cloud"
+msgstr "悪臭雲"
+
+msgid "Acid Balls"
+msgstr "アシッド・ボール"
+
+msgid "Wonder"
+msgstr "謎"
+
+msgid "Trap Location"
+msgstr "トラップ感知"
+
+msgid "Treasure Location"
+msgstr "財宝感知"
+
+msgid "Object Location"
+msgstr "アイテム感知"
+
+msgid "Earthquakes"
+msgstr "地震"
+
+msgid "Summoning"
+msgstr "召喚"
+
+msgid "Starlight"
+msgstr "スターライト"
+
+msgid "Haste Monsters"
+msgstr "スピード・モンスター"
+
+msgid "Slow Monsters"
+msgstr "スロウ・モンスター"
+
+msgid "Sleep Monsters"
+msgstr "スリープ・モンスター"
+
+msgid "Detect Evil"
+msgstr "邪悪存在感知"
+
+msgid "Curing"
+msgstr "癒し"
+
+msgid "Dispel Evil"
+msgstr "邪悪存在退散"
+
+msgid "& Hard Biscuit~"
+msgstr "ビスケット"
+
+msgid "& Pint~ of Fine Ale"
+msgstr "上質なエール"
+
+msgid "& Pint~ of Fine Wine"
+msgstr "上質なワイン"
+
+msgid "copper"
+msgstr "銅塊"
+
+msgid "silver"
+msgstr "銀塊"
+
+msgid "garnets"
+msgstr "ガーネット"
+
+msgid "gold"
+msgstr "金塊"
+
+msgid "opals"
+msgstr "オパール"
+
+msgid "sapphires"
+msgstr "サファイア"
+
+msgid "rubies"
+msgstr "ルビー"
+
+msgid "diamonds"
+msgstr "ダイヤモンド"
+
+msgid "emeralds"
+msgstr "エメラルド"
+
+msgid "mithril"
+msgstr "ミスリル"
+
+# Source: new translation, no Hengband match
+msgid "First-Aid"
+msgstr "応急処置"
+
+msgid "Minor Cures"
+msgstr "軽傷治療"
+
+msgid "Light Cures"
+msgstr "軽度回復"
+
+msgid "Major Cures"
+msgstr "重傷治療"
+
+msgid "& Dagger (Main Gauche)"
+msgstr "& ダガー（マンゴーシュ）"
+
+msgid "& Dagger (Misericorde)"
+msgstr "& ダガー（ミゼリコルデ）"
+
+msgid "& Dagger (Stiletto)"
+msgstr "& ダガー（スティレット）"
+
+msgid "& Dagger (Bodkin)"
+msgstr "& ダガー（ボドキン）"
+
+msgid "& Broken Dagger"
+msgstr "& 折れたダガー"
+
+msgid "& Backsword"
+msgstr "& バックソード"
+
+msgid "& Bastard Sword"
+msgstr "& バスタードソード"
+
+msgid "& Thrusting Sword (Bilbo)"
+msgstr "& 刺突剣（ビルボ）"
+
+msgid "& Thrusting Sword (Baselard)"
+msgstr "& 刺突剣（バゼラード）"
+
+msgid "& Broadsword"
+msgstr "& ブロードソード"
+
+msgid "& Two-Handed Sword (Claymore)"
+msgstr "& 両手剣（クレイモア）"
+
+msgid "& Cutlass"
+msgstr "& カットラス"
+
+msgid "& Two-Handed Sword (Espadon)"
+msgstr "& 両手剣（エスパドン）"
+
+msgid "& Executioner's Sword"
+msgstr "& 処刑剣"
+
+msgid "& Two-Handed Sword (Flamberge)"
+msgstr "& 両手剣（フランベルジュ）"
+
+msgid "& Foil"
+msgstr "& フォイル"
+
+msgid "& Katana"
+msgstr "& 刀"
+
+msgid "& Longsword"
+msgstr "& ロングソード"
+
+msgid "& Two-Handed Sword (No-Dachi)"
+msgstr "& 両手剣（野太刀）"
+
+msgid "& Rapier"
+msgstr "& レイピア"
+
+msgid "& Sabre"
+msgstr "& サーベル"
+
+msgid "& Small Sword"
+msgstr "& ショートソード"
+
+msgid "& Two-Handed Sword (Zweihander)"
+msgstr "& 両手剣（ツヴァイハンダー）"
+
+msgid "& Broken Sword"
+msgstr "& 折れた剣"
+
+msgid "& Ball and Chain"
+msgstr "& 鎖玉"
+
+msgid "& Cat-o'-Nine-Tails"
+msgstr "& 九尾の鞭"
+
+msgid "& Wooden Club"
+msgstr "& 木の棍棒"
+
+msgid "& Flail"
+msgstr "& フレイル"
+
+msgid "& Two-Handed Great Flail"
+msgstr "& 両手グレートフレイル"
+
+msgid "& Morningstar"
+msgstr "& モーニングスター"
+
+msgid "& Mace"
+msgstr "& メイス"
+
+msgid "& War Hammer"
+msgstr "& ウォーハンマー"
+
+msgid "& Lead-Filled Mace"
+msgstr "& 鉛入りメイス"
+
+msgid "& Awl-Pike"
+msgstr "& オールパイク"
+
+msgid "& Beaked Axe"
+msgstr "& ビーク斧"
+
+msgid "& Fauchard"
+msgstr "& フォーシャード"
+
+msgid "& Glaive"
+msgstr "& グレイブ"
+
+msgid "& Halberd"
+msgstr "& ハルバード"
+
+msgid "& Lucerne Hammer"
+msgstr "& ルツェルンハンマー"
+
+msgid "& Pike"
+msgstr "& パイク"
+
+msgid "& Spear"
+msgstr "& 槍"
+
+msgid "& Lance"
+msgstr "& ランス"
+
+msgid "& Javelin"
+msgstr "& 投げ槍"
+
+msgid "& Battle Axe (Balestarius)"
+msgstr "& バトルアックス（バレスタリウス）"
+
+msgid "& Battle Axe (European)"
+msgstr "& バトルアックス（欧州式）"
+
+msgid "& Broad Axe"
+msgstr "& ブロードアックス"
+
+msgid "& Short Bow"
+msgstr "& ショートボウ"
+
+msgid "& Long Bow"
+msgstr "& ロングボウ"
+
+msgid "& Composite Bow"
+msgstr "& 複合弓"
+
+msgid "& Light Crossbow"
+msgstr "& ライトクロスボウ"
+
+msgid "& Heavy Crossbow"
+msgstr "& ヘビークロスボウ"
+
+msgid "& Sling"
+msgstr "& スリング"
+
+msgid "& Orcish Pick"
+msgstr "& オーク製ピック"
+
+msgid "& Dwarven Pick"
+msgstr "& ドワーフ製ピック"
+
+msgid "& Gnomish Shovel"
+msgstr "& ノーム製シャベル"
+
+msgid "& Dwarven Shovel"
+msgstr "& ドワーフ製シャベル"
+
+msgid "& Pair of Soft Leather Shoes"
+msgstr "& 柔らかい革の靴"
+
+msgid "& Pair of Soft Leather Boots"
+msgstr "& 柔らかい革のブーツ"
+
+msgid "& Pair of Hard Leather Boots"
+msgstr "& 硬い革のブーツ"
+
+msgid "& Soft Leather Cap"
+msgstr "& 柔らかい革の帽子"
+
+msgid "& Hard Leather Cap"
+msgstr "& 硬い革の帽子"
+
+msgid "& Metal Cap"
+msgstr "& 金属の帽子"
+
+msgid "& Iron Helm"
+msgstr "& 鉄兜"
+
+msgid "& Steel Helm"
+msgstr "& 鋼鉄兜"
+
+msgid "& Silver Crown"
+msgstr "& 銀の王冠"
+
+msgid "& Golden Crown"
+msgstr "& 金の王冠"
+
+msgid "& Jewel-Encrusted Crown"
+msgstr "& 宝石をちりばめた王冠"
+
+msgid "& Robe"
+msgstr "& ローブ"
+
+msgid "Soft Leather Armor"
+msgstr "柔らかい革の鎧"
+
+msgid "Soft Studded Leather"
+msgstr "柔らかいスタッドレザー"
+
+msgid "Hard Leather Armor"
+msgstr "硬い革の鎧"
+
+msgid "Hard Studded Leather"
+msgstr "硬いスタッドレザー"
+
+msgid "Woven Cord Armor"
+msgstr "編み紐の鎧"
+
+msgid "Soft Leather Ring Mail"
+msgstr "柔らかい革のリングメイル"
+
+msgid "Hard Leather Ring Mail"
+msgstr "硬い革のリングメイル"
+
+msgid "Leather Scale Mail"
+msgstr "革のスケイルメイル"
+
+msgid "Metal Scale Mail"
+msgstr "金属のスケイルメイル"
+
+msgid "Chain Mail"
+msgstr "チェインメイル"
+
+msgid "Rusty Chain Mail"
+msgstr "錆びたチェインメイル"
+
+msgid "Double Chain Mail"
+msgstr "ダブルチェインメイル"
+
+msgid "Augmented Chain Mail"
+msgstr "強化チェインメイル"
+
+msgid "Bar Chain Mail"
+msgstr "バーチェインメイル"
+
+msgid "Metal Brigandine Armor"
+msgstr "金属のブリガンダイン鎧"
+
+msgid "Laminated Armor"
+msgstr "ラミネートアーマー"
+
+msgid "Partial Plate Armor"
+msgstr "パーシャルプレートアーマー"
+
+msgid "Metal Lamellar Armor"
+msgstr "金属のラメラーアーマー"
+
+msgid "Full Plate Armor"
+msgstr "フルプレートアーマー"
+
+msgid "Ribbed Plate Armor"
+msgstr "リブ付きプレートアーマー"
+
+msgid "& Cloak"
+msgstr "& 外套"
+
+msgid "& Set of Leather Gloves"
+msgstr "& 革の手袋"
+
+msgid "& Set of Gauntlets"
+msgstr "& ガントレット"
+
+msgid "& Small Leather Shield"
+msgstr "& 小さな革の盾"
+
+msgid "& Medium Leather Shield"
+msgstr "& 中くらいの革の盾"
+
+msgid "& Large Leather Shield"
+msgstr "& 大きな革の盾"
+
+msgid "& Small Metal Shield"
+msgstr "& 小さな金属の盾"
+
+msgid "& Medium Metal Shield"
+msgstr "& 中くらいの金属の盾"
+
+msgid "& Large Metal Shield"
+msgstr "& 大きな金属の盾"
+
+msgid "Feather Falling"
+msgstr "落下軽減"
+
+msgid "Lordly Protection (FIRE)"
+msgstr "高貴なる守り（火炎）"
+
+msgid "Lordly Protection (ACID)"
+msgstr "高貴なる守り（酸）"
+
+msgid "Lordly Protection (COLD)"
+msgstr "高貴なる守り（冷気）"
+
+msgid "Increase Damage"
+msgstr "ダメージ増加"
+
+msgid "Increase To-Hit"
+msgstr "命中率増加"
+
+msgid "DOOM"
+msgstr "破滅"
+
+msgid "Teleport"
+msgstr "テレポート"
+
+msgid "Door Creation"
+msgstr "扉の創造"
+
+msgid "Create Food"
+msgstr "食料の創造"
+
+msgid "Word-of-Recall"
+msgstr "帰還の言葉"
+
+msgid "Lose Intelligence"
+msgstr "知能減少"
+
+msgid "Lose Wisdom"
+msgstr "賢さ減少"
+
+msgid "Gain Experience"
+msgstr "経験値獲得"
+
+msgid "Haste Self"
+msgstr "加速"
+
+msgid "Lose Experience"
+msgstr "経験値減少"
+
+msgid "Super Heroism"
+msgstr "超英雄化"
+
+msgid "Stone-to-Mud"
+msgstr "石を泥に"
+
+msgid "Drain Life"
+msgstr "生命力吸収"
+
+msgid "Wall Building"
+msgstr "壁の生成"
+
+msgid "Teleport Away"
+msgstr "テレポート・アウェイ"
+
+msgid "Mass Polymorph"
+msgstr "一斉変化"
+
+msgid "[Beginners-Magick]"
+msgstr "[初心者の魔法]"
+
+msgid "[Magick I]"
+msgstr "[魔法I]"
+
+msgid "[Magick II]"
+msgstr "[魔法II]"
+
+msgid "[The Mages' Guide to Power]"
+msgstr "[魔法使いの力の手引き]"
+
+msgid "[Beginners Handbook]"
+msgstr "[初心者向け手引き]"
+
+msgid "[Words of Wisdom]"
+msgstr "[知恵の言葉]"
+
+msgid "[Chants and Blessings]"
+msgstr "[詠唱と祝福]"
+
+msgid "[Exorcisms and Dispellings]"
+msgstr "[悪魔祓いと退散の書]"
+
+msgid "& Small Wooden Chest"
+msgstr "& 小さな木箱"
+
+msgid "& Large Wooden Chest"
+msgstr "& 大きな木箱"
+
+msgid "& Small Iron Chest"
+msgstr "& 小さな鉄箱"
+
+msgid "& Large Iron Chest"
+msgstr "& 大きな鉄箱"
+
+msgid "& Small Steel Chest"
+msgstr "& 小さな鋼鉄箱"
+
+msgid "& Large Steel Chest"
+msgstr "& 大きな鋼鉄箱"
+
+msgid "& Rat Skeleton"
+msgstr "& ネズミの骨"
+
+msgid "& Giant Centipede Skeleton"
+msgstr "& 巨大ムカデの骨"
+
+msgid "some Filthy Rags"
+msgstr "汚いぼろきれ"
+
+msgid "& empty bottle"
+msgstr "& 空の瓶"
+
+msgid "some shards of pottery"
+msgstr "陶器の破片"
+
+msgid "& Human Skeleton"
+msgstr "& 人間の骨"
+
+msgid "& Dwarf Skeleton"
+msgstr "& ドワーフの骨"
+
+msgid "& Elf Skeleton"
+msgstr "& エルフの骨"
+
+msgid "& Gnome Skeleton"
+msgstr "& ノームの骨"
+
+msgid "& broken set of teeth"
+msgstr "& 折れた歯"
+
+msgid "& large broken bone"
+msgstr "& 大きな折れた骨"
+
+msgid "& broken stick"
+msgstr "& 折れた棒"
+
+msgid "& Strip~ of Beef Jerky"
+msgstr "& ビーフジャーキー"
+
+msgid "& Pick"
+msgstr "& ピック"
+
+msgid "& Shovel"
+msgstr "& シャベル"
+
+msgid "& open door"
+msgstr "& 開いた扉"
+
+msgid "& closed door"
+msgstr "& 閉じた扉"
+
+msgid "& secret door"
+msgstr "& 隠し扉"
+
+msgid "an up staircase"
+msgstr "上り階段"
+
+msgid "a down staircase"
+msgstr "下り階段"
+
+msgid "General Store"
+msgstr "雑貨屋"
+
+msgid "Armory"
+msgstr "防具屋"
+
+msgid "Weapon Smiths"
+msgstr "武器屋"
+
+msgid "Temple"
+msgstr "寺院"
+
+msgid "Alchemy Shop"
+msgstr "錬金術店"
+
+msgid "Magic Shop"
+msgstr "魔法店"
+
+msgid "an open pit"
+msgstr "開いた落とし穴"
+
+msgid "an arrow trap"
+msgstr "矢の罠"
+
+msgid "a covered pit"
+msgstr "隠れた落とし穴"
+
+msgid "a trap door"
+msgstr "落とし戸"
+
+msgid "a gas trap"
+msgstr "ガスの罠"
+
+msgid "a loose rock"
+msgstr "ぐらついた岩"
+
+msgid "a dart trap"
+msgstr "ダーツの罠"
+
+msgid "a strange rune"
+msgstr "奇妙なルーン"
+
+msgid "some loose rock"
+msgstr "ぐらついた岩"
+
+msgid "a blackened spot"
+msgstr "黒ずんだ跡"
+
+msgid "some corroded rock"
+msgstr "腐食した岩"
+
+msgid "some rubble"
+msgstr "がれき"
+
+msgid "& Pint~ of Fine Grade Mush"
+msgstr "& 上等なマッシュのパイント"
+
+msgid "nothing"
+msgstr "なし"
+
+msgid "& ruined chest"
+msgstr "& 壊れた箱"
+
+# Phase 5 batch 1: high-frequency UI messages, symbol-legend help
+# text, basenm grammar templates, and monster attack/spell action
+# fragments (translated fresh; not from Hengband).
+
+msgid "Choose a race (? for Help):"
+msgstr "種族を選んでください（?でヘルプ）:"
+
+msgid "Character Background"
+msgstr "生い立ち"
+
+msgid "Choose a sex (? for Help):"
+msgstr "性別を選んでください（?でヘルプ）:"
+
+msgid "m) Male       f) Female"
+msgstr "m) 男性       f) 女性"
+
+msgid "Female"
+msgstr "女性"
+
+msgid "Male"
+msgstr "男性"
+
+msgid "Choose a class (? for Help):"
+msgstr "職業を選んでください（?でヘルプ）:"
+
+msgid "Hit space to re-roll or ESC to accept characteristics: "
+msgstr "スペースキーで再ロール、ESCで能力値を確定: "
+
+msgid "[ press any key to continue, or Q to exit ]"
+msgstr "[ 何かキーを押すと続けます、Qで終了 ]"
+
+msgid "Hit any key to continue"
+msgstr "何かキーを押してください"
+
+msgid "You feel something roll beneath your feet."
+msgstr "足元で何かが転がる感触があった。"
+
+msgid "You can't see a damn thing!"
+msgstr "何も見えない！"
+
+msgid "You can't believe what you are seeing! It's like a dream!"
+msgstr "信じられない光景だ！まるで夢のようだ！"
+
+msgid "Look which direction?"
+msgstr "どちらの方向を見ますか？"
+
+msgid "--Aborting look--"
+msgstr "――見るのを中止――"
+
+msgid "That's all you see."
+msgstr "見えるのはそれだけだ。"
+
+msgid "That's all you see in that direction."
+msgstr "その方向に見えるのはそれだけだ。"
+
+msgid "You see nothing of interest."
+msgstr "特に何も見当たらない。"
+
+msgid "You see nothing of interest in that direction."
+msgstr "その方向には特に何も見当たらない。"
+
+msgid "You are on"
+msgstr "あなたが立っているのは"
+
+msgid "You see"
+msgstr "見えるのは"
+
+msgid "It is on"
+msgstr "そこにあるのは"
+
+msgid "It is in"
+msgstr "その中にあるのは"
+
+msgid "a granite wall"
+msgstr "花崗岩の壁"
+
+msgid "some dark rock"
+msgstr "暗い岩"
+
+msgid "a quartz vein"
+msgstr "石英の鉱脈"
+
+msgid "  ESC when finished, y/n to set options, <return> or - to move cursor"
+msgstr "  ESCで終了、y/nでオプション設定、<return>か-でカーソル移動"
+
+msgid "yes"
+msgstr "はい"
+
+msgid "no "
+msgstr "いいえ "
+
+msgid "Which direction?"
+msgstr "どちらの方向？"
+
+msgid "Magnificent"
+msgstr "壮麗"
+
+msgid "*King*"
+msgstr "*王*"
+
+msgid "*Queen*"
+msgstr "*女王*"
+
+msgid " Exp"
+msgstr " 経験値"
+
+msgid " Au"
+msgstr " ゴールド"
+
+msgid "(ESC to abort, return to print on screen, or file name)"
+msgstr "（ESCで中止、returnで画面表示、またはファイル名）"
+
+msgid "Character record?"
+msgstr "キャラクター記録？"
+
+msgid "Type ESC to skip the inventory:"
+msgstr "ESCで持ち物一覧をスキップ:"
+
+msgid "You are using:"
+msgstr "使用中のアイテム:"
+
+msgid "You are carrying:"
+msgstr "所持しているアイテム:"
+
+msgid "King!"
+msgstr "王！"
+
+msgid "Queen!"
+msgstr "女王！"
+
+msgid "Ripe Old Age"
+msgstr "天寿を全う"
+
+msgid "Can not find help file '"
+msgstr "ヘルプファイルが見つかりません『"
+
+msgid "'."
+msgstr "』。"
+
+msgid "Produce objects on what level?: "
+msgstr "どのレベルにオブジェクトを生成しますか？: "
+
+msgid "Produce how many objects?: "
+msgstr "いくつのオブジェクトを生成しますか？: "
+
+msgid "Parameters no good."
+msgstr "パラメータが不正です。"
+
+msgid "Small objects only?"
+msgstr "小さなオブジェクトのみ？"
+
+msgid "File name: "
+msgstr "ファイル名: "
+
+msgid "File could not be opened."
+msgstr "ファイルを開けませんでした。"
+
+msgid " random objects being produced..."
+msgstr " 個のランダムオブジェクトを生成中..."
+
+msgid "*** Random Object Sampling:\n"
+msgstr "*** ランダムオブジェクトのサンプリング:\n"
+
+msgid "*** %d objects\n"
+msgstr "*** %d 個のオブジェクト\n"
+
+msgid "*** For Level %d\n"
+msgstr "*** レベル %d 用\n"
+
+msgid "Completed."
+msgstr "完了。"
+
+msgid "Writing character sheet..."
+msgstr "キャラクターシートを書き出し中..."
+
+msgid "You are wielding"
+msgstr "装備しているのは"
+
+msgid "Worn on head"
+msgstr "頭に装備"
+
+msgid "Worn around neck"
+msgstr "首に装備"
+
+msgid "Worn on body"
+msgstr "体に装備"
+
+msgid "Worn on shield arm"
+msgstr "盾腕に装備"
+
+msgid "Worn on hands"
+msgstr "手に装備"
+
+msgid "Right ring finger"
+msgstr "右手の指輪"
+
+msgid "Left  ring finger"
+msgstr "左手の指輪"
+
+msgid "Worn on feet"
+msgstr "足に装備"
+
+msgid "Worn about body"
+msgstr "体の周りに装備"
+
+msgid "Light source is"
+msgstr "光源は"
+
+msgid "Secondary weapon"
+msgstr "予備武器"
+
+msgid "*Unknown value*"
+msgstr "*不明な値*"
+
+msgid "\n  [Character's Equipment List]\n\n"
+msgstr "\n  【キャラクターの装備一覧】\n\n"
+
+msgid "  Character has no equipment in use.\n"
+msgstr "  キャラクターは何も装備していません。\n"
+
+msgid "  [General Inventory List]\n\n"
+msgstr "  【持ち物一覧】\n\n"
+
+msgid "  Character has no objects in inventory.\n"
+msgstr "  キャラクターは何も持っていません。\n"
+
+msgid "Replace existing file "
+msgstr "既存のファイルを置き換えますか "
+
+msgid "Can't open file %s:"
+msgstr "ファイル%sを開けません:"
+
+msgid "Compacting objects..."
+msgstr "オブジェクトを圧縮中..."
+
+msgid "Press ? for help"
+msgstr "?でヘルプ"
+
+msgid "(end of input: saved)"
+msgstr "（入力終了：保存済み）"
+
+msgid "unexpected eof"
+msgstr "予期しないファイル終端"
+
+msgid "Your light has gone out!"
+msgstr "明かりが消えた！"
+
+msgid "Your light is growing faint."
+msgstr "明かりが弱くなってきている。"
+
+msgid "You feel like a HERO!"
+msgstr "英雄になった気分だ！"
+
+msgid "The heroism wears off."
+msgstr "勇気の効果が切れた。"
+
+msgid "You feel like a SUPER HERO!"
+msgstr "超英雄になった気分だ！"
+
+msgid "The super heroism wears off."
+msgstr "超英雄化の効果が切れた。"
+
+msgid "You are getting weak from hunger."
+msgstr "空腹で衰弱してきた。"
+
+msgid "You faint from the lack of food."
+msgstr "空腹で気を失った。"
+
+msgid "You are getting hungry."
+msgstr "空腹を感じてきた。"
+
+msgid "starvation"
+msgstr "餓死"
+
+msgid "The veil of darkness lifts."
+msgstr "闇のヴェールが晴れた。"
+
+msgid "You feel less confused now."
+msgstr "混乱が少し治まった。"
+
+msgid "You feel bolder now."
+msgstr "少し勇敢になった気がする。"
+
+msgid "You feel better."
+msgstr "気分が良くなった。"
+
+msgid "poison"
+msgstr "毒"
+
+msgid "You feel yourself moving faster."
+msgstr "体が速く動くようになった気がする。"
+
+msgid "You feel yourself slow down."
+msgstr "体が遅くなった気がする。"
+
+msgid "You feel yourself moving slower."
+msgstr "体がより遅く動くようになった気がする。"
+
+msgid "You feel yourself speed up."
+msgstr "体が速くなった気がする。"
+
+msgid "You no longer feel safe from evil."
+msgstr "もう邪悪から守られている感じがしない。"
+
+msgid "Your skin turns into steel!"
+msgstr "皮膚が鋼鉄に変わった！"
+
+msgid "Your skin returns to normal."
+msgstr "皮膚が元に戻った。"
+
+msgid "You feel righteous!"
+msgstr "正義感に満たされた！"
+
+msgid "The prayer has expired."
+msgstr "祈りの効果が切れた。"
+
+msgid "You no longer feel safe from flame."
+msgstr "もう炎から守られている感じがしない。"
+
+msgid "You no longer feel safe from cold."
+msgstr "もう冷気から守られている感じがしない。"
+
+msgid "You feel yourself yanked upwards!"
+msgstr "上に引っ張られる感覚がした！"
+
+msgid "You feel yourself yanked downwards!"
+msgstr "下に引っ張られる感覚がした！"
+
+msgid "Repeat count:"
+msgstr "繰り返し回数:"
+
+msgid "Command:"
+msgstr "コマンド:"
+
+msgid "Control-"
+msgstr "コントロール-"
+
+msgid "Type ^ <letter> for a control char"
+msgstr "コントロール文字は ^ <文字> で入力"
+
+msgid "Invalid command with a count."
+msgstr "回数指定できないコマンドです。"
+
+msgid "Do you really want to quit?"
+msgstr "本当に終了しますか？"
+
+msgid "Quitting"
+msgstr "終了します"
+
+msgid "Wizard mode off."
+msgstr "ウィザードモード OFF。"
+
+msgid "Wizard mode on."
+msgstr "ウィザードモード ON。"
+
+msgid "You are a Total Winner,  your character must be retired."
+msgstr "あなたは完全な勝者です。キャラクターは引退させる必要があります。"
+
+msgid "Use 'Q' to when you are ready to quit."
+msgstr "終了する準備ができたら 'Q' を使ってください。"
+
+msgid "Use <Control>-K when you are ready to quit."
+msgstr "終了する準備ができたら <Control>-K を使ってください。"
+
+msgid "(saved)"
+msgstr "（保存済み）"
+
+msgid "Saving game..."
+msgstr "ゲームを保存中..."
+
+msgid "(alive and well)"
+msgstr "（生存中）"
+
+msgid "You can't see your map."
+msgstr "地図が見えない。"
+
+msgid " North"
+msgstr " 北"
+
+msgid " South"
+msgstr " 南"
+
+msgid " West"
+msgstr " 西"
+
+msgid " East"
+msgstr " 東"
+
+msgid "Map sector [%d,%d], which is%s your sector. Look which direction?"
+msgstr "地図区画 [%d,%d]（あなたの区画%s）。どちらの方向を見ますか？"
+
+msgid "You've gone past the end of your map."
+msgstr "地図の端を越えました。"
+
+msgid "Type '?' or '\\' for help."
+msgstr "ヘルプは '?' か '\\' を押してください。"
+
+msgid "Type '?' or ^H for help."
+msgstr "ヘルプは '?' か ^H を押してください。"
+
+msgid "Type '?' for help."
+msgstr "ヘルプは '?' を押してください。"
+
+msgid "You are not carrying any books."
+msgstr "本を持っていません。"
+
+msgid "You can't see to read your spell book!"
+msgstr "暗くて呪文書が読めない！"
+
+msgid "You have no light to read by."
+msgstr "読むための明かりがない。"
+
+msgid "You are too confused."
+msgstr "混乱しすぎている。"
+
+msgid "Which Book?"
+msgstr "どの本ですか？"
+
+msgid "You do not understand the language."
+msgstr "その言語は理解できない。"
+
+msgid "You enter a maze of up staircases."
+msgstr "上り階段の迷路に入った。"
+
+msgid "You pass through a one-way door."
+msgstr "一方通行の扉を通り抜けた。"
+
+msgid "I see no up staircase here."
+msgstr "ここに上り階段は見当たらない。"
+
+msgid "You enter a maze of down staircases."
+msgstr "下り階段の迷路に入った。"
+
+msgid "I see no down staircase here."
+msgstr "ここに下り階段は見当たらない。"
+
+msgid "That isn't a door!"
+msgstr "それは扉ではない！"
+
+msgid "The door must be closed first."
+msgstr "まず扉を閉じる必要がある。"
+
+msgid "You jam the door with a spike."
+msgstr "扉にスパイクを打ち込んで固定した。"
+
+msgid "But you have no spikes."
+msgstr "しかしスパイクを持っていない。"
+
+msgid "The %s is in your way!"
+msgstr "%sが邪魔をしている！"
+
+msgid "But you are not using a lamp."
+msgstr "しかしランプを使っていない。"
+
+msgid "You have no oil."
+msgstr "オイルを持っていない。"
+
+msgid "Your lamp overflows, spilling oil on the ground."
+msgstr "ランプからオイルがあふれて地面にこぼれた。"
+
+msgid "Your lamp is full."
+msgstr "ランプは満タンだ。"
+
+msgid "Your lamp is more than half full."
+msgstr "ランプは半分以上残っている。"
+
+msgid "Your lamp is half full."
+msgstr "ランプは半分残っている。"
+
+msgid "Your lamp is less than half full."
+msgstr "ランプは半分以下しか残っていない。"
+
+msgid "Save file '"
+msgstr "セーブファイル『"
+
+msgid "' fails."
+msgstr "』の読み込みに失敗しました。"
+
+msgid "File exists. Delete old save file?"
+msgstr "ファイルが存在します。古いセーブファイルを削除しますか？"
+
+msgid "Can't delete '"
+msgstr "削除できません『"
+
+msgid "New Save file [ESC to give up]:"
+msgstr "新しいセーブファイル名 [ESCで中止]:"
+
+msgid "Saving with '"
+msgstr "保存中：『"
+
+msgid "Can't make new save file. Overwrite old?"
+msgstr "新しいセーブファイルを作成できません。古いファイルを上書きしますか？"
+
+msgid "Error writing to file '"
+msgstr "ファイルへの書き込みエラー『"
+
+msgid "Can't create new file '"
+msgstr "新しいファイルを作成できません『"
+
+msgid "Save file does not exist."
+msgstr "セーブファイルが存在しません。"
+
+msgid "' present. Attempting restore."
+msgstr "』が存在します。復元を試みます。"
+
+msgid "IMPOSSIBLE! Attempt to restore while still alive!"
+msgstr "あり得ない！生存中に復元しようとしている！"
+
+msgid "Can't open file for reading."
+msgstr "読み込み用にファイルを開けません。"
+
+msgid "Restoring Memory..."
+msgstr "記憶を復元中..."
+
+msgid "Sorry. This save file is from a different version of umoria."
+msgstr "すみません。このセーブファイルは異なるバージョンのUmoriaのものです。"
+
+msgid "Sorry, this character is retired from moria."
+msgstr "すみません、このキャラクターはモリアから引退しています。"
+
+msgid "You can not resurrect a retired character."
+msgstr "引退したキャラクターを復活させることはできません。"
+
+msgid "Resurrect a dead character?"
+msgstr "死んだキャラクターを復活させますか？"
+
+msgid "Attempting a resurrection!"
+msgstr "復活を試みています！"
+
+msgid "Restoring Memory of a departed spirit..."
+msgstr "旅立った魂の記憶を復元中..."
+
+msgid "Restoring Character..."
+msgstr "キャラクターを復元中..."
+
+msgid "Error during reading of file."
+msgstr "ファイル読み込み中にエラーが発生しました。"
+
+msgid "This game is from a panic save.  Score will not be added to scoreboard."
+msgstr "このゲームは緊急保存によるものです。スコアはスコアボードに追加されません。"
+
+msgid "This character is already on the scoreboard; it will not be scored again."
+msgstr "このキャラクターは既にスコアボードに登録されています。再度スコア登録はされません。"
+
+msgid "This save file cannot be used to get on the score board."
+msgstr "このセーブファイルはスコアボードへの登録には使用できません。"
+
+msgid "Save file version "
+msgstr "セーブファイルバージョン "
+
+msgid " accepted on game version "
+msgstr " はゲームバージョン "
+
+msgid "Please try again without that save file."
+msgstr "そのセーブファイルを使わずにもう一度試してください。"
+
+msgid "  - An open pit."
+msgstr "  - 開いた落とし穴。"
+
+msgid "! - A potion."
+msgstr "! - 薬。"
+
+msgid "\" - An amulet, periapt, or necklace."
+msgstr "\" - アミュレット、ペリアプト、あるいはネックレス。"
+
+msgid "# - A stone wall."
+msgstr "# - 石の壁。"
+
+msgid "$ - Treasure."
+msgstr "$ - 財宝。"
+
+msgid "% - Not used."
+msgstr "% - 未使用。"
+
+msgid "% - A magma or quartz vein."
+msgstr "% - マグマまたは石英の鉱脈。"
+
+msgid "& - Treasure chest."
+msgstr "& - 宝箱。"
+
+msgid "' - An open door."
+msgstr "' - 開いた扉。"
+
+msgid "( - Soft armor."
+msgstr "( - 軽装の鎧。"
+
+msgid ") - A shield."
+msgstr ") - 盾。"
+
+msgid "* - Gems."
+msgstr "* - 宝石。"
+
+msgid "+ - A closed door."
+msgstr "+ - 閉じた扉。"
+
+msgid ", - Food or mushroom patch."
+msgstr ", - 食料またはキノコの群れ。"
+
+msgid "- - A wand"
+msgstr "- - 杖"
+
+msgid ". - Floor."
+msgstr ". - 床。"
+
+msgid "/ - A pole weapon."
+msgstr "/ - 長柄武器。"
+
+msgid "0 - Not used."
+msgstr "0 - 未使用。"
+
+msgid "1 - Entrance to General Store."
+msgstr "1 - 雑貨屋の入口。"
+
+msgid "2 - Entrance to Armory."
+msgstr "2 - 防具屋の入口。"
+
+msgid "3 - Entrance to Weaponsmith."
+msgstr "3 - 武器屋の入口。"
+
+msgid "4 - Entrance to Temple."
+msgstr "4 - 寺院の入口。"
+
+msgid "5 - Entrance to Alchemy shop."
+msgstr "5 - 錬金術店の入口。"
+
+msgid "6 - Entrance to Magic-Users store."
+msgstr "6 - 魔法店の入口。"
+
+msgid "7 - Not used."
+msgstr "7 - 未使用。"
+
+msgid "8 - Not used."
+msgstr "8 - 未使用。"
+
+msgid "9 - Not used."
+msgstr "9 - 未使用。"
+
+msgid ": - Rubble."
+msgstr ": - がれき。"
+
+msgid "; - A loose rock."
+msgstr "; - ぐらついた岩。"
+
+msgid "< - An up staircase."
+msgstr "< - 上り階段。"
+
+msgid "= - A ring."
+msgstr "= - 指輪。"
+
+msgid "> - A down staircase."
+msgstr "> - 下り階段。"
+
+msgid "? - A scroll."
+msgstr "? - 巻物。"
+
+msgid "A - Giant Ant Lion."
+msgstr "A - 巨大アリジゴク。"
+
+msgid "B - The Balrog."
+msgstr "B - バルログ。"
+
+msgid "C - Gelatinous Cube."
+msgstr "C - ゼラチナス・キューブ。"
+
+msgid "D - An Ancient Dragon (Beware)."
+msgstr "D - 古代ドラゴン（要注意）。"
+
+msgid "E - Elemental."
+msgstr "E - エレメンタル。"
+
+msgid "F - Giant Fly."
+msgstr "F - 巨大バエ。"
+
+msgid "G - Ghost."
+msgstr "G - 幽霊。"
+
+msgid "H - Hobgoblin."
+msgstr "H - ホブゴブリン。"
+
+msgid "I - Invisible Stalker."
+msgstr "I - 見えざるもの。"
+
+msgid "J - Jelly."
+msgstr "J - ゼリー。"
+
+msgid "K - Killer Beetle."
+msgstr "K - 殺人甲虫。"
+
+msgid "L - Lich."
+msgstr "L - リッチ。"
+
+msgid "M - Mummy."
+msgstr "M - ミイラ。"
+
+msgid "N - Not used."
+msgstr "N - 未使用。"
+
+msgid "O - Ooze."
+msgstr "O - 軟泥。"
+
+msgid "P - Giant humanoid."
+msgstr "P - 巨大な人型。"
+
+msgid "Q - Quylthulg (Pulsing Flesh Mound)."
+msgstr "Q - クイルスラグ（脈打つ肉塊）。"
+
+msgid "R - Reptile."
+msgstr "R - 爬虫類。"
+
+msgid "S - Giant Scorpion."
+msgstr "S - 巨大サソリ。"
+
+msgid "T - Troll."
+msgstr "T - トロル。"
+
+msgid "U - Umber Hulk."
+msgstr "U - アンバー・ハルク。"
+
+msgid "V - Vampire."
+msgstr "V - ヴァンパイア。"
+
+msgid "W - Wight or Wraith."
+msgstr "W - ワイトまたはレイス。"
+
+msgid "X - Xorn."
+msgstr "X - ゾーン。"
+
+msgid "Y - Yeti."
+msgstr "Y - イエティ。"
+
+msgid "Z - Not used."
+msgstr "Z - 未使用。"
+
+msgid "[ - Hard armor."
+msgstr "[ - 重装の鎧。"
+
+msgid "\\ - A hafted weapon."
+msgstr "\\ - 柄物武器。"
+
+msgid "] - Misc. armor."
+msgstr "] - その他の防具。"
+
+msgid "^ - A trap."
+msgstr "^ - 罠。"
+
+msgid "_ - A staff."
+msgstr "_ - 杖。"
+
+msgid "` - Not used."
+msgstr "` - 未使用。"
+
+msgid "a - Giant Ant."
+msgstr "a - 巨大アリ。"
+
+msgid "b - Giant Bat."
+msgstr "b - 巨大コウモリ。"
+
+msgid "c - Giant Centipede."
+msgstr "c - 巨大ムカデ。"
+
+msgid "d - Dragon."
+msgstr "d - ドラゴン。"
+
+msgid "e - Floating Eye."
+msgstr "e - 浮遊する目玉。"
+
+msgid "f - Giant Frog."
+msgstr "f - 巨大カエル。"
+
+msgid "g - Golem."
+msgstr "g - ゴーレム。"
+
+msgid "h - Harpy."
+msgstr "h - ハーピー。"
+
+msgid "i - Icky Thing."
+msgstr "i - ヌルヌルしたもの。"
+
+msgid "j - Jackal."
+msgstr "j - ジャッカル。"
+
+msgid "k - Kobold."
+msgstr "k - コボルド。"
+
+msgid "l - Giant Louse."
+msgstr "l - 巨大シラミ。"
+
+msgid "m - Mold."
+msgstr "m - カビ。"
+
+msgid "n - Naga."
+msgstr "n - ナーガ。"
+
+msgid "o - Orc or Ogre."
+msgstr "o - オークまたはオーガ。"
+
+msgid "p - Person (Humanoid)."
+msgstr "p - 人間（人型）。"
+
+msgid "q - Quasit."
+msgstr "q - クエジット。"
+
+msgid "r - Rodent."
+msgstr "r - げっ歯類。"
+
+msgid "s - Skeleton."
+msgstr "s - スケルトン。"
+
+msgid "t - Giant Tick."
+msgstr "t - 巨大ダニ。"
+
+msgid "u - Not used."
+msgstr "u - 未使用。"
+
+msgid "v - Not used."
+msgstr "v - 未使用。"
+
+msgid "w - Worm or Worm Mass."
+msgstr "w - ワームまたはワームの群れ。"
+
+msgid "x - Not used."
+msgstr "x - 未使用。"
+
+msgid "y - Yeek."
+msgstr "y - イーク。"
+
+msgid "z - Zombie."
+msgstr "z - ゾンビ。"
+
+msgid "{ - Arrow, bolt, or bullet."
+msgstr "{ - 矢、ボルト、または弾丸。"
+
+msgid "| - A sword or dagger."
+msgstr "| - 剣またはダガー。"
+
+msgid "} - Bow, crossbow, or sling."
+msgstr "} - 弓、クロスボウ、またはスリング。"
+
+msgid "~ - Miscellaneous item."
+msgstr "~ - その他のアイテム。"
+
+msgid "Not Used."
+msgstr "未使用。"
+
+msgid "Enter character to be identified :"
+msgstr "識別する文字を入力: "
+
+msgid "You combine similar objects from the shop and dungeon."
+msgstr "店とダンジョンから同じアイテムをまとめました。"
+
+msgid "& %s Amulet"
+msgstr "& %sアミュレット"
+
+msgid "& Amulet"
+msgstr "& アミュレット"
+
+msgid "& %s Ring"
+msgstr "& %s指輪"
+
+msgid "& Ring"
+msgstr "& 指輪"
+
+msgid "& %s Staff"
+msgstr "& %s杖"
+
+msgid "& Staff"
+msgstr "& 杖"
+
+msgid "& %s Wand"
+msgstr "& %sワンド"
+
+msgid "& Wand"
+msgstr "& ワンド"
+
+msgid "& Scroll~ titled \"%s\""
+msgstr "& 「%s」と書かれた巻物"
+
+msgid "& Scroll~"
+msgstr "& 巻物"
+
+msgid "& %s Potion~"
+msgstr "& %s薬"
+
+msgid "& Potion~"
+msgstr "& 薬"
+
+msgid "& %s Mushroom~"
+msgstr "& %sキノコ"
+
+msgid "& Hairy %s Mold~"
+msgstr "& 毛むくじゃらの%sカビ"
+
+msgid "& Hairy Mold~"
+msgstr "& 毛むくじゃらのカビ"
+
+msgid "& Book~ of Magic Spells %s"
+msgstr "& 魔法の書 %s"
+
+msgid "& Holy Book~ of Prayers %s"
+msgstr "& 祈りの聖典 %s"
+
+msgid "the entrance to the %s."
+msgstr "%sの入口。"
+
+msgid " of "
+msgstr " の "
+
+msgid " with %d turns of light"
+msgstr " （残り%dターン分の明かり）"
+
+msgid " (%d charges)"
+msgstr " （%d回分の充填）"
+
+msgid " (%c%d to STR)"
+msgstr " （STR %c%d）"
+
+msgid " (%c%d to stealth)"
+msgstr " （隠密 %c%d）"
+
+msgid "tried "
+msgstr "試した "
+
+msgid "magik "
+msgstr "魔法の "
+
+msgid "empty "
+msgstr "空の "
+
+msgid "damned "
+msgstr "呪われた "
+
+msgid "You have %d charges remaining."
+msgstr "残り%d回分の充填がある。"
+
+msgid "You have %s"
+msgstr "あなたは%sを持っている"
+
+msgid "You are not carrying anything to inscribe."
+msgstr "銘を刻めるものを何も持っていない。"
+
+msgid "Which one? "
+msgstr "どれですか？ "
+
+msgid "Inscribing %s"
+msgstr "%sに銘を刻む"
+
+msgid "Replace %s New inscription:"
+msgstr "%sを置き換え 新しい銘:"
+
+msgid "Inscription: "
+msgstr "銘: "
+
+msgid "The %s"
+msgstr "%s"
+
+msgid "Something"
+msgstr "何か"
+
+msgid "%s is in your way!"
+msgstr "%sが邪魔をしている！"
+
+msgid "Dropped %s"
+msgstr "%sを落とした"
+
+msgid "Your light dims."
+msgstr "明かりが暗くなった。"
+
+msgid "Energy drains from your pack!"
+msgstr "荷物からエネルギーが吸い取られた！"
+
+msgid "Your %s resists damage!"
+msgstr "%sはダメージに耐えた！"
+
+msgid "Your %s is damaged!"
+msgstr "%sが損傷した！"
+
+msgid "There is an acrid smell coming from your pack."
+msgstr "荷物から刺激臭がする。"
+
+msgid "There is smoke coming from your pack!"
+msgstr "荷物から煙が出ている！"
+
+msgid "Something shatters inside your pack!"
+msgstr "荷物の中で何かが砕けた！"
+
+msgid "There are sparks coming from your pack!"
+msgstr "荷物から火花が散っている！"
+
+msgid "There is an acrid smell coming from your pack!"
+msgstr "荷物から刺激臭がする！"
+
+msgid "You can't cast spells!"
+msgstr "呪文を唱えられない！"
+
+msgid "But you are not carrying any spell-books!"
+msgstr "しかし呪文書を持っていない！"
+
+msgid "Use which spell-book?"
+msgstr "どの呪文書を使いますか？"
+
+msgid "Cast which spell?"
+msgstr "どの呪文を唱えますか？"
+
+msgid "You don't know any spells in that book."
+msgstr "その本の呪文は何も覚えていない。"
+
+msgid "You failed to get the spell off!"
+msgstr "呪文の詠唱に失敗した！"
+
+msgid "You faint from the effort!"
+msgstr "その努力で気を失った！"
+
+msgid "You have damaged your health!"
+msgstr "体力にダメージを受けた！"
+
+msgid "hits you."
+msgstr "があなたを殴った。"
+
+msgid "bites you."
+msgstr "があなたに噛みついた。"
+
+msgid "claws you."
+msgstr "があなたを引っかいた。"
+
+msgid "stings you."
+msgstr "があなたを刺した。"
+
+msgid "touches you."
+msgstr "があなたに触れた。"
+
+msgid "kicks you."
+msgstr "があなたを蹴った。"
+
+msgid "gazes at you."
+msgstr "があなたをにらんだ。"
+
+msgid "breathes on you."
+msgstr "があなたに息を吹きかけた。"
+
+msgid "spits on you."
+msgstr "があなたに唾を吐いた。"
+
+msgid "makes a horrible wail."
+msgstr "が恐ろしい叫び声をあげた。"
+
+msgid "embraces you."
+msgstr "があなたを抱きしめた。"
+
+msgid "crawls on you."
+msgstr "があなたの上を這った。"
+
+msgid "releases a cloud of spores."
+msgstr "が胞子の雲を放った。"
+
+msgid "begs you for money."
+msgstr "があなたにお金をせびった。"
+
+msgid "You've been slimed!"
+msgstr "粘液まみれになった！"
+
+msgid "crushes you."
+msgstr "があなたを押しつぶした。"
+
+msgid "tramples you."
+msgstr "があなたを踏みつけた。"
+
+msgid "drools on you."
+msgstr "があなたによだれを垂らした。"
+
+msgid "insults you!"
+msgstr "があなたを侮辱した！"
+
+msgid "insults your mother!"
+msgstr "があなたの母親を侮辱した！"
+
+msgid "gives you the finger!"
+msgstr "があなたに中指を立てた！"
+
+msgid "humiliates you!"
+msgstr "があなたに恥をかかせた！"
+
+msgid "wets on your leg!"
+msgstr "があなたの足に排尿した！"
+
+msgid "defiles you!"
+msgstr "があなたを冒涜した！"
+
+msgid "dances around you!"
+msgstr "があなたの周りで踊った！"
+
+msgid "makes obscene gestures!"
+msgstr "が卑猥な仕草をした！"
+
+msgid "moons you!!!"
+msgstr "があなたにお尻を見せた！！！"
+
+msgid "is repelled."
+msgstr "は跳ね返された。"
+
+msgid "%sis unaffected."
+msgstr "%sには効果がなかった。"
+
+msgid "%sappears confused."
+msgstr "%sは混乱したようだ。"
+
+msgid "It "
+msgstr "何か"
+
+msgid "The %s "
+msgstr "%s"
+
+msgid "misses you."
+msgstr "があなたへの攻撃を外した。"
+
+msgid "You hear a door burst open!"
+msgstr "扉が破られる音が聞こえた！"
+
+msgid "The rune of protection is broken!"
+msgstr "守りのルーンが破られた！"
+
+msgid "You resist the effects of the spell."
+msgstr "呪文の効果に抵抗した。"
+
+msgid "magically summons a monster!"
+msgstr "が魔法でモンスターを召喚した！"
+
+msgid "magically summons an undead!"
+msgstr "が魔法でアンデッドを召喚した！"
+
+msgid "%sdraws psychic energy from you!"
+msgstr "%sがあなたから精神エネルギーを吸い取った！"
+
+msgid "%sappears healthier."
+msgstr "%sは元気になったようだ。"
+
+msgid "breathes lightning."
+msgstr "が電撃のブレスを吐いた。"
+
+msgid "breathes gas."
+msgstr "がガスのブレスを吐いた。"
+
+msgid "breathes acid."
+msgstr "が酸のブレスを吐いた。"
+
+msgid "breathes frost."
+msgstr "が冷気のブレスを吐いた。"
+
+msgid "breathes fire."
+msgstr "が火炎のブレスを吐いた。"
+
+msgid "cast unknown spell."
+msgstr "が未知の呪文を唱えた。"
+
+msgid "casts a spell."
+msgstr "が呪文を唱えた。"
+
+msgid "You hear a scream muffled by rock!"
+msgstr "岩に籠もった叫び声が聞こえた！"
+
+msgid "A creature digs itself out from the rock!"
+msgstr "生物が岩から掘り出てきた！"
+
+msgid "recovers and glares at you."
+msgstr "が立ち直り、あなたをにらみつけた。"
+
+msgid "*** CONGRATULATIONS *** You have won the game."
+msgstr "*** おめでとうございます *** あなたはゲームに勝利しました。"
+
+msgid "You cannot save this game, but you may retire when ready."
+msgstr "このゲームはセーブできませんが、準備ができたら引退することができます。"
+
+msgid "It"
+msgstr "何か"
+
+msgid "You feel weaker for a moment, but it passes."
+msgstr "一瞬弱くなった気がしたが、すぐに治まった。"
+
+msgid "You feel weaker."
+msgstr "弱くなった気がする。"
+
+msgid "You feel confused."
+msgstr "混乱した気がする。"
+
+msgid "You resist the effects!"
+msgstr "効果に抵抗した！"
+
+msgid "You are suddenly afraid!"
+msgstr "突然恐怖に襲われた！"
+
+msgid "You are covered in acid!"
+msgstr "酸にまみれた！"
+
+msgid "You are covered with frost!"
+msgstr "霜に覆われた！"
+
+msgid "Lightning strikes you!"
+msgstr "雷があなたを打った！"
+
+msgid "A stinging red gas swirls about you."
+msgstr "刺激臭のある赤いガスがあなたの周りに渦巻いた。"
+
+msgid "Your eyes begin to sting."
+msgstr "目がひりひりし始めた。"
+
+msgid "You are paralyzed."
+msgstr "麻痺した。"
+
+msgid "You quickly protect your money pouch!"
+msgstr "とっさに財布を守った！"
+
+msgid "Your purse feels lighter."
+msgstr "財布が軽くなった気がする。"
+
+msgid "There is a puff of smoke!"
+msgstr "煙がぱっと広がった！"
+
+msgid "You grab hold of your backpack!"
+msgstr "とっさにバックパックをつかんだ！"
+
+msgid "Your backpack feels lighter."
+msgstr "バックパックが軽くなった気がする。"
+
+msgid "You feel clumsy for a moment, but it passes."
+msgstr "一瞬不器用になった気がしたが、すぐに治まった。"
+
+msgid "You feel more clumsy."
+msgstr "より不器用になった気がする。"
+
+msgid "Your body resists the effects of the disease."
+msgstr "体が病の効果に抵抗した。"
+
+msgid "Your health is damaged!"
+msgstr "健康が損なわれた！"
+
+msgid "You have trouble thinking clearly."
+msgstr "頭がはっきり働かない。"
+
+msgid "But your mind quickly clears."
+msgstr "しかしすぐに頭がはっきりした。"
+
+msgid "Your wisdom is sustained."
+msgstr "賢さは維持された。"
+
+msgid "Your wisdom is drained."
+msgstr "賢さが吸い取られた。"
+
+msgid "You feel your life draining away!"
+msgstr "生命力が吸い取られていく感じがした！"
+
+msgid "There is a static feeling in the air."
+msgstr "空気中に静電気を感じる。"
+
+msgid "It got at your rations!"
+msgstr "それがあなたの食料を奪った！"
+
+# Phase 5 batch 2: more UI messages (items, combat, food, doors,
+# chests, learning spells).
+
+msgid "There's something about what you are %s..."
+msgstr "身につけている%sには何かがあるようだ..."
+
+msgid "Was wielding "
+msgstr "装備していたのは "
+
+msgid "Light source was "
+msgstr "光源は "
+
+msgid "Was wearing "
+msgstr "身に着けていたのは "
+
+msgid "You have found %s"
+msgstr "%sを見つけた"
+
+msgid "You have found a secret door."
+msgstr "隠し扉を見つけた。"
+
+msgid "You have discovered a trap on the chest!"
+msgstr "箱に罠を発見した！"
+
+msgid "The chest is trapped!"
+msgstr "箱には罠が仕掛けられている！"
+
+msgid "You have trouble wielding such a heavy weapon."
+msgstr "そんなに重い武器はうまく扱えない。"
+
+msgid "You are strong enough to wield your weapon."
+msgstr "武器を扱うのに十分な力がある。"
+
+msgid "Your pack is so heavy that it slows you down."
+msgstr "荷物が重すぎて動きが遅くなる。"
+
+msgid "You move more easily under the weight of your pack."
+msgstr "荷物の重さにも関わらず楽に動けるようになった。"
+
+msgid "You can't learn any new %s!"
+msgstr "新しい%sをこれ以上覚えられない！"
+
+msgid "spells"
+msgstr "呪文"
+
+msgid "prayers"
+msgstr "祈り"
+
+msgid "You seem to be missing a book."
+msgstr "本が足りないようだ。"
+
+msgid "Learn which spell?"
+msgstr "どの呪文を覚えますか？"
+
+msgid "You have learned the prayer of %s."
+msgstr "%sの祈りを覚えた。"
+
+msgid "It was a good hit! (x2 damage)"
+msgstr "会心の一撃！（ダメージ2倍）"
+
+msgid "It was an excellent hit! (x3 damage)"
+msgstr "見事な一撃！（ダメージ3倍）"
+
+msgid "It was a superb hit! (x4 damage)"
+msgstr "驚異的な一撃！（ダメージ4倍）"
+
+msgid "It was a *GREAT* hit! (x5 damage)"
+msgstr "*超一撃*！（ダメージ5倍）"
+
+msgid "it"
+msgstr "それ"
+
+msgid "the %s"
+msgstr "%s"
+
+msgid "You miss %s."
+msgstr "%sへの攻撃を外した。"
+
+msgid "You hit %s."
+msgstr "%sに命中した。"
+
+msgid "%s is unaffected."
+msgstr "%sには効果がなかった。"
+
+msgid "%s appears confused."
+msgstr "%sは混乱したようだ。"
+
+msgid "You have slain %s."
+msgstr "%sを倒した。"
+
+msgid "You are too confused to pick the lock."
+msgstr "混乱していて鍵を開けられない。"
+
+msgid "You have picked the lock."
+msgstr "鍵を開けた。"
+
+msgid "You failed to pick the lock."
+msgstr "鍵開けに失敗した。"
+
+msgid "It appears to be stuck."
+msgstr "動かないようだ。"
+
+msgid "I do not see anything you can open there."
+msgstr "そこには開けられるものが見当たらない。"
+
+msgid "The door appears to be broken."
+msgstr "扉は壊れているようだ。"
+
+msgid "I do not see anything you can close there."
+msgstr "そこには閉じられるものが見当たらない。"
+
+msgid "You have found something!"
+msgstr "何かを見つけた！"
+
+msgid "You are too afraid!"
+msgstr "恐怖で身がすくむ！"
+
+msgid "You have forgotten the %s of %s."
+msgstr "%sの%sを忘れてしまった。"
+
+msgid "You have remembered the %s of %s."
+msgstr "%sの%sを思い出した。"
+
+msgid "spell"
+msgstr "呪文"
+
+msgid "prayer"
+msgstr "祈り"
+
+msgid "You can learn some new %s now."
+msgstr "新しい%sを覚えられるようになった。"
+
+msgid "Babe in arms"
+msgstr "生まれたばかりの赤子"
+
+msgid "**KING**"
+msgstr "**王**"
+
+msgid "**QUEEN**"
+msgstr "**女王**"
+
+msgid "You are confused."
+msgstr "混乱した。"
+
+msgid "You bash it, but nothing interesting happens."
+msgstr "体当たりしたが、特に何も起こらない。"
+
+msgid "You bash at empty space."
+msgstr "何もない空間に体当たりした。"
+
+msgid "%s appears stunned!"
+msgstr "%sは朦朧としたようだ！"
+
+msgid "%s ignores your bash!"
+msgstr "%sはあなたの体当たりを気にしない！"
+
+msgid "You are off balance."
+msgstr "バランスを崩した。"
+
+msgid "You are afraid!"
+msgstr "恐怖に襲われた！"
+
+msgid "You smash into the door!"
+msgstr "扉に体当たりした！"
+
+msgid "The door crashes open!"
+msgstr "扉が破られて開いた！"
+
+msgid "You are off-balance."
+msgstr "バランスを崩した。"
+
+msgid "The door holds firm."
+msgstr "扉はびくともしない。"
+
+msgid "You have destroyed the chest."
+msgstr "箱を破壊した。"
+
+msgid "and its contents!"
+msgstr "そして中身も！"
+
+msgid "The lock breaks open!"
+msgstr "鍵が壊れて開いた！"
+
+msgid "The chest holds firm."
+msgstr "箱はびくともしない。"
+
+msgid "But you are not carrying anything."
+msgstr "しかし何も持っていない。"
+
+msgid "You are not carrying any food."
+msgstr "食料を持っていない。"
+
+msgid "Eat what?"
+msgstr "何を食べますか？"
+
+msgid "A veil of darkness surrounds you."
+msgstr "闇のヴェールがあなたを包んだ。"
+
+msgid "You feel terrified!"
+msgstr "恐怖に襲われた！"
+
+msgid "You feel drugged."
+msgstr "薬でおかしくなった気分だ。"
+
+msgid "You feel your strength returning."
+msgstr "力が戻ってくるのを感じる。"
+
+msgid "You feel your health returning."
+msgstr "健康が戻ってくるのを感じる。"
+
+msgid "Your head spins a moment."
+msgstr "一瞬頭がくらくらした。"
+
+msgid "You feel your wisdom returning."
+msgstr "賢さが戻ってくるのを感じる。"
+
+msgid "You feel more dexterous."
+msgstr "より器用になった気がする。"
+
+msgid "Your skin stops itching."
+msgstr "肌のかゆみが治まった。"
+
+msgid "poisonous food."
+msgstr "毒のある食べ物。"
+
+msgid "Internal error in playerEat()"
+msgstr "playerEat()内部エラー"
+
+msgid "You are bloated from overeating."
+msgstr "食べ過ぎで膨れ上がった。"
+
+msgid "You are full."
+msgstr "満腹だ。"
+
+msgid "You gently float down."
+msgstr "ゆっくりと浮かんで降りた。"
+
+msgid "An arrow hits you."
+msgstr "矢が命中した。"
+
+msgid "An arrow barely misses you."
+msgstr "矢がかろうじて外れた。"
+
+msgid "You fell into a covered pit."
+msgstr "隠れた落とし穴に落ちた。"
+
+# Phase 5 batch 3: traps, potions, prayers, throwing, disarming.
+
+msgid "You fell through a trap door!"
+msgstr "落とし戸から落ちた！"
+
+msgid "A strange white mist surrounds you!"
+msgstr "奇妙な白い霧があなたを包んだ！"
+
+msgid "You fall asleep."
+msgstr "眠りに落ちた。"
+
+msgid "Hmmm, there was something under this rock."
+msgstr "うーん、この岩の下に何かあった。"
+
+msgid "A small dart weakens you!"
+msgstr "小さなダーツがあなたを弱らせた！"
+
+msgid "A small dart hits you."
+msgstr "小さなダーツが命中した。"
+
+msgid "A small dart barely misses you."
+msgstr "小さなダーツがかろうじて外れた。"
+
+msgid "You hit a teleport trap!"
+msgstr "テレポートの罠にかかった！"
+
+msgid "a falling rock"
+msgstr "落石"
+
+msgid "You are hit by falling rock."
+msgstr "落石があなたに命中した。"
+
+msgid "A strange red gas surrounds you."
+msgstr "奇妙な赤いガスがあなたを包んだ。"
+
+msgid "corrosion gas"
+msgstr "腐食ガス"
+
+msgid "a fire trap"
+msgstr "火の罠"
+
+msgid "You are splashed with acid!"
+msgstr "酸を浴びた！"
+
+msgid "an acid trap"
+msgstr "酸の罠"
+
+msgid "A pungent green gas surrounds you!"
+msgstr "刺激臭のある緑のガスがあなたを包んだ！"
+
+msgid "a poison gas trap"
+msgstr "毒ガスの罠"
+
+msgid "A black gas surrounds you!"
+msgstr "黒いガスがあなたを包んだ！"
+
+msgid "A gas of scintillating colors surrounds you!"
+msgstr "きらめく色のガスがあなたを包んだ！"
+
+msgid "A small dart hits you!"
+msgstr "小さなダーツが命中した！"
+
+msgid "A small dart saps your health!"
+msgstr "小さなダーツが体力を奪った！"
+
+msgid "Unknown trap value."
+msgstr "不明な罠の値。"
+
+msgid "You have found %d gold pieces worth of %s"
+msgstr "%d ゴールド分の%sを見つけた"
+
+msgid "Pick up "
+msgstr "拾いますか "
+
+msgid "Exceed your weight limit to pick up "
+msgstr "重量制限を超えてでも拾いますか "
+
+msgid "You have %s (%c)"
+msgstr "%s を持っている (%c)"
+
+msgid "You can't carry %s"
+msgstr "%sを持てない"
+
+msgid "There is rubble blocking your way."
+msgstr "がれきが道をふさいでいる。"
+
+msgid "There is a closed door blocking your way."
+msgstr "閉じた扉が道をふさいでいる。"
+
+msgid "You can't see to read your prayer!"
+msgstr "暗くて祈りの本が読めない！"
+
+msgid "Pray hard enough and your prayers may be answered."
+msgstr "熱心に祈れば、願いが届くかもしれない。"
+
+msgid "But you are not carrying anything!"
+msgstr "しかし何も持っていない！"
+
+msgid "You are not carrying any Holy Books!"
+msgstr "聖典を持っていない！"
+
+msgid "Black Sphere"
+msgstr "黒き球"
+
+msgid "Use which Holy Book?"
+msgstr "どの聖典を使いますか？"
+
+msgid "Recite which prayer?"
+msgstr "どの祈りを唱えますか？"
+
+msgid "You don't know any prayers in that book."
+msgstr "その本の祈りは何も覚えていない。"
+
+msgid "You lost your concentration!"
+msgstr "集中力を失った！"
+
+msgid "You faint from fatigue!"
+msgstr "疲労で気を失った！"
+
+msgid "Wow!  What bulging muscles!"
+msgstr "うわあ！なんて盛り上がった筋肉だ！"
+
+msgid "You feel warm all over."
+msgstr "体中が温かくなった。"
+
+msgid "Aren't you brilliant!"
+msgstr "なんて賢いんだ！"
+
+msgid "You have have a warm feeling."
+msgstr "温かい気持ちになった。"
+
+msgid "You suddenly have a profound thought!"
+msgstr "突然深遠な考えが浮かんだ！"
+
+msgid "Gee, ain't you cute!"
+msgstr "おや、可愛いじゃないか！"
+
+msgid "You feel your looks returning."
+msgstr "見た目が元に戻る感じがする。"
+
+msgid "You feel tingly for a moment."
+msgstr "一瞬ピリピリ感じた。"
+
+msgid "You feel more experienced."
+msgstr "より経験を積んだ気がする。"
+
+msgid "You are covered by a veil of darkness."
+msgstr "闇のヴェールに覆われた。"
+
+msgid "Hey!  This is good stuff!  * Hick! *"
+msgstr "おお！こいつはいい酒だ！ * ヒック！ *"
+
+msgid "You feel more limber!"
+msgstr "体がより柔軟になった気がする！"
+
+msgid "You feel less clumsy."
+msgstr "不器用さが和らいだ気がする。"
+
+msgid "You feel your health returning!"
+msgstr "健康が戻ってくるのを感じる！"
+
+msgid "You feel your memories fade."
+msgstr "記憶が薄れていく気がする。"
+
+msgid "The potion makes you vomit!"
+msgstr "薬を飲んで吐き気を催した！"
+
+msgid "Your feel your head clear."
+msgstr "頭がすっきりした気がする。"
+
+msgid "Your eyes begin to tingle."
+msgstr "目がピリピリし始めた。"
+
+msgid "Internal error in potion()"
+msgstr "potion()内部エラー"
+
+msgid "You are not carrying any potions."
+msgstr "薬を持っていない。"
+
+msgid "Quaff which potion?"
+msgstr "どの薬を飲みますか？"
+
+msgid "You feel less thirsty."
+msgstr "喉の渇きが和らいだ。"
+
+msgid "You stop running to catch your breath."
+msgstr "息を整えるために走るのをやめた。"
+
+msgid "The %s disappears."
+msgstr "%sが消えた。"
+
+msgid "Fire/Throw which one?"
+msgstr "どれを撃ちますか／投げますか？"
+
+msgid "You hear a cry as the %s finds a mark."
+msgstr "%sが命中し、叫び声が聞こえた。"
+
+msgid "The %s hits the %s."
+msgstr "%sが%sに命中した。"
+
+msgid "You have killed something!"
+msgstr "何かを倒した！"
+
+msgid "You have killed the %s."
+msgstr "%sを倒した。"
+
+msgid "You have disarmed the trap."
+msgstr "罠を解除した。"
+
+msgid "You failed to disarm the trap."
+msgstr "罠の解除に失敗した。"
+
+msgid "You set the trap off!"
+msgstr "罠を作動させてしまった！"
+
+msgid "I don't see a trap."
+msgstr "罠は見当たらない。"
+
+msgid "You have disarmed the chest."
+msgstr "箱の罠を解除した。"
+
+msgid "You failed to disarm the chest."
+msgstr "箱の罠の解除に失敗した。"
+
+msgid "You set a trap off!"
+msgstr "罠を作動させてしまった！"
+
+msgid "The chest was not trapped."
+msgstr "箱には罠がなかった。"
+
+msgid "I do not see anything to disarm there."
+msgstr "そこには解除できるものが見当たらない。"
+
+msgid "A small needle has pricked you!"
+msgstr "小さな針があなたを刺した！"
+
+msgid "a poison needle"
+msgstr "毒針"
+
+msgid "You feel weakened!"
+msgstr "弱くなった気がする！"
+
+msgid "A puff of yellow gas surrounds you!"
+msgstr "黄色いガスの噴出があなたを包んだ！"
+
+# Phase 5 batch 4: scores, scrolls, spells, staves, wands, store.
+
+msgid "You recall those details?"
+msgstr "この詳細を記憶しますか？"
+
+msgid "Sorry, scores for games restored from panic save files are not saved."
+msgstr "すみません、パニックセーブから復元したゲームのスコアは保存されません。"
+
+msgid "Error opening score file '"
+msgstr "スコアファイルを開けません『"
+
+msgid "Sorry. This score file is from a different version of umoria."
+msgstr "すみません。このスコアファイルは異なるバージョンのUmoriaのものです。"
+
+msgid "You can't see to read the scroll."
+msgstr "暗くて巻物が読めない。"
+
+msgid "You are too confused to read a scroll."
+msgstr "混乱していて巻物が読めない。"
+
+msgid "You are not carrying anything!"
+msgstr "何も持っていない！"
+
+msgid "You are not carrying any scrolls!"
+msgstr "巻物を持っていない！"
+
+msgid "Your %s glows faintly!"
+msgstr "%sがかすかに光った！"
+
+msgid "The enchantment fails."
+msgstr "エンチャントは失敗した。"
+
+msgid "This is an identify scroll."
+msgstr "これは識別の巻物だ。"
+
+msgid "You feel as if someone is watching over you."
+msgstr "誰かに見守られているような気がする。"
+
+msgid "Your hands begin to glow."
+msgstr "手が光り始めた。"
+
+msgid "Your %s glows brightly!"
+msgstr "%sが明るく光った！"
+
+msgid "Your %s glows black, fades."
+msgstr "%sが黒く光り、そして消えた。"
+
+msgid "The air about you becomes charged."
+msgstr "周囲の空気が帯電した。"
+
+msgid "Read which scroll?"
+msgstr "どの巻物を読みますか？"
+
+msgid "This is a mass genocide scroll."
+msgstr "これは大量虐殺の巻物だ。"
+
+msgid "There is a high pitched humming noise."
+msgstr "甲高い唸り音が聞こえた。"
+
+msgid "This is a Recharge-Item scroll."
+msgstr "これは充填の巻物だ。"
+
+msgid "This is a genocide scroll."
+msgstr "これは虐殺の巻物だ。"
+
+msgid "Internal error in scroll()"
+msgstr "scroll()内部エラー"
+
+msgid "You don't know that %s."
+msgstr "その%sは知らない。"
+
+msgid "You summon your limited strength to cast this one! Confirm?"
+msgstr "限られた力を振り絞って唱えます！よろしいですか？"
+
+msgid "The gods may think you presumptuous for this! Confirm?"
+msgstr "神々はこれを不遜と思うかもしれません！よろしいですか？"
+
+msgid "You sense the presence of invisible creatures!"
+msgstr "見えない生物の気配を感じた！"
+
+msgid "You are surrounded by a white light."
+msgstr "白い光に包まれた。"
+
+msgid "Darkness surrounds you."
+msgstr "闇があなたを包んだ。"
+
+msgid "Item you wish identified?"
+msgstr "識別したいアイテムは？"
+
+msgid "You hear a sudden stirring in the distance!"
+msgstr "遠くで突然の物音が聞こえた！"
+
+msgid "You sense the presence of monsters!"
+msgstr "モンスターの気配を感じた！"
+
+msgid "shrivels away in the light!"
+msgstr "は光の中で萎びて消えた！"
+
+msgid "cringes from the light!"
+msgstr "は光からたじろいだ！"
+
+msgid "The end of the staff bursts into a blue shimmering light."
+msgstr "杖の先端が青く輝く光を放った。"
+
+msgid "Click!"
+msgstr "カチッ！"
+
+msgid "The %s strikes %s."
+msgstr "%sが%sを打った。"
+
+msgid "dies in a fit of agony."
+msgstr "が苦悶して死んだ。"
+
+msgid "screams in agony."
+msgstr "が苦痛の叫びをあげた。"
+
+msgid "The %s envelops a creature!"
+msgstr "%sが一体の敵を包み込んだ！"
+
+msgid "The %s envelops several creatures!"
+msgstr "%sが複数の敵を包み込んだ！"
+
+msgid "There is a scream of agony!"
+msgstr "苦痛の叫び声が聞こえた！"
+
+msgid "There are several screams of agony!"
+msgstr "複数の苦痛の叫び声が聞こえた！"
+
+msgid "You have nothing to recharge."
+msgstr "充填するものが何もない。"
+
+msgid "Recharge which item?"
+msgstr "どのアイテムを充填しますか？"
+
+msgid "There is a bright flash of light."
+msgstr "まぶしい閃光が走った。"
+
+msgid "starts moving faster."
+msgstr "が速く動き始めた。"
+
+msgid "starts moving slower."
+msgstr "が遅く動き始めた。"
+
+msgid "appears confused."
+msgstr "は混乱したようだ。"
+
+msgid "The wall turns into mud."
+msgstr "壁が泥に変わった。"
+
+msgid "The %s turns into mud."
+msgstr "%sが泥に変わった。"
+
+msgid "dissolves!"
+msgstr "が溶けた！"
+
+msgid "grunts in pain!"
+msgstr "が苦痛にうめいた！"
+
+msgid "There is a bright flash of light!"
+msgstr "まぶしい閃光が走った！"
+
+msgid "wails out in pain!"
+msgstr "が苦痛に泣き叫んだ！"
+
+msgid "is embedded in the rock."
+msgstr "は岩に埋め込まれた。"
+
+msgid "Which type of creature do you wish exterminated?"
+msgstr "どの種類の生物を根絶したいですか？"
+
+msgid "The %s is unaffected."
+msgstr "%sには効果がなかった。"
+
+msgid "You sense the presence of evil!"
+msgstr "邪悪な気配を感じた！"
+
+msgid "You feel a little better."
+msgstr "少し気分が良くなった。"
+
+msgid "You feel much better."
+msgstr "だいぶ気分が良くなった。"
+
+msgid "You feel very good."
+msgstr "とても良い気分だ。"
+
+msgid "There is already an object under you."
+msgstr "あなたの下には既に何かがある。"
+
+msgid "shudders."
+msgstr "が身震いした。"
+
+msgid "runs frantically!"
+msgstr "が必死に逃げ出した！"
+
+msgid "You feel sick for a moment,  it passes."
+msgstr "一瞬気分が悪くなったが、すぐに治まった。"
+
+msgid "You become very dizzy."
+msgstr "ひどくめまいがする。"
+
+msgid "You become dizzy for a moment,  it passes."
+msgstr "一瞬めまいがしたが、すぐに治まった。"
+
+msgid "You feel very naive."
+msgstr "とても無防備な気分だ。"
+
+msgid "You feel naive for a moment,  it passes."
+msgstr "一瞬無防備な気分になったが、すぐに治まった。"
+
+msgid "You feel very sore."
+msgstr "体がとても痛む。"
+
+msgid "You feel sore for a moment,  it passes."
+msgstr "一瞬体が痛んだが、すぐに治まった。"
+
+msgid "Your skin starts to itch."
+msgstr "肌がかゆくなり始めた。"
+
+msgid "Your skin starts to itch, but feels better now."
+msgstr "肌がかゆくなり始めたが、すぐに治まった。"
+
+msgid "The effect of the poison has been reduced."
+msgstr "毒の効果が軽減された。"
+
+msgid "There is a searing blast of light!"
+msgstr "焼けつくような閃光が走った！"
+
+msgid "You feel your life energies returning."
+msgstr "生命エネルギーが戻ってくるのを感じる。"
+
+msgid "You are not carrying any staffs."
+msgstr "杖を持っていない。"
+
+msgid "You failed to use the staff properly."
+msgstr "杖をうまく使えなかった。"
+
+msgid "The staff has no charges left."
+msgstr "杖には充填が残っていない。"
+
+msgid "The staff glows blue for a moment.."
+msgstr "杖が一瞬青く光った..."
+
+msgid "Internal error in staffs()"
+msgstr "staffs()内部エラー"
+
+msgid "Use which staff?"
+msgstr "どの杖を使いますか？"
+
+msgid "A line of blue shimmering light appears."
+msgstr "青く輝く光の線が現れた。"
+
+msgid "Internal error in wands()"
+msgstr "wands()内部エラー"
+
+msgid "You are not carrying any wands."
+msgstr "ワンドを持っていない。"
+
+msgid "Aim which wand?"
+msgstr "どのワンドを狙いますか？"
+
+msgid "You failed to use the wand properly."
+msgstr "ワンドをうまく使えなかった。"
+
+msgid "The wand has no charges left."
+msgstr "ワンドには充填が残っていない。"
+
+msgid "You may:"
+msgstr "選択できます:"
+
+msgid "Specify an asking-price in gold pieces."
+msgstr "売値をゴールドで指定してください。"
+
+msgid "Specify an offer in gold pieces."
+msgstr "提示額をゴールドで指定してください。"
+
+msgid "ESC) Quit Haggling."
+msgstr "ESC) 交渉をやめる。"
+
+msgid "- cont. -"
+msgstr "- 続く -"
+
+msgid "Gold Remaining : %d"
+msgstr "残りゴールド : %d"
+
+msgid "Item"
+msgstr "アイテム"
+
+msgid "Asking Price"
+msgstr "売値"
+
+msgid "You haven't even made your first offer yet!"
+msgstr "まだ最初の提示すらしていません！"
+
+msgid "Asking"
+msgstr "売値"
+
+msgid "After a long bargaining session, you agree upon the price."
+msgstr "長い交渉の末、価格に合意した。"
+
+msgid "Final offer"
+msgstr "最終提示"
+
+msgid "What do you offer? "
+msgstr "いくら提示しますか？ "
+
+msgid "Final Offer"
+msgstr "最終提示"
+
+msgid "Your last offer : %d"
+msgstr "前回の提示額 : %d"
+
+msgid "I am sorry, but I have not the money to afford such a fine item."
+msgstr "申し訳ないが、そんな素晴らしい品を買う金がない。"
+
+msgid "Offer"
+msgstr "提示額"
+
+msgid "What price do you ask? "
+msgstr "いくらで売りますか？ "
+
+msgid "Your last bid %d"
+msgstr "前回の提示額 %d"
+
+msgid "I am currently out of stock."
+msgstr "現在在庫切れです。"
+
+msgid "Which item are you interested in? "
+msgstr "どのアイテムに興味がありますか？ "
+
+msgid "You cannot carry that many different items."
+msgstr "そんなに多くの種類のアイテムは持てません。"
+
+msgid "Liar!  You have not the gold!"
+msgstr "嘘つき！そんな金は持っていないだろう！"
+
+msgid "You have nothing to sell to this store!"
+msgstr "この店に売るものが何もありません！"
+
+msgid "I do not buy such items."
+msgstr "そのようなアイテムは買い取りません。"
+
+msgid "Selling %s (%c)"
+msgstr "%s (%c) を売却"
+
+msgid "I have not the room in my store to keep it."
+msgstr "店に置く場所がありません。"
+
+msgid "How dare you!"
+msgstr "何て失礼な！"
+
+msgid "I will not buy that!"
+msgstr "それは買い取りません！"
+
+msgid "You've sold %s"
+msgstr "%sを売却した"
+
+# Bottom status line (row 23), one fixed-width field each. See
+# printCharacterHungerStatus() etc. in src/ui.cpp for the column budgets.
+msgid "Weak"
+msgstr "衰弱"
+
+msgid "Hungry"
+msgstr "空腹"
+
+msgid "Blind"
+msgstr "盲目"
+
+msgid "Confused"
+msgstr "混乱"
+
+msgid "Afraid"
+msgstr "恐怖"
+
+msgid "Poisoned"
+msgstr "中毒"
+
+msgid "Paralysed"
+msgstr "麻痺"
+
+msgid "Rest"
+msgstr "休憩"
+
+msgid "Rest *"
+msgstr "休憩*"
+
+msgid "Rest %-5d"
+msgstr "休憩%-5d"
+
+msgid "Repeat"
+msgstr "反復"
+
+msgid "Repeat %-.3d"
+msgstr "反復%-.3d"
+
+msgid "Search"
+msgstr "探索"
+
+msgid "Very Slow"
+msgstr "超低速"
+
+msgid "Slow"
+msgstr "低速"
+
+msgid "Fast"
+msgstr "高速"
+
+msgid "Very Fast"
+msgstr "超高速"
+
+# Character sheet labels (src/ui.cpp printCharacterVitalStatistics/
+# printCharacterLevelExperience/printCharacterAbilities). Hengband's
+# equivalent labels (src/view/display-util.cpp) are reused where they
+# match. The msgid keeps the exact literal (incl. trailing spaces used
+# for English column alignment); translated column alignment isn't
+# preserved 1:1 given Japanese text's different display width, but no
+# characters are corrupted or overlap other fields.
+msgid "Age          "
+msgstr "年齢"
+
+msgid "Height       "
+msgstr "身長"
+
+msgid "Weight       "
+msgstr "体重"
+
+msgid "Social Class "
+msgstr "社会的地位"
+
+msgid "Level      "
+msgstr "レベル"
+
+msgid "Experience "
+msgstr "経験値"
+
+msgid "Max Exp    "
+msgstr "最大経験"
+
+msgid "Exp to Adv."
+msgstr "次の昇格"
+
+msgid "Gold       "
+msgstr "所持金"
+
+msgid "Max Hit Points "
+msgstr "最大体力"
+
+msgid "Cur Hit Points "
+msgstr "現在体力"
+
+msgid "Max Mana       "
+msgstr "最大魔力"
+
+msgid "Cur Mana       "
+msgstr "現在魔力"
+
+msgid "Fighting    :"
+msgstr "打撃命中:"
+
+msgid "Bows/Throw  :"
+msgstr "射撃命中:"
+
+msgid "Saving Throw:"
+msgstr "魔法防御:"
+
+msgid "Stealth     :"
+msgstr "隠密行動:"
+
+msgid "Disarming   :"
+msgstr "解除    :"
+
+msgid "Magic Device:"
+msgstr "魔法道具:"
+
+msgid "Perception  :"
+msgstr "知覚    :"
+
+msgid "Infra-Vision:"
+msgstr "赤外線視力:"
+
+msgid "Searching   :"
+msgstr "探索    :"
+
+# Character creation / character sheet stat labels (src/ui.cpp
+# stat_names[] and printCharacterCombatValues()). Hengband's exact
+# equivalents (src/player/player-status-table.cpp) reused for the
+# attribute abbreviations.
+msgid "STR : "
+msgstr "腕力 :"
+
+msgid "INT : "
+msgstr "知能 :"
+
+msgid "WIS : "
+msgstr "賢さ :"
+
+msgid "DEX : "
+msgstr "器用 :"
+
+msgid "CON : "
+msgstr "耐久 :"
+
+msgid "CHR : "
+msgstr "魅力 :"
+
+msgid "+ To Hit    "
+msgstr "命中補正"
+
+msgid "+ To Damage "
+msgstr "打撃補正"
+
+msgid "+ To AC     "
+msgstr "防御補正"
+
+msgid "  Total AC  "
+msgstr "合計AC"
+
+# Phase 7: ui_inventory.cpp (equipment/inventory UI)
+msgid "%3d.%d lb"
+msgstr "%3d.%d ポンド"
+
+msgid "wielding"
+msgstr "装備している"
+
+msgid "wearing on your head"
+msgstr "頭にかぶっている"
+
+msgid "wearing around your neck"
+msgstr "首にかけている"
+
+msgid "wearing on your body"
+msgstr "体に着ている"
+
+msgid "wearing on your arm"
+msgstr "腕につけている"
+
+msgid "wearing on your hands"
+msgstr "手につけている"
+
+msgid "wearing on your right hand"
+msgstr "右手にはめている"
+
+msgid "wearing on your left hand"
+msgstr "左手にはめている"
+
+msgid "wearing on your feet"
+msgstr "足にはいている"
+
+msgid "wearing about your body"
+msgstr "身にまとっている"
+
+msgid "using to light the way"
+msgstr "光源にしている"
+
+msgid "holding ready by your side"
+msgstr "予備として持っている"
+
+msgid "carrying in your pack"
+msgstr "ザックに入れている"
+
+msgid "Just lifting"
+msgstr "持ち上げただけ"
+
+msgid "Wielding"
+msgstr "武器"
+
+msgid "On head"
+msgstr "頭"
+
+msgid "Around neck"
+msgstr "首"
+
+msgid "On body"
+msgstr "体"
+
+msgid "On arm"
+msgstr "腕"
+
+msgid "On hands"
+msgstr "手"
+
+msgid "On right hand"
+msgstr "右手"
+
+msgid "On left hand"
+msgstr "左手"
+
+msgid "On feet"
+msgstr "足"
+
+msgid "About body"
+msgstr "外套"
+
+msgid "Light source"
+msgstr "光源"
+
+msgid "Spare weapon"
+msgstr "予備武器"
+
+msgid "Unknown equipment position ID"
+msgstr "不明な装備部位ID"
+
+msgid "%c) %-14s: %s"
+msgstr "%c) %-14s: %s"
+
+msgid "  ESC: exit"
+msgstr "  ESC: 終了"
+
+msgid "  w  : wear or wield object"
+msgstr "  w  : 装備する"
+
+msgid "  t  : take off item"
+msgstr "  t  : 装備を外す"
+
+msgid "  d  : drop object"
+msgstr "  d  : 落とす"
+
+msgid "  x  : exchange weapons"
+msgstr "  x  : 武器を持ち替える"
+
+msgid "  i  : inventory of pack"
+msgstr "  i  : 持ち物を見る"
+
+msgid "  e  : list used equipment"
+msgstr "  e  : 装備品を見る"
+
+msgid "Continuing with inventory command?"
+msgstr "持ち物コマンドを続けますか？"
+
+msgid "You are not using any equipment."
+msgstr "何も装備していない。"
+
+msgid "You will have to drop something first."
+msgstr "先に何か落とす必要がある。"
+
+msgid "But you're not carrying anything."
+msgstr "しかし何も持っていない。"
+
+msgid "There's no room to drop anything here."
+msgstr "ここには何も落とせる場所がない。"
+
+msgid "You have nothing to wear or wield."
+msgstr "装備できるものを何も持っていない。"
+
+msgid "But you are wielding no weapons."
+msgstr "しかし武器を何も装備していない。"
+
+msgid "The %s you are wielding appears to be cursed."
+msgstr "装備している%sは呪われているようだ。"
+
+msgid "Primary weapon   : "
+msgstr "主武器           : "
+
+msgid "No primary weapon."
+msgstr "主武器なし。"
+
+msgid ", * to list"
+msgstr "、* で一覧表示"
+
+msgid "(%c-%c%s%s%s, space to break, ESC to exit) %s which one?"
+msgstr "(%c-%c%s%s%s、space で中断、ESC で終了) どれを%sか？"
+
+msgid "Put ring on which hand (l/r/L/R)?"
+msgstr "指輪をどちらの手にはめますか (l/r/L/R)？"
+
+msgid "Replace"
+msgstr "入れ替える"
+
+msgid "IMPOSSIBLE: I don't see how you can use that."
+msgstr "あり得ない：それをどう使えばいいのかわからない。"
+
+msgid "The %s you are "
+msgstr "%s"
+
+msgid "wielding "
+msgstr "を装備している際、"
+
+msgid "wearing "
+msgstr "を身につけている際、"
+
+msgid "appears to be cursed."
+msgstr "呪われているようだ。"
+
+msgid "Hmmm, it seems to be cursed."
+msgstr "うーん、これは呪われているようだ。"
+
+msgid "You can't carry it."
+msgstr "これ以上持てない。"
+
+msgid "You can't carry it.  Drop it?"
+msgstr "これ以上持てない。落としますか？"
+
+msgid "Your light source is"
+msgstr "あなたの光源は"
+
+msgid "You are wearing"
+msgstr "あなたが装備しているのは"
+
+msgid "%s %s (%c)"
+msgstr "%s %s (%c)"
+
+msgid "Oops! It feels deathly cold!"
+msgstr "うわっ！凍りつくように冷たい！"
+
+msgid "Drop all %s"
+msgstr "%sを全て落とす"
+
+msgid "Wear/Wield"
+msgstr "装備する"
+
+msgid "Drop"
+msgstr "落とす"
+
+msgid ", / for Equip"
+msgstr "、/ で装備品一覧"
+
+msgid "Take off"
+msgstr "外す"
+
+msgid "Throw off"
+msgstr "脱ぎ捨てる"
+
+msgid ", / for Inven"
+msgstr "、/ で持ち物一覧"
+
+msgid "You are carrying %d.%d pounds. In your pack there is %s"
+msgstr "あなたは%d.%dポンドを持ち運んでいる。ザックの中身は%s"
+
+msgid "nothing."
+msgstr "何もない。"
+
+msgid "You are carrying %d.%d pounds. Your capacity is %d.%d pounds. In your pack is -"
+msgstr "あなたは%d.%dポンドを持ち運んでいる。運搬能力は%d.%dポンドだ。ザックの中身は-"
+
+msgid "You have nothing you could wield."
+msgstr "装備できるものを何も持っていない。"
+
+msgid "You could wield -"
+msgstr "装備できるものは-"
+
+msgid "You are not using anything."
+msgstr "何も装備していない。"
+
+msgid "You are using -"
+msgstr "装備しているものは-"
+
+msgid "Allowed commands:"
+msgstr "使用可能なコマンド:"
+
+msgid "You are not carrying anything."
+msgstr "何も持っていない。"
+
+msgid "e/i/t/w/x/d/?/ESC:"
+msgstr "e/i/t/w/x/d/?/ESC:"
+
+msgid "But you're not using anything -more-"
+msgstr "しかし何も装備していない -続く-"
+
+msgid "But you're not carrying anything -more-"
+msgstr "しかし何も持っていない -続く-"
+
+msgid "(%s: %c-%c,%s%s / for %s, or ESC) %s"
+msgstr "(%s: %c-%c,%s%s / で%s, ESC で終了) %s"
+
+msgid "Inven"
+msgstr "持ち物"
+
+msgid "Equip"
+msgstr "装備品"
+
+msgid " 0-9,"
+msgstr " 0-9,"
+
+msgid " * to see,"
+msgstr " * で一覧,"
+
+msgid "(Items %c-%c,%s%s ESC to exit) %s"
+msgstr "(アイテム %c-%c,%s%s ESC で終了) %s"
+
+msgid " * for inventory list,"
+msgstr " * で持ち物一覧,"
+
+msgid "Try"
+msgstr "試す"
+
+
+# Phase 7: ui.cpp (sidebar/status)
+msgid "%s: %6d"
+msgstr "%s: %6d"
+
+msgid "%s: %7d"
+msgstr "%s: %7d"
+
+msgid "Town level"
+msgstr "街"
+
+msgid "Study"
+msgstr "修得"
+
+msgid "Is wizard  "
+msgstr "ウィザード"
+
+msgid "Was wizard "
+msgstr "元ウィザード"
+
+msgid "Resurrected"
+msgstr "蘇生済み"
+
+msgid "Duplicate"
+msgstr "複製"
+
+msgid "*Winner*   "
+msgstr "*勝利者*"
+
+msgid "LEV "
+msgstr "LEV "
+
+msgid "EXP "
+msgstr "EXP "
+
+msgid "MANA"
+msgstr "MANA"
+
+msgid "MHP "
+msgstr "MHP "
+
+msgid "CHP "
+msgstr "CHP "
+
+msgid "AC  "
+msgstr "AC  "
+
+msgid "GOLD"
+msgstr "GOLD"
+
+msgid "Name        :"
+msgstr "名前        :"
+
+msgid "Race        :"
+msgstr "種族        :"
+
+msgid "Sex         :"
+msgstr "性別        :"
+
+msgid "Class       :"
+msgstr "職業        :"
+
+msgid "Very Bad"
+msgstr "最悪"
+
+msgid "Bad"
+msgstr "悪い"
+
+msgid "Poor"
+msgstr "劣る"
+
+msgid "Fair"
+msgstr "普通"
+
+msgid "Good"
+msgstr "良い"
+
+msgid "Very Good"
+msgstr "とても良い"
+
+msgid "Excellent"
+msgstr "素晴らしい"
+
+msgid "Superb"
+msgstr "最高"
+
+msgid "Exp to Adv.: *******"
+msgstr "次のLvまで: *******"
+
+msgid "(Miscellaneous Abilities)"
+msgstr "（その他の能力）"
+
+msgid "Enter your player's name  [press <RETURN> when finished]"
+msgstr "プレイヤー名を入力してください  [終わったら <RETURN>]"
+
+msgid "<f>ile character description. <c>hange character name."
+msgstr "<f>キャラクター情報をファイル出力。<c>名前を変更。"
+
+msgid "File name:"
+msgstr "ファイル名:"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Lv Mana Fail"
+msgstr "Lv Mana Fail"
+
+msgid " forgotten"
+msgstr " 忘却"
+
+msgid " unknown"
+msgstr " 未知"
+
+msgid " untried"
+msgstr " 未経験"
+
+msgid "Welcome to level %d."
+msgstr "レベル%dに到達した！"
+
+
+# Phase 7: data_treasure.cpp (ego-item suffixes, chest states)
+msgid "(R)"
+msgstr "(R)"
+
+msgid "(RA)"
+msgstr "(RA)"
+
+msgid "(RF)"
+msgstr "(RF)"
+
+msgid "(RC)"
+msgstr "(RC)"
+
+msgid "(RL)"
+msgstr "(RL)"
+
+msgid "(HA)"
+msgstr "(HA)"
+
+msgid "(DF)"
+msgstr "(DF)"
+
+msgid "(SA)"
+msgstr "(SA)"
+
+msgid "(SD)"
+msgstr "(SD)"
+
+msgid "(SE)"
+msgstr "(SE)"
+
+msgid "(SU)"
+msgstr "(SU)"
+
+msgid "(FT)"
+msgstr "(FT)"
+
+msgid "(FB)"
+msgstr "(FB)"
+
+msgid "of Free Action"
+msgstr "の行動の自由"
+
+msgid "of Slaying"
+msgstr "の必殺"
+
+msgid "of Clumsiness"
+msgstr "の不器用"
+
+msgid "of Weakness"
+msgstr "の弱さ"
+
+msgid "of Slow Descent"
+msgstr "の緩降下"
+
+msgid "of Speed"
+msgstr "の速さ"
+
+msgid "of Stealth"
+msgstr "の隠密"
+
+msgid "of Slowness"
+msgstr "の鈍さ"
+
+msgid "of Noise"
+msgstr "の騒音"
+
+msgid "of Great Mass"
+msgstr "の大重量"
+
+msgid "of Intelligence"
+msgstr "の知能"
+
+msgid "of Wisdom"
+msgstr "の賢さ"
+
+msgid "of Infra-Vision"
+msgstr "の赤外線視力"
+
+msgid "of Might"
+msgstr "の怪力"
+
+msgid "of Lordliness"
+msgstr "の高貴"
+
+msgid "of the Magi"
+msgstr "の賢者たち"
+
+msgid "of Beauty"
+msgstr "の美貌"
+
+msgid "of Seeing"
+msgstr "の視認"
+
+msgid "of Regeneration"
+msgstr "の再生"
+
+msgid "of Stupidity"
+msgstr "の愚鈍"
+
+msgid "of Dullness"
+msgstr "の鈍さ"
+
+msgid "of Blindness"
+msgstr "の盲目"
+
+msgid "of Timidness"
+msgstr "の臆病"
+
+msgid "of Teleportation"
+msgstr "のテレポート"
+
+msgid "of Ugliness"
+msgstr "の醜さ"
+
+msgid "of Protection"
+msgstr "の防御"
+
+msgid "of Irritation"
+msgstr "の苛立ち"
+
+msgid "of Vulnerability"
+msgstr "の脆弱"
+
+msgid "of Enveloping"
+msgstr "の包囲"
+
+msgid "of Fire"
+msgstr "の火炎"
+
+msgid "of Slay Evil"
+msgstr "の邪悪特効"
+
+msgid "of Dragon Slaying"
+msgstr "の竜特効"
+
+msgid "of Slay Animal"
+msgstr "の動物特効"
+
+msgid "(Empty)"
+msgstr "（空）"
+
+msgid "(Locked)"
+msgstr "（施錠）"
+
+msgid "(Poison Needle)"
+msgstr "（毒針）"
+
+msgid "(Gas Trap)"
+msgstr "（ガストラップ）"
+
+msgid "(Explosion Device)"
+msgstr "（爆発装置）"
+
+msgid "(Summoning Runes)"
+msgstr "（召喚のルーン）"
+
+msgid "(Multiple Traps)"
+msgstr "（複合トラップ）"
+
+msgid "(Disarmed)"
+msgstr "（解除済み）"
+
+msgid "(Unlocked)"
+msgstr "（解錠）"
+
+
+# Phase 7: spell_names[] (mage/priest spells, Hengband-matched where possible)
+msgid "Detect Monsters"
+msgstr "モンスター感知"
+
+msgid "Light Area"
+msgstr "ライト・エリア"
+
+msgid "Find Hidden Traps/Doors"
+msgstr "隠されたドアと罠の発見"
+
+msgid "Lightning Bolt"
+msgstr "サンダー・ボルト"
+
+msgid "Sleep I"
+msgstr "スリープ I"
+
+msgid "Teleport Self"
+msgstr "テレポート"
+
+msgid "Frost Bolt"
+msgstr "アイス・ボルト"
+
+msgid "Turn Stone to Mud"
+msgstr "岩石を泥に変える"
+
+msgid "Recharge Item I"
+msgstr "魔力再充填 I"
+
+msgid "Sleep II"
+msgstr "スリープ II"
+
+msgid "Polymorph Other"
+msgstr "他者変容"
+
+msgid "Sleep III"
+msgstr "スリープ III"
+
+msgid "Fire Bolt"
+msgstr "ファイア・ボルト"
+
+msgid "Frost Ball"
+msgstr "アイス・ボール"
+
+msgid "Recharge Item II"
+msgstr "魔力再充填 II"
+
+msgid "Teleport Other"
+msgstr "テレポート・アウェイ"
+
+msgid "Fire Ball"
+msgstr "ファイア・ボール"
+
+msgid "Word of Destruction"
+msgstr "破滅の呪文"
+
+msgid "Bless"
+msgstr "祝福"
+
+msgid "Remove Fear"
+msgstr "恐怖除去"
+
+msgid "Call Light"
+msgstr "光の召喚"
+
+msgid "Find Traps"
+msgstr "トラップ感知"
+
+msgid "Detect Doors/Stairs"
+msgstr "ドア/階段感知"
+
+msgid "Blind Creature"
+msgstr "目くらまし"
+
+msgid "Portal"
+msgstr "ポータル"
+
+msgid "Cure Medium Wounds"
+msgstr "中程度の傷の治療"
+
+msgid "Chant"
+msgstr "詠唱"
+
+msgid "Sanctuary"
+msgstr "サンクチュアリ"
+
+msgid "Resist Heat and Cold"
+msgstr "火炎と冷気への耐性"
+
+msgid "Orb of Draining"
+msgstr "生気吸収の宝珠"
+
+msgid "Sense Invisible"
+msgstr "透明視認"
+
+msgid "Earthquake"
+msgstr "地震"
+
+msgid "Sense Surroundings"
+msgstr "周辺感知"
+
+msgid "Turn Undead"
+msgstr "アンデッド追放"
+
+msgid "Prayer"
+msgstr "祈祷"
+
+msgid "Heal"
+msgstr "体力回復"
+
+msgid "Glyph of Warding"
+msgstr "警護の紋章"
+
+msgid "Holy Word"
+msgstr "聖なる御言葉"
+
+
+# Phase 7: store owner names (Owner_t)
+msgid "Erick the Honest       (Human)      General Store"
+msgstr "実直なエリック (人間) 雑貨屋"
+
+msgid "Mauglin the Grumpy     (Dwarf)      Armory"
+msgstr "むっつりしたモーグリン (ドワーフ) 防具屋"
+
+msgid "Arndal Beast-Slayer    (Half-Elf)   Weaponsmith"
+msgstr "猛獣狩りのアーンダル (半エルフ) 武器屋"
+
+msgid "Hardblow the Humble    (Human)      Temple"
+msgstr "慎み深きハードブロウ (人間) 寺院"
+
+msgid "Ga-nat the Greedy      (Gnome)      Alchemist"
+msgstr "欲深きガーナット (ノーム) 薬屋"
+
+msgid "Valeria Starshine      (Elf)        Magic Shop"
+msgstr "星輝のヴァレリア (エルフ) 魔法店"
+
+msgid "Andy the Friendly      (Halfling)   General Store"
+msgstr "親しみやすいアンディ (ホビット) 雑貨屋"
+
+msgid "Darg-Low the Grim      (Human)      Armory"
+msgstr "陰鬱なダーグロウ (人間) 防具屋"
+
+msgid "Oglign Dragon-Slayer   (Dwarf)      Weaponsmith"
+msgstr "竜狩りのオグリン (ドワーフ) 武器屋"
+
+msgid "Gunnar the Paladin     (Human)      Temple"
+msgstr "聖騎士のガナー (人間) 寺院"
+
+msgid "Mauser the Chemist     (Half-Elf)   Alchemist"
+msgstr "調剤師のマウザー (半エルフ) 薬屋"
+
+msgid "Gopher the Great!      (Gnome)      Magic Shop"
+msgstr "大いなるゴーファー！ (ノーム) 魔法店"
+
+msgid "Lyar-el the Comely     (Elf)        General Store"
+msgstr "麗しきリアーエル (エルフ) 雑貨屋"
+
+msgid "Mauglim the Horrible   (Half-Orc)   Armory"
+msgstr "忌まわしきモーグリム (半オーク) 防具屋"
+
+msgid "Ithyl-Mak the Beastly  (Half-Troll) Weaponsmith"
+msgstr "獣のごときイシル=マク (半トロル) 武器屋"
+
+msgid "Delilah the Pure       (Half-Elf)   Temple"
+msgstr "汚れなきデライラ (半エルフ) 寺院"
+
+msgid "Wizzle the Chaotic     (Halfling)   Alchemist"
+msgstr "無秩序なウィズル (ホビット) 薬屋"
+
+msgid "Inglorian the Mage     (Human?)     Magic Shop"
+msgstr "魔術師のインゴリアン (人間？) 魔法店"
+
+
+# Phase 7: store.cpp (menu/messages)
+msgid " p) Purchase an item."
+msgstr " p) 購入する。"
+
+msgid "b) Browse store's inventory."
+msgstr "b) 商品を見る。"
+
+msgid " s) Sell an item."
+msgstr " s) 売却する。"
+
+msgid "i/e/t/w/x) Inventory/Equipment Lists."
+msgstr "i/e/t/w/x) 持ち物/装備一覧。"
+
+msgid "ESC) Exit from Building."
+msgstr "ESC) 店を出る。"
+
+msgid "^R) Redraw the screen."
+msgstr "^R) 画面再描画。"
+
+msgid "%9d [Fixed]"
+msgstr "%9d [固定]"
+
+msgid "(Items %c-%c, ESC to exit) %s"
+msgstr "(アイテム %c-%c, ESC で終了) %s"
+
+msgid "[%c%d] "
+msgstr "[%c%d] "
+
+msgid "%s :  %d"
+msgstr "%s :  %d"
+
+msgid "The doors are locked."
+msgstr "扉に鍵がかかっている。"
+
+msgid "Entire inventory is shown."
+msgstr "在庫は全て表示されている。"
+
+
+# Phase 7: game.cpp (options menu)
+msgid "Running: cut known corners"
+msgstr "走行: 既知の角を曲がる"
+
+msgid "Running: examine potential corners"
+msgstr "走行: 曲がり角の可能性を確認する"
+
+msgid "Running: print self during run"
+msgstr "走行: 走行中も自分を表示する"
+
+msgid "Running: stop when map sector changes"
+msgstr "走行: マップ区画が変わったら停止する"
+
+msgid "Running: run through open doors"
+msgstr "走行: 開いた扉を通り抜ける"
+
+msgid "Prompt to pick up objects"
+msgstr "アイテムを拾う前に確認する"
+
+msgid "Rogue like commands"
+msgstr "Rogue風コマンドを使う"
+
+msgid "Show weights in inventory"
+msgstr "持ち物に重量を表示する"
+
+msgid "Highlight and notice mineral seams"
+msgstr "鉱脈を強調表示して知らせる"
+
+msgid "Beep for invalid character"
+msgstr "無効なキー入力でビープ音を鳴らす"
+
+msgid "Display rest/repeat counts"
+msgstr "休憩/繰り返し回数を表示する"
+
+
+# Phase 7: gameplay messages (player_tunnel/monster/spells/dungeon_los/identification/player/ui_io)
+msgid "Tunnel through what?  Empty air?!?"
+msgstr "何を掘りますか？　そこには何もない？！"
+
+msgid "You can't tunnel through that."
+msgstr "それは掘ることができない。"
+
+msgid "You have finished the tunnel."
+msgstr "トンネルを掘り終えた。"
+
+msgid "You tunnel into the granite wall."
+msgstr "花崗岩の壁を掘っている。"
+
+msgid "You tunnel into the magma intrusion."
+msgstr "マグマ岩脈を掘っている。"
+
+msgid "You tunnel into the quartz vein."
+msgstr "石英の鉱脈を掘っている。"
+
+msgid "You have removed the rubble."
+msgstr "瓦礫を取り除いた。"
+
+msgid "You dig in the rubble."
+msgstr "瓦礫を掘っている。"
+
+msgid "This seems to be permanent rock."
+msgstr "これは掘削不能な岩のようだ。"
+
+msgid "You dig with your hands, making no progress."
+msgstr "素手で掘っているが、進んでいない。"
+
+msgid "Your hands stop glowing."
+msgstr "あなたの手の輝きが消えた。"
+
+msgid "You are unaffected."
+msgstr "あなたには効果がなかった。"
+
+msgid "%s %s"
+msgstr "%s%s"
+
+msgid "is unaffected."
+msgstr "は効果がない。"
+
+msgid "falls asleep."
+msgstr "は眠りに落ちた。"
+
+msgid "You are enveloped in flames!"
+msgstr "あなたは炎に包まれた！"
+
+msgid "You feel very sick."
+msgstr "あなたはひどい気分の悪さを感じた。"
+
+msgid "(Spells %c-%c, *=List, <ESCAPE>=exit) %s"
+msgstr "(呪文 %c-%c, *=一覧, <ESCAPE>=終了) %s"
+
+msgid "Cast %s (%d mana, %d%% fail)?"
+msgstr "%sを唱えますか？ (魔力%d, 失敗率%d%%)"
+
+msgid "%s: %s"
+msgstr "%s: %s"
+
+msgid "%c %s"
+msgstr "%c %s"
+
+msgid "ERROR in spellGetAreaAffectFlags()\n"
+msgstr "ERROR in spellGetAreaAffectFlags()\n"
+
+msgid "the "
+msgstr "the "
+
+msgid "Illegal call to lookSee(%d, %d)"
+msgstr "Illegal call to lookSee(%d, %d)"
+
+msgid "%s %s %s. [(r)ecall]"
+msgstr "%s%s%sだ。[(r)ecall]"
+
+msgid "an"
+msgstr " "
+
+msgid "a"
+msgstr " "
+
+msgid "%s %s ---pause---"
+msgstr "%s%sだ。---pause---"
+
+msgid " "
+msgstr " "
+
+msgid "."
+msgstr "."
+
+msgid "Error in objdes()"
+msgstr "Error in objdes()"
+
+msgid "]"
+msgstr "]"
+
+msgid "no more %.*s"
+msgstr "no more %.*s"
+
+msgid "Rest for how long? "
+msgstr "どれだけ休憩しますか？ "
+
+msgid "Press any key to stop resting..."
+msgstr "休憩を中断するには何かキーを押してください..."
+
+msgid "Invalid rest count."
+msgstr "休憩回数が無効です。"
+
+msgid "an %s"
+msgstr "an %s"
+
+msgid "a %s"
+msgstr "a %s"
+
+msgid " -more-"
+msgstr " -続く-"
+
+msgid "(end of input: panic saved)"
+msgstr "（入力終了：緊急セーブしました）"
+
+msgid "panic: unexpected eof"
+msgstr "パニック：予期しないEOF"
+
+msgid " [y/n]"
+msgstr " [y/n]"
+
+
+# Phase 7: gameplay messages (character/player_traps/staves/game_run/monster_manager/scores)
+msgid "%c) %s"
+msgstr "%c) %s"
+
+msgid "m) Male"
+msgstr "m) 男性"
+
+msgid "f) Female"
+msgstr "f) 女性"
+
+msgid "You choke and pass out."
+msgstr "あなたは息が詰まり、気を失った。"
+
+msgid "There is a sudden explosion!"
+msgstr "突然、爆発が起きた！"
+
+msgid "an exploding chest"
+msgstr "爆発する宝箱"
+
+msgid "Lightning Ball"
+msgstr "サンダー・ボール"
+
+msgid "Cold Ball"
+msgstr "アイス・ボール"
+
+msgid "Acid Ball"
+msgstr "アシッド・ボール"
+
+msgid "%s%s of"
+msgstr "の%s%s"
+
+msgid "Compacting monsters..."
+msgstr "モンスターを整理中..."
+
+msgid "Rank  Points Name              Sex Race       Class     Lvl Killed By"
+msgstr "Rank  Points Name              Sex Race       Class     Lvl Killed By"
+
+
+# Phase 7 (scope extension): store haggle speech (data_store_owners.cpp speech_* arrays)
+msgid "Done!"
+msgstr "商談成立！"
+
+msgid "Accepted!"
+msgstr "受け入れよう！"
+
+msgid "Fine."
+msgstr "いいだろう。"
+
+msgid "Agreed!"
+msgstr "合意だ！"
+
+msgid "Ok."
+msgstr "了解。"
+
+msgid "Taken!"
+msgstr "手を打とう！"
+
+msgid "You drive a hard bargain, but taken."
+msgstr "手強い交渉だが、受けよう。"
+
+msgid "You'll force me bankrupt, but it's a deal."
+msgstr "破産させる気か、だが取引成立だ。"
+
+msgid "Sigh.  I'll take it."
+msgstr "はぁ…、いいだろう。"
+
+msgid "My poor sick children may starve, but done!"
+msgstr "病気の子供たちが飢えてしまうが、商談成立だ！"
+
+msgid "Finally!  I accept."
+msgstr "ようやくか！受け入れよう。"
+
+msgid "Robbed again."
+msgstr "また身ぐるみ剥がされたな。"
+
+msgid "A pleasure to do business with you!"
+msgstr "あなたと取引できて光栄だ！"
+
+msgid "My spouse will skin me, but accepted."
+msgstr "女房に叱られそうだが、受け入れよう。"
+
+msgid "%A2 is my final offer; take it or leave it."
+msgstr "%A2が最終提示額だ。買うか買わないか決めろ。"
+
+msgid "I'll give you no more than %A2."
+msgstr "%A2以上はまけられん。"
+
+msgid "My patience grows thin.  %A2 is final."
+msgstr "我慢の限界だ。%A2で決まりだ。"
+
+msgid "%A1 for such a fine item?  HA!  No less than %A2."
+msgstr "こんな逸品が%A1だと？ハッ！%A2は下げられん。"
+
+msgid "%A1 is an insult!  Try %A2 gold pieces."
+msgstr "%A1とは侮辱だ！%A2ゴールドでどうだ。"
+
+msgid "%A1?!?  You would rob my poor starving children?"
+msgstr "%A1だと？！飢えた我が子から奪う気か？"
+
+msgid "Why, I'll take no less than %A2 gold pieces."
+msgstr "いいや、%A2ゴールド以上でなければ渡せん。"
+
+msgid "Ha!  No less than %A2 gold pieces."
+msgstr "ハッ！%A2ゴールド以上だ。"
+
+msgid "Thou knave!  No less than %A2 gold pieces."
+msgstr "この悪党め！%A2ゴールド以上だ。"
+
+msgid "%A1 is far too little, how about %A2?"
+msgstr "%A1では安すぎる、%A2はどうだ？"
+
+msgid "I paid more than %A1 for it myself, try %A2."
+msgstr "仕入れで%A1以上払ったんだ、%A2にしてくれ。"
+
+msgid "%A1?  Are you mad?!?  How about %A2 gold pieces?"
+msgstr "%A1だと？正気か？！%A2ゴールドはどうだ？"
+
+msgid "As scrap this would bring %A1.  Try %A2 in gold."
+msgstr "くず鉄にしても%A1にはなる。%A2ゴールドでどうだ。"
+
+msgid "May the fleas of 1000 Orcs molest you.  I want %A2."
+msgstr "千匹のオークのノミにたかられるがいい。%A2欲しいんだ。"
+
+msgid "My mother you can get for %A1, this costs %A2."
+msgstr "わしの母親なら%A1で譲るが、これは%A2だ。"
+
+msgid "May your chickens grow lips.  I want %A2 in gold!"
+msgstr "お前の鶏に唇が生えるがいい。%A2ゴールド欲しいんだ！"
+
+msgid "Sell this for such a pittance?  Give me %A2 gold."
+msgstr "こんな端金で売れというのか？%A2ゴールドよこせ。"
+
+msgid "May the Balrog find you tasty!  %A2 gold pieces?"
+msgstr "バルログにでも食われるがいい！%A2ゴールドでどうだ？"
+
+msgid "Your mother was a Troll!  %A2 or I'll tell."
+msgstr "お前の母親はトロルだったな！%A2でなきゃバラすぞ。"
+
+msgid "I'll pay no more than %A1; take it or leave it."
+msgstr "%A1以上は払えん。売るか売らないか決めろ。"
+
+msgid "You'll get no more than %A1 from me."
+msgstr "わしからは%A1以上は引き出せんぞ。"
+
+msgid "%A1 and that's final."
+msgstr "%A1、これで最後だ。"
+
+msgid "%A2 for that piece of junk?  No more than %A1."
+msgstr "そのガラクタに%A2？%A1が精一杯だ。"
+
+msgid "For %A2 I could own ten of those.  Try %A1."
+msgstr "%A2あればそれが十個買える。%A1にしてくれ。"
+
+msgid "%A2?  NEVER!  %A1 is more like it."
+msgstr "%A2だと？とんでもない！%A1が妥当だろう。"
+
+msgid "Let's be reasonable. How about %A1 gold pieces?"
+msgstr "妥当な線でいこう。%A1ゴールドでどうだ？"
+
+msgid "%A1 gold for that junk, no more."
+msgstr "そのガラクタには%A1ゴールドが限度だ。"
+
+msgid "%A1 gold pieces and be thankful for it!"
+msgstr "%A1ゴールドで、それでも感謝しろ！"
+
+msgid "%A1 gold pieces and not a copper more."
+msgstr "%A1ゴールド、それ以上は一文も出さん。"
+
+msgid "%A2 gold?  HA!  %A1 is more like it."
+msgstr "%A2ゴールドだと？ハッ！%A1が妥当だ。"
+
+msgid "Try about %A1 gold."
+msgstr "%A1ゴールドあたりでどうだ。"
+
+msgid "I wouldn't pay %A2 for your children, try %A1."
+msgstr "お前の子供にすら%A2は払わんぞ、%A1にしろ。"
+
+msgid "*CHOKE* For that!?  Let's say %A1."
+msgstr "*ゲホッ* それにか！？%A1としよう。"
+
+msgid "How about %A1?"
+msgstr "%A1でどうだ？"
+
+msgid "That looks war surplus!  Say %A1 gold."
+msgstr "戦争の余り物のようだな！%A1ゴールドと言っておこう。"
+
+msgid "I'll buy it as scrap for %A1."
+msgstr "くず鉄として%A1で買い取ろう。"
+
+msgid "%A2 is too much, let us say %A1 gold."
+msgstr "%A2は高すぎる、%A1ゴールドにしておこう。"
+
+msgid "ENOUGH!  You have abused me once too often!"
+msgstr "もう十分だ！何度も無礼を働きおって！"
+
+msgid "THAT DOES IT!  You shall waste my time no more!"
+msgstr "もう我慢ならん！これ以上時間を無駄にさせん！"
+
+msgid "This is getting nowhere.  I'm going home!"
+msgstr "らちが明かん。もう帰らせてもらう！"
+
+msgid "BAH!  No more shall you insult me!"
+msgstr "フン！もう侮辱はさせんぞ！"
+
+msgid "Begone!  I have had enough abuse for one day."
+msgstr "去れ！今日はもう十分な無礼を受けた。"
+
+msgid "Out of my place!"
+msgstr "わしの店から出ていけ！"
+
+msgid "out... Out... OUT!!!"
+msgstr "出て…出ていけ…出ていけ！！！"
+
+msgid "Come back tomorrow."
+msgstr "また明日来い。"
+
+msgid "Leave my place.  Begone!"
+msgstr "わしの店から失せろ。去れ！"
+
+msgid "Come back when thou art richer."
+msgstr "もっと金を持ってから出直せ。"
+
+msgid "You will have to do better than that!"
+msgstr "もっといい条件を出してもらわないとな！"
+
+msgid "That's an insult!"
+msgstr "それは侮辱だ！"
+
+msgid "Do you wish to do business or not?"
+msgstr "取引する気があるのか、ないのか？"
+
+msgid "Hah!  Try again."
+msgstr "ハッ！もう一度言ってみろ。"
+
+msgid "Ridiculous!"
+msgstr "ばかばかしい！"
+
+msgid "You've got to be kidding!"
+msgstr "冗談だろう！"
+
+msgid "You'd better be kidding!"
+msgstr "冗談であってほしいものだな！"
+
+msgid "You try my patience."
+msgstr "わしの我慢を試す気か。"
+
+msgid "I don't hear you."
+msgstr "聞こえんな。"
+
+msgid "Hmmm, nice weather we're having."
+msgstr "うーむ、今日はいい天気だな。"
+
+msgid "I must have heard you wrong."
+msgstr "聞き間違えたに違いない。"
+
+msgid "What was that?"
+msgstr "今何と言った？"
+
+msgid "I'm sorry, say that again."
+msgstr "すまんが、もう一度言ってくれ。"
+
+msgid "What did you say?"
+msgstr "何と言ったんだ？"
+
+msgid "Sorry, what was that again?"
+msgstr "すまん、もう一度何だって？"
+
+
+# Phase 8a: class rank titles (src/data_player.cpp class_rank_titles[]),
+# translated with reference to Hengband's per-class player_titles table
+# (Hengband 3.0.2.3 source: src/player-info/class-info.cpp), expanded
+# to Umoria's finer 40-rank-per-class scheme with (N) sub-rank suffixes.
+#
+# Warrior
+
+msgid "Rookie"
+msgstr "新米"
+
+msgid "Private"
+msgstr "二等兵"
+
+msgid "Soldier"
+msgstr "兵士"
+
+msgid "Mercenary"
+msgstr "傭兵"
+
+msgid "Veteran(1st)"
+msgstr "古参兵(1)"
+
+msgid "Veteran(2nd)"
+msgstr "古参兵(2)"
+
+msgid "Veteran(3rd)"
+msgstr "古参兵(3)"
+
+msgid "Warrior(1st)"
+msgstr "戦士(1)"
+
+msgid "Warrior(2nd)"
+msgstr "戦士(2)"
+
+msgid "Warrior(3rd)"
+msgstr "戦士(3)"
+
+msgid "Warrior(4th)"
+msgstr "戦士(4)"
+
+msgid "Swordsman-1"
+msgstr "剣客(1)"
+
+msgid "Swordsman-2"
+msgstr "剣客(2)"
+
+msgid "Swordsman-3"
+msgstr "剣客(3)"
+
+msgid "Hero"
+msgstr "英雄"
+
+msgid "Swashbuckler"
+msgstr "伊達者"
+
+msgid "Myrmidon"
+msgstr "忠実なる戦士"
+
+msgid "Champion-1"
+msgstr "覇者(1)"
+
+msgid "Champion-2"
+msgstr "覇者(2)"
+
+msgid "Champion-3"
+msgstr "覇者(3)"
+
+msgid "Superhero"
+msgstr "不屈の英雄"
+
+msgid "Knight"
+msgstr "騎士"
+
+msgid "Superior Knt"
+msgstr "高位騎士"
+
+msgid "Gallant Knt"
+msgstr "華々しき騎士"
+
+msgid "Knt Errant"
+msgstr "放浪の騎士"
+
+msgid "Guardian Knt"
+msgstr "守りの騎士"
+
+msgid "Baron"
+msgstr "男爵"
+
+msgid "Duke"
+msgstr "公爵"
+
+msgid "Lord (1st)"
+msgstr "君主(1)"
+
+msgid "Lord (2nd)"
+msgstr "君主(2)"
+
+msgid "Lord (3rd)"
+msgstr "君主(3)"
+
+msgid "Lord (4th)"
+msgstr "君主(4)"
+
+msgid "Lord (5th)"
+msgstr "君主(5)"
+
+msgid "Lord (6th)"
+msgstr "君主(6)"
+
+msgid "Lord (7th)"
+msgstr "君主(7)"
+
+msgid "Lord (8th)"
+msgstr "君主(8)"
+#
+# Mage
+
+msgid "Lord (9th)"
+msgstr "君主(9)"
+
+msgid "Lord Gallant"
+msgstr "壮麗なる君主"
+
+msgid "Lord Keeper"
+msgstr "守りの君主"
+
+msgid "Lord Noble"
+msgstr "気高き君主"
+
+msgid "Novice"
+msgstr "初心者"
+
+msgid "Apprentice"
+msgstr "徒弟"
+
+msgid "Trickster-1"
+msgstr "手練者(1)"
+
+msgid "Trickster-2"
+msgstr "手練者(2)"
+
+msgid "Trickster-3"
+msgstr "手練者(3)"
+
+msgid "Cabalist-1"
+msgstr "秘儀師(1)"
+
+msgid "Cabalist-2"
+msgstr "秘儀師(2)"
+
+msgid "Cabalist-3"
+msgstr "秘儀師(3)"
+
+msgid "Visionist"
+msgstr "透視者"
+
+msgid "Phantasmist"
+msgstr "幻影使い"
+
+msgid "Shadowist"
+msgstr "影使い"
+
+msgid "Spellbinder"
+msgstr "呪縛師"
+
+msgid "Illusionist"
+msgstr "幻術師"
+
+msgid "Evoker (1st)"
+msgstr "喚起師(1)"
+
+msgid "Evoker (2nd)"
+msgstr "喚起師(2)"
+
+msgid "Evoker (3rd)"
+msgstr "喚起師(3)"
+
+msgid "Evoker (4th)"
+msgstr "喚起師(4)"
+
+msgid "Conjurer"
+msgstr "喚魔師"
+
+msgid "Theurgist"
+msgstr "神術師"
+
+msgid "Thaumaturge"
+msgstr "奇跡師"
+
+msgid "Magician"
+msgstr "魔術士"
+
+msgid "Enchanter"
+msgstr "魅了師"
+
+msgid "Warlock"
+msgstr "魔術師"
+
+msgid "Mage (1st)"
+msgstr "魔道士(1)"
+
+msgid "Mage (2nd)"
+msgstr "魔道士(2)"
+
+msgid "Mage (3rd)"
+msgstr "魔道士(3)"
+
+msgid "Mage (4th)"
+msgstr "魔道士(4)"
+
+msgid "Mage (5th)"
+msgstr "魔道士(5)"
+
+msgid "Wizard (1st)"
+msgstr "魔導師(1)"
+
+msgid "Wizard (2nd)"
+msgstr "魔導師(2)"
+
+msgid "Wizard (3rd)"
+msgstr "魔導師(3)"
+
+msgid "Wizard (4th)"
+msgstr "魔導師(4)"
+
+msgid "Wizard (5th)"
+msgstr "魔導師(5)"
+
+msgid "Wizard (6th)"
+msgstr "魔導師(6)"
+
+msgid "Wizard (7th)"
+msgstr "魔導師(7)"
+
+msgid "Wizard (8th)"
+msgstr "魔導師(8)"
+#
+# Priests
+
+msgid "Wizard (9th)"
+msgstr "魔導師(9)"
+
+msgid "Wizard Lord"
+msgstr "大魔導師"
+
+msgid "Believer"
+msgstr "信者"
+
+msgid "Acolyte(1st)"
+msgstr "侍僧(1)"
+
+msgid "Acolyte(2nd)"
+msgstr "侍僧(2)"
+
+msgid "Acolyte(3rd)"
+msgstr "侍僧(3)"
+
+msgid "Adept (1st)"
+msgstr "達人僧(1)"
+
+msgid "Adept (2nd)"
+msgstr "達人僧(2)"
+
+msgid "Adept (3rd)"
+msgstr "達人僧(3)"
+
+msgid "Priest (1st)"
+msgstr "牧師(1)"
+
+msgid "Priest (2nd)"
+msgstr "牧師(2)"
+
+msgid "Priest (3rd)"
+msgstr "牧師(3)"
+
+msgid "Priest (4th)"
+msgstr "牧師(4)"
+
+msgid "Priest (5th)"
+msgstr "牧師(5)"
+
+msgid "Priest (6th)"
+msgstr "牧師(6)"
+
+msgid "Priest (7th)"
+msgstr "牧師(7)"
+
+msgid "Priest (8th)"
+msgstr "牧師(8)"
+
+msgid "Priest (9th)"
+msgstr "牧師(9)"
+
+msgid "Curate (1st)"
+msgstr "助祭(1)"
+
+msgid "Curate (2nd)"
+msgstr "助祭(2)"
+
+msgid "Curate (3rd)"
+msgstr "助祭(3)"
+
+msgid "Curate (4th)"
+msgstr "助祭(4)"
+
+msgid "Curate (5th)"
+msgstr "助祭(5)"
+
+msgid "Curate (6th)"
+msgstr "助祭(6)"
+
+msgid "Curate (7th)"
+msgstr "助祭(7)"
+
+msgid "Curate (8th)"
+msgstr "助祭(8)"
+
+msgid "Curate (9th)"
+msgstr "助祭(9)"
+
+msgid "Canon (1st)"
+msgstr "教会参事(1)"
+
+msgid "Canon (2nd)"
+msgstr "教会参事(2)"
+
+msgid "Canon (3rd)"
+msgstr "教会参事(3)"
+
+msgid "Canon (4th)"
+msgstr "教会参事(4)"
+
+msgid "Canon (5th)"
+msgstr "教会参事(5)"
+
+msgid "Low Lama"
+msgstr "初位ラマ僧"
+
+msgid "Lama-1"
+msgstr "ラマ僧(1)"
+
+msgid "Lama-2"
+msgstr "ラマ僧(2)"
+
+msgid "Lama-3"
+msgstr "ラマ僧(3)"
+
+msgid "High Lama"
+msgstr "上位ラマ僧"
+
+msgid "Great Lama"
+msgstr "大ラマ僧"
+
+msgid "Patriarch"
+msgstr "総主教"
+
+msgid "High Priest"
+msgstr "大祭司"
+#
+# Rogues
+
+msgid "Great Priest"
+msgstr "大聖職者"
+
+msgid "Noble Priest"
+msgstr "高貴なる祭司"
+
+msgid "Vagabond"
+msgstr "浮浪者"
+
+msgid "Footpad"
+msgstr "辻強盗"
+
+msgid "Cutpurse"
+msgstr "すり"
+
+msgid "Robber"
+msgstr "追いはぎ"
+
+msgid "Burglar"
+msgstr "押し込み"
+
+msgid "Filcher"
+msgstr "こそ泥"
+
+msgid "Sharper"
+msgstr "ペテン師"
+
+msgid "Magsman"
+msgstr "詐欺師"
+
+msgid "Common Rogue"
+msgstr "平凡ならず者"
+
+msgid "Rogue (1st)"
+msgstr "ならず者(1)"
+
+msgid "Rogue (2nd)"
+msgstr "ならず者(2)"
+
+msgid "Rogue (3rd)"
+msgstr "ならず者(3)"
+
+msgid "Rogue (4th)"
+msgstr "ならず者(4)"
+
+msgid "Rogue (5th)"
+msgstr "ならず者(5)"
+
+msgid "Rogue (6th)"
+msgstr "ならず者(6)"
+
+msgid "Rogue (7th)"
+msgstr "ならず者(7)"
+
+msgid "Rogue (8th)"
+msgstr "ならず者(8)"
+
+msgid "Rogue (9th)"
+msgstr "ならず者(9)"
+
+msgid "Master Rogue"
+msgstr "熟達ならず者"
+
+msgid "Expert Rogue"
+msgstr "達人ならず者"
+
+msgid "Senior Rogue"
+msgstr "古参ならず者"
+
+msgid "Chief Rogue"
+msgstr "頭目ならず者"
+
+msgid "Prime Rogue"
+msgstr "極致ならず者"
+
+msgid "Low Thief"
+msgstr "ロウシーフ"
+
+msgid "Thief (1st)"
+msgstr "盗賊(1)"
+
+msgid "Thief (2nd)"
+msgstr "盗賊(2)"
+
+msgid "Thief (3rd)"
+msgstr "盗賊(3)"
+
+msgid "Thief (4th)"
+msgstr "盗賊(4)"
+
+msgid "Thief (5th)"
+msgstr "盗賊(5)"
+
+msgid "Thief (6th)"
+msgstr "盗賊(6)"
+
+msgid "Thief (7th)"
+msgstr "盗賊(7)"
+
+msgid "Thief (8th)"
+msgstr "盗賊(8)"
+
+msgid "Thief (9th)"
+msgstr "盗賊(9)"
+
+msgid "High Thief"
+msgstr "ハイシーフ"
+
+msgid "Master Thief"
+msgstr "盗賊の頭目"
+
+msgid "Executioner"
+msgstr "処刑人"
+
+msgid "Low Assassin"
+msgstr "下級アサシン"
+
+msgid "Assassin"
+msgstr "アサシン"
+#
+# Rangers
+
+msgid "High Assassin"
+msgstr "上級アサシン"
+
+msgid "Guildsmaster"
+msgstr "ギルド長"
+
+msgid "Runner (1st)"
+msgstr "使い走り(1)"
+
+msgid "Runner (2nd)"
+msgstr "使い走り(2)"
+
+msgid "Runner (3rd)"
+msgstr "使い走り(3)"
+
+msgid "Strider (1st)"
+msgstr "大股歩き(1)"
+
+msgid "Strider (2nd)"
+msgstr "大股歩き(2)"
+
+msgid "Strider (3rd)"
+msgstr "大股歩き(3)"
+
+msgid "Scout (1st)"
+msgstr "斥候(1)"
+
+msgid "Scout (2nd)"
+msgstr "斥候(2)"
+
+msgid "Scout (3rd)"
+msgstr "斥候(3)"
+
+msgid "Scout (4th)"
+msgstr "斥候(4)"
+
+msgid "Scout (5th)"
+msgstr "斥候(5)"
+
+msgid "Courser (1st)"
+msgstr "疾走者(1)"
+
+msgid "Courser (2nd)"
+msgstr "疾走者(2)"
+
+msgid "Courser (3rd)"
+msgstr "疾走者(3)"
+
+msgid "Courser (4th)"
+msgstr "疾走者(4)"
+
+msgid "Courser (5th)"
+msgstr "疾走者(5)"
+
+msgid "Tracker (1st)"
+msgstr "追跡者(1)"
+
+msgid "Tracker (2nd)"
+msgstr "追跡者(2)"
+
+msgid "Tracker (3rd)"
+msgstr "追跡者(3)"
+
+msgid "Tracker (4th)"
+msgstr "追跡者(4)"
+
+msgid "Tracker (5th)"
+msgstr "追跡者(5)"
+
+msgid "Tracker (6th)"
+msgstr "追跡者(6)"
+
+msgid "Tracker (7th)"
+msgstr "追跡者(7)"
+
+msgid "Tracker (8th)"
+msgstr "追跡者(8)"
+
+msgid "Tracker (9th)"
+msgstr "追跡者(9)"
+
+msgid "Guide (1st)"
+msgstr "先導者(1)"
+
+msgid "Guide (2nd)"
+msgstr "先導者(2)"
+
+msgid "Guide (3rd)"
+msgstr "先導者(3)"
+
+msgid "Guide (4th)"
+msgstr "先導者(4)"
+
+msgid "Guide (5th)"
+msgstr "先導者(5)"
+
+msgid "Guide (6th)"
+msgstr "先導者(6)"
+
+msgid "Guide (7th)"
+msgstr "先導者(7)"
+
+msgid "Guide (8th)"
+msgstr "先導者(8)"
+
+msgid "Guide (9th)"
+msgstr "先導者(9)"
+
+msgid "Pathfinder-1"
+msgstr "先駆者(1)"
+
+msgid "Pathfinder-2"
+msgstr "先駆者(2)"
+
+msgid "Pathfinder-3"
+msgstr "先駆者(3)"
+
+msgid "High Ranger"
+msgstr "レンジャー長"
+#
+# Paladins
+
+msgid "Ranger Lord"
+msgstr "レンジャー卿"
+
+msgid "Gallant"
+msgstr "義侠の者"
+
+msgid "Keeper (1st)"
+msgstr "衛士(1)"
+
+msgid "Keeper (2nd)"
+msgstr "衛士(2)"
+
+msgid "Keeper (3rd)"
+msgstr "衛士(3)"
+
+msgid "Keeper (4th)"
+msgstr "衛士(4)"
+
+msgid "Keeper (5th)"
+msgstr "衛士(5)"
+
+msgid "Keeper (6th)"
+msgstr "衛士(6)"
+
+msgid "Keeper (7th)"
+msgstr "衛士(7)"
+
+msgid "Keeper (8th)"
+msgstr "衛士(8)"
+
+msgid "Keeper (9th)"
+msgstr "衛士(9)"
+
+msgid "Protector-1"
+msgstr "護り手(1)"
+
+msgid "Protector-2"
+msgstr "護り手(2)"
+
+msgid "Protector-3"
+msgstr "護り手(3)"
+
+msgid "Protector-4"
+msgstr "護り手(4)"
+
+msgid "Protector-5"
+msgstr "護り手(5)"
+
+msgid "Protector-6"
+msgstr "護り手(6)"
+
+msgid "Protector-7"
+msgstr "護り手(7)"
+
+msgid "Protector-8"
+msgstr "護り手(8)"
+
+msgid "Defender-1"
+msgstr "防御者(1)"
+
+msgid "Defender-2"
+msgstr "防御者(2)"
+
+msgid "Defender-3"
+msgstr "防御者(3)"
+
+msgid "Defender-4"
+msgstr "防御者(4)"
+
+msgid "Defender-5"
+msgstr "防御者(5)"
+
+msgid "Defender-6"
+msgstr "防御者(6)"
+
+msgid "Defender-7"
+msgstr "防御者(7)"
+
+msgid "Defender-8"
+msgstr "防御者(8)"
+
+msgid "Warder (1st)"
+msgstr "護衛者(1)"
+
+msgid "Warder (2nd)"
+msgstr "護衛者(2)"
+
+msgid "Warder (3rd)"
+msgstr "護衛者(3)"
+
+msgid "Warder (4th)"
+msgstr "護衛者(4)"
+
+msgid "Warder (5th)"
+msgstr "護衛者(5)"
+
+msgid "Warder (6th)"
+msgstr "護衛者(6)"
+
+msgid "Warder (7th)"
+msgstr "護衛者(7)"
+
+msgid "Warder (8th)"
+msgstr "護衛者(8)"
+
+msgid "Warder (9th)"
+msgstr "護衛者(9)"
+
+msgid "Guardian"
+msgstr "守護者"
+
+msgid "Chevalier"
+msgstr "騎士爵"
+
+msgid "Justiciar"
+msgstr "大法官"
+
+msgid "High Lord"
+msgstr "聖騎士長"
+
+msgid "Title       :"
+msgstr "肩書き      :"
+
+msgid "    Max Hit Points : %6d\n"
+msgstr "    最大体力       : %6d\n"
+
+msgid "    Cur Hit Points : %6d\n"
+msgstr "    現在体力       : %6d\n"
+
+msgid "    Max Mana       : %6d\n"
+msgstr "    最大魔力       : %6d\n"
+
+msgid "Exp to Adv "
+msgstr "次の昇格"
+
+msgid "    Cur Mana       : %6d\n"
+msgstr "    現在魔力       : %6d\n"
+
+msgid "Gold"
+msgstr "所持金"
+
+msgid "%d feet"
+msgstr "%dフィート"
+
+msgid "  %c) %s: %s\n"
+msgstr "  %c) %s: %s\n"
+
+msgid "%c) %s\n"
+msgstr "%c) %s\n"
+
+# --- phase 10: unidentified-item flavor words ---
+
+msgctxt "flavor"
+msgid "Icky Green"
+msgstr "よどんだ緑の"
+
+msgctxt "flavor"
+msgid "Light Brown"
+msgstr "薄茶色の"
+
+msgctxt "flavor"
+msgid "Clear"
+msgstr "透明な"
+
+msgctxt "flavor"
+msgid "Azure"
+msgstr "紺碧の"
+
+msgctxt "flavor"
+msgid "Blue"
+msgstr "青い"
+
+msgctxt "flavor"
+msgid "Blue Speckled"
+msgstr "青斑の"
+
+msgctxt "flavor"
+msgid "Black"
+msgstr "黒い"
+
+msgctxt "flavor"
+msgid "Brown"
+msgstr "茶色の"
+
+msgctxt "flavor"
+msgid "Brown Speckled"
+msgstr "茶斑の"
+
+msgctxt "flavor"
+msgid "Bubbling"
+msgstr "泡だった"
+
+msgctxt "flavor"
+msgid "Chartreuse"
+msgstr "薄黄緑色の"
+
+msgctxt "flavor"
+msgid "Cloudy"
+msgstr "濁った"
+
+msgctxt "flavor"
+msgid "Copper Speckled"
+msgstr "銅斑の"
+
+msgctxt "flavor"
+msgid "Crimson"
+msgstr "紅色の"
+
+msgctxt "flavor"
+msgid "Cyan"
+msgstr "シアン色の"
+
+msgctxt "flavor"
+msgid "Dark Blue"
+msgstr "群青の"
+
+msgctxt "flavor"
+msgid "Dark Green"
+msgstr "深緑の"
+
+msgctxt "flavor"
+msgid "Dark Red"
+msgstr "暗い赤色の"
+
+msgctxt "flavor"
+msgid "Gold Speckled"
+msgstr "金斑の"
+
+msgctxt "flavor"
+msgid "Green"
+msgstr "緑の"
+
+msgctxt "flavor"
+msgid "Green Speckled"
+msgstr "緑斑の"
+
+msgctxt "flavor"
+msgid "Grey"
+msgstr "グレーの"
+
+msgctxt "flavor"
+msgid "Grey Speckled"
+msgstr "グレー斑の"
+
+msgctxt "flavor"
+msgid "Hazy"
+msgstr "ぼやけた色の"
+
+msgctxt "flavor"
+msgid "Indigo"
+msgstr "藍色の"
+
+msgctxt "flavor"
+msgid "Light Blue"
+msgstr "空色の"
+
+msgctxt "flavor"
+msgid "Light Green"
+msgstr "黄緑の"
+
+msgctxt "flavor"
+msgid "Magenta"
+msgstr "マゼンタ色の"
+
+msgctxt "flavor"
+msgid "Metallic Blue"
+msgstr "青く輝く"
+
+msgctxt "flavor"
+msgid "Metallic Red"
+msgstr "赤く輝く"
+
+msgctxt "flavor"
+msgid "Metallic Green"
+msgstr "緑に輝く"
+
+msgctxt "flavor"
+msgid "Metallic Purple"
+msgstr "紫に輝く"
+
+msgctxt "flavor"
+msgid "Misty"
+msgstr "ぼやけた"
+
+msgctxt "flavor"
+msgid "Orange"
+msgstr "オレンジ色の"
+
+msgctxt "flavor"
+msgid "Orange Speckled"
+msgstr "オレンジ斑の"
+
+msgctxt "flavor"
+msgid "Pink"
+msgstr "ピンク色の"
+
+msgctxt "flavor"
+msgid "Pink Speckled"
+msgstr "ピンク斑の"
+
+msgctxt "flavor"
+msgid "Puce"
+msgstr "黒褐色の"
+
+msgctxt "flavor"
+msgid "Purple"
+msgstr "紫色の"
+
+msgctxt "flavor"
+msgid "Purple Speckled"
+msgstr "紫斑の"
+
+msgctxt "flavor"
+msgid "Red"
+msgstr "赤い"
+
+msgctxt "flavor"
+msgid "Red Speckled"
+msgstr "赤斑の"
+
+msgctxt "flavor"
+msgid "Silver Speckled"
+msgstr "銀斑の"
+
+msgctxt "flavor"
+msgid "Smoky"
+msgstr "煙った"
+
+msgctxt "flavor"
+msgid "Tangerine"
+msgstr "橙色の"
+
+msgctxt "flavor"
+msgid "Violet"
+msgstr "スミレ色の"
+
+msgctxt "flavor"
+msgid "Vermilion"
+msgstr "朱色の"
+
+msgctxt "flavor"
+msgid "White"
+msgstr "白い"
+
+msgctxt "flavor"
+msgid "Yellow"
+msgstr "黄色い"
+
+msgctxt "flavor"
+msgid "Black Spotted"
+msgstr "黒斑の"
+
+msgctxt "flavor"
+msgid "Ecru"
+msgstr "生成り色の"
+
+msgctxt "flavor"
+msgid "Furry"
+msgstr "苔むした"
+
+msgctxt "flavor"
+msgid "Plaid"
+msgstr "格子縞の"
+
+msgctxt "flavor"
+msgid "Slimy"
+msgstr "ねばねばした"
+
+msgctxt "flavor"
+msgid "Tan"
+msgstr "黄褐色の"
+
+msgctxt "flavor"
+msgid "White Spotted"
+msgstr "白斑の"
+
+msgctxt "flavor"
+msgid "Wooden"
+msgstr "木の"
+
+msgctxt "flavor"
+msgid "Wrinkled"
+msgstr "しわしわの"
+
+msgctxt "flavor"
+msgid "Aspen"
+msgstr "ポプラの"
+
+msgctxt "flavor"
+msgid "Balsa"
+msgstr "バルサの"
+
+msgctxt "flavor"
+msgid "Banyan"
+msgstr "バンヤンの"
+
+msgctxt "flavor"
+msgid "Birch"
+msgstr "カバの"
+
+msgctxt "flavor"
+msgid "Cedar"
+msgstr "西洋スギの"
+
+msgctxt "flavor"
+msgid "Cottonwood"
+msgstr "檜の"
+
+msgctxt "flavor"
+msgid "Cypress"
+msgstr "イトスギの"
+
+msgctxt "flavor"
+msgid "Dogwood"
+msgstr "ミズキの"
+
+msgctxt "flavor"
+msgid "Elm"
+msgstr "ニレの"
+
+msgctxt "flavor"
+msgid "Eucalyptus"
+msgstr "ユーカリの"
+
+msgctxt "flavor"
+msgid "Hemlock"
+msgstr "ツガの"
+
+msgctxt "flavor"
+msgid "Hickory"
+msgstr "ブナの"
+
+msgctxt "flavor"
+msgid "Ironwood"
+msgstr "黒檀の"
+
+msgctxt "flavor"
+msgid "Locust"
+msgstr "アカシアの"
+
+msgctxt "flavor"
+msgid "Mahogany"
+msgstr "マホガニーの"
+
+msgctxt "flavor"
+msgid "Maple"
+msgstr "カエデの"
+
+msgctxt "flavor"
+msgid "Mulberry"
+msgstr "クワの"
+
+msgctxt "flavor"
+msgid "Oak"
+msgstr "カシの"
+
+msgctxt "flavor"
+msgid "Pine"
+msgstr "松の"
+
+msgctxt "flavor"
+msgid "Redwood"
+msgstr "杉の"
+
+msgctxt "flavor"
+msgid "Rosewood"
+msgstr "紫檀の"
+
+msgctxt "flavor"
+msgid "Spruce"
+msgstr "エゾマツの"
+
+msgctxt "flavor"
+msgid "Sycamore"
+msgstr "イチジクの"
+
+msgctxt "flavor"
+msgid "Teak"
+msgstr "チークの"
+
+msgctxt "flavor"
+msgid "Walnut"
+msgstr "クルミの"
+
+msgctxt "flavor"
+msgid "Aluminum"
+msgstr "アルミの"
+
+msgctxt "flavor"
+msgid "Cast Iron"
+msgstr "鋳鉄の"
+
+msgctxt "flavor"
+msgid "Chromium"
+msgstr "クロムの"
+
+msgctxt "flavor"
+msgid "Copper"
+msgstr "銅の"
+
+msgctxt "flavor"
+msgid "Gold"
+msgstr "金の"
+
+msgctxt "flavor"
+msgid "Iron"
+msgstr "鉄の"
+
+msgctxt "flavor"
+msgid "Magnesium"
+msgstr "マグネシウムの"
+
+msgctxt "flavor"
+msgid "Molybdenum"
+msgstr "モリブデンの"
+
+msgctxt "flavor"
+msgid "Nickel"
+msgstr "ニッケルの"
+
+msgctxt "flavor"
+msgid "Rusty"
+msgstr "錆びた"
+
+msgctxt "flavor"
+msgid "Silver"
+msgstr "銀の"
+
+msgctxt "flavor"
+msgid "Steel"
+msgstr "鋼鉄の"
+
+msgctxt "flavor"
+msgid "Tin"
+msgstr "ブリキの"
+
+msgctxt "flavor"
+msgid "Titanium"
+msgstr "チタンの"
+
+msgctxt "flavor"
+msgid "Tungsten"
+msgstr "タングステンの"
+
+msgctxt "flavor"
+msgid "Zirconium"
+msgstr "ジルコンの"
+
+msgctxt "flavor"
+msgid "Zinc"
+msgstr "亜鉛の"
+
+msgctxt "flavor"
+msgid "Aluminum-Plated"
+msgstr "アルミメッキの"
+
+msgctxt "flavor"
+msgid "Copper-Plated"
+msgstr "銅メッキの"
+
+msgctxt "flavor"
+msgid "Gold-Plated"
+msgstr "金メッキの"
+
+msgctxt "flavor"
+msgid "Nickel-Plated"
+msgstr "ニッケルメッキの"
+
+msgctxt "flavor"
+msgid "Silver-Plated"
+msgstr "銀メッキの"
+
+msgctxt "flavor"
+msgid "Steel-Plated"
+msgstr "鋼鉄メッキの"
+
+msgctxt "flavor"
+msgid "Tin-Plated"
+msgstr "スズメッキの"
+
+msgctxt "flavor"
+msgid "Zinc-Plated"
+msgstr "亜鉛メッキの"
+
+msgctxt "flavor"
+msgid "Alexandrite"
+msgstr "金緑石の"
+
+msgctxt "flavor"
+msgid "Amethyst"
+msgstr "アメジストの"
+
+msgctxt "flavor"
+msgid "Aquamarine"
+msgstr "アクアマリンの"
+
+msgctxt "flavor"
+msgid "Azurite"
+msgstr "めのうの"
+
+msgctxt "flavor"
+msgid "Beryl"
+msgstr "緑柱石の"
+
+msgctxt "flavor"
+msgid "Bloodstone"
+msgstr "血玉随の"
+
+msgctxt "flavor"
+msgid "Calcite"
+msgstr "方解石の"
+
+msgctxt "flavor"
+msgid "Carnelian"
+msgstr "赤めのうの"
+
+msgctxt "flavor"
+msgid "Corundum"
+msgstr "綱玉の"
+
+msgctxt "flavor"
+msgid "Diamond"
+msgstr "ダイアモンドの"
+
+msgctxt "flavor"
+msgid "Emerald"
+msgstr "エメラルドの"
+
+msgctxt "flavor"
+msgid "Fluorite"
+msgstr "ホタル石の"
+
+msgctxt "flavor"
+msgid "Garnet"
+msgstr "ガーネットの"
+
+msgctxt "flavor"
+msgid "Granite"
+msgstr "御影石の"
+
+msgctxt "flavor"
+msgid "Jade"
+msgstr "ひすいの"
+
+msgctxt "flavor"
+msgid "Jasper"
+msgstr "ジャスパーの"
+
+msgctxt "flavor"
+msgid "Lapis Lazuli"
+msgstr "青瑠璃の"
+
+msgctxt "flavor"
+msgid "Malachite"
+msgstr "クジャク石の"
+
+msgctxt "flavor"
+msgid "Marble"
+msgstr "大理石の"
+
+msgctxt "flavor"
+msgid "Moonstone"
+msgstr "ムーンストーンの"
+
+msgctxt "flavor"
+msgid "Onyx"
+msgstr "縞めのうの"
+
+msgctxt "flavor"
+msgid "Opal"
+msgstr "オパールの"
+
+msgctxt "flavor"
+msgid "Pearl"
+msgstr "真珠の"
+
+msgctxt "flavor"
+msgid "Quartz"
+msgstr "水晶の"
+
+msgctxt "flavor"
+msgid "Quartzite"
+msgstr "石英岩の"
+
+msgctxt "flavor"
+msgid "Rhodonite"
+msgstr "ザクロ石の"
+
+msgctxt "flavor"
+msgid "Ruby"
+msgstr "ルビーの"
+
+msgctxt "flavor"
+msgid "Sapphire"
+msgstr "サファイアの"
+
+msgctxt "flavor"
+msgid "Tiger Eye"
+msgstr "虎目石の"
+
+msgctxt "flavor"
+msgid "Topaz"
+msgstr "トパーズの"
+
+msgctxt "flavor"
+msgid "Turquoise"
+msgstr "トルコ石の"
+
+msgctxt "flavor"
+msgid "Zircon"
+msgstr "ジルコンの"
+
+msgctxt "flavor"
+msgid "Amber"
+msgstr "琥珀の"
+
+msgctxt "flavor"
+msgid "Driftwood"
+msgstr "流木の"
+
+msgctxt "flavor"
+msgid "Coral"
+msgstr "サンゴの"
+
+msgctxt "flavor"
+msgid "Agate"
+msgstr "めのうの"
+
+msgctxt "flavor"
+msgid "Ivory"
+msgstr "象牙の"
+
+msgctxt "flavor"
+msgid "Obsidian"
+msgstr "黒曜石の"
+
+msgctxt "flavor"
+msgid "Bone"
+msgstr "骨の"
+
+msgctxt "flavor"
+msgid "Brass"
+msgstr "真鍮の"
+
+msgctxt "flavor"
+msgid "Bronze"
+msgstr "青銅の"
+
+msgctxt "flavor"
+msgid "Pewter"
+msgstr "しろめの"
+
+msgctxt "flavor"
+msgid "Tortoise Shell"
+msgstr "べっ甲の"
