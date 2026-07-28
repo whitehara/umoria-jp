@@ -5,6 +5,9 @@ on:
     tags:
       - 'jp-v*'
   workflow_dispatch:
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   copr-build:
