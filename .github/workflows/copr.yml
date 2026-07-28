@@ -1,0 +1,62 @@
+name: Copr build
+
+on:
+  push:
+    tags:
+      - 'jp-v*'
+  workflow_dispatch:
+
+jobs:
+  copr-build:
+    if: github.repository == 'whitehara/umoria-jp'
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    permissions:
+      contents: write
+    steps:
+      - name: Install build dependencies
+        run: dnf -y install git rpm-build copr-cli gettext tar gzip findutils
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mark workspace as safe for git
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Verify tag matches spec Version/Release
+        if: github.event_name == 'push'
+        run: |
+          version="$(sed -n 's/^Version:[[:space:]]*//p' umoria-jp.spec | head -n1)"
+          release="$(sed -n 's/^Release:[[:space:]]*//p' umoria-jp.spec | head -n1 | sed 's/%{?dist}//')"
+          expected="jp-v${version}-${release}"
+          actual="${GITHUB_REF_NAME}"
+          if [ "$actual" != "$expected" ]; then
+            echo "::error::tag '${actual}' does not match spec-derived tag '${expected}'"
+            exit 1
+          fi
+
+      - name: Render Copr config from secrets
+        env:
+          COPR_LOGIN: ${{ secrets.COPR_LOGIN }}
+          COPR_USERNAME: ${{ secrets.COPR_USERNAME }}
+          COPR_TOKEN: ${{ secrets.COPR_TOKEN }}
+          COPR_URL: ${{ secrets.COPR_URL }}
+        run: envsubst < .github/copr-config.template > "$RUNNER_TEMP/copr-config"
+
+      - name: Build SRPM
+        run: bash scripts/make-srpm.sh
+
+      - name: Submit build to Copr
+        run: copr-cli --config "$RUNNER_TEMP/copr-config" build --nowait whitehara/umoria-jp srpm-out/*.src.rpm
+
+      - name: Create GitHub Release with SRPM attached
+        if: github.event_name == 'push'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: srpm-out/*.src.rpm
+
+      - name: Remove rendered Copr config
+        if: always()
+        run: rm -f "$RUNNER_TEMP/copr-config"
