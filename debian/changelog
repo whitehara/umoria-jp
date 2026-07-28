@@ -1,3 +1,10 @@
+umoria-jp (5.7.15-3) unstable; urgency=medium
+
+  * Add a GitHub Actions workflow for tag-driven .deb builds attached to
+    GitHub Releases alongside the existing Copr SRPM
+
+ -- whitehara <whitehara@users.noreply.github.com>  Tue, 28 Jul 2026 15:15:58 +0900
+
 umoria-jp (5.7.15-2) unstable; urgency=medium
 
   * Add debian/ packaging (this file's version matches umoria-jp.spec's

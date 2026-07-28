@@ -6,7 +6,7 @@
 
 Name:           umoria-jp
 Version:        5.7.15
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:    	Umoria %{version} (Japanese localization / 日本語版)
 
 License:        GPL-3.0
@@ -70,6 +70,11 @@ echo "Please remove each user's ~/.config/%{name} manually, if you need."
 
 
 %changelog
+* Tue Jul 28 2026 whitehara <whitehara@users.noreply.github.com> - 5.7.15-3
+- Add .deb packaging (debian/) and a GitHub Actions workflow for
+  tag-driven .deb builds attached to GitHub Releases alongside the
+  existing Copr SRPM
+
 * Tue Jul 28 2026 whitehara <whitehara@users.noreply.github.com> - 5.7.15-2
 - Add GitHub Actions workflow for tag-driven Copr builds
 

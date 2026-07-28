@@ -204,6 +204,32 @@ Fedora（現時点では fedora-43・fedora-44・fedora-rawhide の x86_64）向
 `umoria` とは別に管理されます）。
 
 
+### Installing the .deb (Debian / Ubuntu)
+
+Pre-built `.deb` packages (Ubuntu 22.04+ / Debian 12+, x86_64) are attached
+to each [GitHub Release](https://github.com/whitehara/umoria-jp/releases).
+Download the latest `umoria-jp_<version>_amd64.deb` and install it with:
+
+    $ sudo apt install ./umoria-jp_<version>_amd64.deb
+
+Using `apt install ./...` (rather than `dpkg -i`) is important: the leading
+`./` tells `apt` to resolve and install the package's dependencies
+automatically. As with the Copr package, this installs alongside the
+upstream `umoria` package (if present) without conflict.
+
+Debian/Ubuntu 向けのビルド済み `.deb` パッケージ（Ubuntu 22.04 以降 /
+Debian 12 以降、x86_64）は、各
+[GitHub Release](https://github.com/whitehara/umoria-jp/releases) に
+添付されています。最新の `umoria-jp_<version>_amd64.deb` をダウンロードし、
+次のようにインストールしてください。
+
+    $ sudo apt install ./umoria-jp_<version>_amd64.deb
+
+`dpkg -i` ではなく `apt install ./...` を使うのが重要です（先頭の `./` に
+より `apt` が依存関係を自動的に解決してインストールします）。Copr版と
+同様、英語版の `umoria` パッケージと衝突なく併存できます。
+
+
 ## Language / 言語設定
 
 Umoria supports a Japanese translation alongside the original English. The
