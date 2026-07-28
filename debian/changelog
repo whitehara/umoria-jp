@@ -1,3 +1,12 @@
+umoria-jp (5.7.15-4) unstable; urgency=medium
+
+  * Fix a display bug in the options screen where toggling an item from
+    "no" to "yes" (or vice versa) could leave a stray trailing character
+    when the two translated words differ in on-screen width (e.g.
+    Japanese "いいえ"/"はい")
+
+ -- whitehara <whitehara@users.noreply.github.com>  Tue, 28 Jul 2026 15:34:56 +0900
+
 umoria-jp (5.7.15-3) unstable; urgency=medium
 
   * Add a GitHub Actions workflow for tag-driven .deb builds attached to

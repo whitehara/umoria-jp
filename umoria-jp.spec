@@ -6,7 +6,7 @@
 
 Name:           umoria-jp
 Version:        5.7.15
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:    	Umoria %{version} (Japanese localization / 日本語版)
 
 License:        GPL-3.0
@@ -70,6 +70,12 @@ echo "Please remove each user's ~/.config/%{name} manually, if you need."
 
 
 %changelog
+* Tue Jul 28 2026 whitehara <whitehara@users.noreply.github.com> - 5.7.15-4
+- Fix a display bug in the options screen where toggling an item from
+  "no" to "yes" (or vice versa) could leave a stray trailing character
+  when the two translated words differ in on-screen width (e.g. Japanese
+  "いいえ"/"はい")
+
 * Tue Jul 28 2026 whitehara <whitehara@users.noreply.github.com> - 5.7.15-3
 - Add .deb packaging (debian/) and a GitHub Actions workflow for
   tag-driven .deb builds attached to GitHub Releases alongside the
