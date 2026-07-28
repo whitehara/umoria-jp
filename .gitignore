@@ -93,3 +93,6 @@ data/lang/pseudo/
 
 # scripts/make-srpm.sh output (SRPM + tarball), regenerate as needed.
 /srpm-out/
+
+# scripts/make-deb.sh output (.deb + tarball), regenerate as needed.
+/deb-out/

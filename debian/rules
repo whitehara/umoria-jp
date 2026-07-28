@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --buildsystem=cmake --builddirectory=build
+
+override_dh_auto_test:
+	cmake --build build --target test_helpers test_lang
+	ctest --test-dir build --output-on-failure
+
+# CMakeLists.txt has no install() rules (it only stages build output via
+# file(COPY) into build/umoria/, mirrored by umoria-jp.spec's %install),
+# so dh_auto_install's default `cmake --install` step would place nothing.
+# build/umoria/{umoria,data} below is CMakeLists.txt's set(build_dir
+# "umoria") ("umoria" kept literal to minimize the diff against upstream,
+# same rationale as umoria-jp.spec's %{_vpath_builddir}/umoria/* paths).
+override_dh_auto_install:
+	mkdir -p debian/umoria-jp/usr/bin
+	cp build/umoria/umoria debian/umoria-jp/usr/bin/umoria-jp.bin
+	mkdir -p debian/umoria-jp/usr/share/games/umoria-jp
+	cp -R build/umoria/data debian/umoria-jp/usr/share/games/umoria-jp/data
+	mkdir -p debian/umoria-jp/usr/share/doc/umoria-jp/historical
+	cp historical/* debian/umoria-jp/usr/share/doc/umoria-jp/historical
+	install -m 0755 debian/umoria-jp.wrapper debian/umoria-jp/usr/bin/umoria-jp

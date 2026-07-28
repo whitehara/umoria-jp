@@ -43,7 +43,9 @@ int main() {
         // Mixed ASCII + wide text: "A" (width 1) + "あ" (width 2) + "B" (width 1) = width 4.
         const std::string mixed = "A" + hiragana_a + "B";
         assert(displayWidth(mixed) == 4);
-        assert(truncateToWidth(mixed, 2) == "A" + hiragana_a);
+        // Budget 2: "A" (width 1) fits, but adding "あ" (width 2) would make
+        // width 3 > 2, so only "A" is accepted.
+        assert(truncateToWidth(mixed, 2) == "A");
 
         // truncateToByteCapacity budgets raw bytes (not display columns),
         // for copying into fixed-size byte buffers like vtype_t. "ああ" is

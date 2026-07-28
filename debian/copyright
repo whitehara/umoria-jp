@@ -1,0 +1,25 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: umoria-jp
+Upstream-Contact: whitehara <whitehara@users.noreply.github.com>
+Source: https://github.com/whitehara/umoria-jp
+Comment: This is a Japanese localization fork of dungeons-of-moria/umoria
+ (https://github.com/dungeons-of-moria/umoria), itself a modern restoration
+ of the classic Moria/Umoria roguelike originally written by Robert Alan
+ Koeneke (1981-86) and James E. Wilson (1987-94). See AUTHORS for the full
+ upstream credits.
+
+Files: *
+Copyright: 1981-1986 Robert Alan Koeneke
+           1987-1994 James E. Wilson
+           2008- dungeons-of-moria contributors (see AUTHORS)
+           whitehara <whitehara@users.noreply.github.com> (Japanese localization)
+License: GPL-3+
+
+License: GPL-3+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ version 3 can be found in "/usr/share/common-licenses/GPL-3".

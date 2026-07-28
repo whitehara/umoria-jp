@@ -1,0 +1,7 @@
+#!/bin/sh
+CONFDIR=~/.config/umoria-jp
+DATADIR=/usr/share/games/umoria-jp/data
+BIN=/usr/bin/umoria-jp.bin
+[ ! -d $CONFDIR ] && mkdir -p $CONFDIR && ln -s $DATADIR $CONFDIR/data
+[ ! -f $CONFDIR/scores.dat ] && touch $CONFDIR/scores.dat
+(cd $CONFDIR; $BIN $@)

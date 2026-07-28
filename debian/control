@@ -1,0 +1,19 @@
+Source: umoria-jp
+Section: games
+Priority: optional
+Maintainer: whitehara <whitehara@users.noreply.github.com>
+Build-Depends: debhelper-compat (= 13), cmake, g++, libncursesw5-dev, pkg-config
+Standards-Version: 4.6.2
+Homepage: https://github.com/whitehara/umoria-jp
+Rules-Requires-Root: no
+
+Package: umoria-jp
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Umoria 5.7.15 (Japanese localization)
+ The Dungeons of Moria is a single player dungeon simulation originally
+ written by Robert Alan Koeneke, with its first public release in 1983.
+ The game was originally developed using VMS Pascal before being ported
+ to the C language by James E. Wilson in 1988, and released as Umoria.
+ .
+ This package is a Japanese localization fork of Umoria (日本語版).

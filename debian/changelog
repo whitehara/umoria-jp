@@ -1,0 +1,8 @@
+umoria-jp (5.7.15-2) unstable; urgency=medium
+
+  * Add debian/ packaging (this file's version matches umoria-jp.spec's
+    5.7.15-2, which itself added the GitHub Actions workflow for
+    tag-driven Copr builds; see umoria-jp.spec's %changelog for that
+    change's own description)
+
+ -- whitehara <whitehara@users.noreply.github.com>  Tue, 28 Jul 2026 11:57:02 +0900

@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    remove|purge)
+        echo "Please remove each user's ~/.config/umoria-jp manually, if you need."
+        ;;
+esac
+
+exit 0
