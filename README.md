@@ -178,6 +178,31 @@ requires `mock` or `rpmbuild` and is not covered here.
 生成された SRPM からバイナリ RPM を作る手順（`mock` または `rpmbuild` が必要）は
 本書の対象外です。
 
+### Installing from Copr (Fedora)
+
+Pre-built packages for Fedora (currently fedora-43, fedora-44, and
+fedora-rawhide on x86_64) are published via
+[Copr](https://copr.fedorainfracloud.org/coprs/whitehara/umoria-jp/):
+
+    $ sudo dnf copr enable whitehara/umoria-jp
+    $ sudo dnf install umoria-jp
+
+This installs alongside the upstream `umoria` package (if present) without
+conflict — the binary, config directory (`~/.config/umoria-jp`), and save
+data are all kept separate from `umoria`'s.
+
+Fedora（現時点では fedora-43・fedora-44・fedora-rawhide の x86_64）向けの
+ビルド済みパッケージを
+[Copr](https://copr.fedorainfracloud.org/coprs/whitehara/umoria-jp/) で
+配布しています。
+
+    $ sudo dnf copr enable whitehara/umoria-jp
+    $ sudo dnf install umoria-jp
+
+英語版の `umoria` パッケージがインストール済みでも衝突なく併存できます
+（バイナリ・設定ディレクトリ（`~/.config/umoria-jp`）・セーブデータはいずれも
+`umoria` とは別に管理されます）。
+
 
 ## Language / 言語設定
 
