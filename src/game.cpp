@@ -141,6 +141,11 @@ static struct {
 // different byte length than the English original still lines up with
 // this same column, and the in-place toggle overwrite never lands on
 // the wrong part of the line.
+//
+// The toggle value itself is the last field on the line, and its two
+// translated forms need not share the same display width (e.g. Japanese
+// "はい"=2 vs "いいえ "=4), so the in-place overwrite must clear to
+// end-of-line rather than just draw over the old text.
 static constexpr int GAME_OPTION_LABEL_WIDTH = 38;
 static constexpr int GAME_OPTION_VALUE_COLUMN = GAME_OPTION_LABEL_WIDTH + 2; // + ": "
 
@@ -180,7 +185,7 @@ void setGameOptions() {
                 break;
             case 'y':
             case 'Y':
-                putString(_("yes"), Coord_t{option_id + 1, GAME_OPTION_VALUE_COLUMN});
+                putStringClearToEOL(_("yes"), Coord_t{option_id + 1, GAME_OPTION_VALUE_COLUMN});
 
                 *game_options[option_id].o_var = true;
 
@@ -192,7 +197,7 @@ void setGameOptions() {
                 break;
             case 'n':
             case 'N':
-                putString(_("no "), Coord_t{option_id + 1, GAME_OPTION_VALUE_COLUMN});
+                putStringClearToEOL(_("no "), Coord_t{option_id + 1, GAME_OPTION_VALUE_COLUMN});
 
                 *game_options[option_id].o_var = false;
 
