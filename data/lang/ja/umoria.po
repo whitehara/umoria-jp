@@ -129,7 +129,7 @@ msgid "Filthy Street Urchin"
 msgstr "薄汚い浮浪児"
 
 msgid "Blubbering Idiot"
-msgstr "泣きじゃくる白痴"
+msgstr "泣きじゃくる大馬鹿者"
 
 msgid "Singing, Happy Drunk"
 msgstr "鼻歌まじりのご機嫌な酔漢"

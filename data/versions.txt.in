@@ -18,6 +18,10 @@ Umoria 5.7.x developed and maintained by Michael R. Cook.
 Bug reports and contributions can be made to the Umoria repository:
 https://github.com/dungeons-of-moria/umoria
 
+This Japanese localization fork is maintained by whitehara. Translation
+mistakes and Japanese display issues can be reported here:
+https://github.com/whitehara/umoria-jp/issues
+
 
                Umoria is free software released under GPL-3.0
 
