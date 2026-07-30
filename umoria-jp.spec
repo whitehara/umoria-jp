@@ -6,7 +6,7 @@
 
 Name:           umoria-jp
 Version:        5.7.15
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:    	Umoria %{version} (Japanese localization / 日本語版)
 
 License:        GPL-3.0
@@ -70,6 +70,15 @@ echo "Please remove each user's ~/.config/%{name} manually, if you need."
 
 
 %changelog
+* Thu Jul 30 2026 whitehara <whitehara@users.noreply.github.com> - 5.7.15-5
+- Add Windows support: portable .zip distribution (umoria-ja.cmd /
+  umoria-en.cmd launchers), Windows Terminal as the supported terminal for
+  Japanese display (legacy conhost.exe/mintty warn and fall back to English
+  display only, due to an upstream ncurses Windows console driver bug)
+- Fix a discriminatory translation ("Blubbering Idiot") and point the
+  title/version screens' bug-report URL at this fork instead of upstream
+- Remove a leftover test score from the bundled scores.dat
+
 * Tue Jul 28 2026 whitehara <whitehara@users.noreply.github.com> - 5.7.15-4
 - Fix a display bug in the options screen where toggling an item from
   "no" to "yes" (or vice versa) could leave a stray trailing character

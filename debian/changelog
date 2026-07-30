@@ -1,3 +1,16 @@
+umoria-jp (5.7.15-5) unstable; urgency=medium
+
+  * Add Windows support: portable .zip distribution (umoria-ja.cmd /
+    umoria-en.cmd launchers), Windows Terminal as the supported terminal for
+    Japanese display (legacy conhost.exe/mintty warn and fall back to
+    English display only, due to an upstream ncurses Windows console driver
+    bug)
+  * Fix a discriminatory translation ("Blubbering Idiot") and point the
+    title/version screens' bug-report URL at this fork instead of upstream
+  * Remove a leftover test score from the bundled scores.dat
+
+ -- whitehara <whitehara@users.noreply.github.com>  Thu, 30 Jul 2026 09:32:23 +0900
+
 umoria-jp (5.7.15-4) unstable; urgency=medium
 
   * Fix a display bug in the options screen where toggling an item from
