@@ -19,8 +19,47 @@ Compiling and limited testing has been done for other Linux based system
 including NetBSD 8.1 and Fedora 32.
 
 _Note: the platforms above describe the base (English) game. The Japanese
-localization added by this fork has only been verified on Linux; Windows and
-macOS are untested for Japanese display. See "About this fork" below._
+localization added by this fork has been verified on Linux and, on Windows,
+in [Windows Terminal](https://aka.ms/terminal) (and similar ConPTY-based
+terminals, e.g. VS Code's integrated terminal). Legacy consoles -- the
+classic Command Prompt window (`conhost.exe`) and MSYS2's `mintty` -- have a
+known ncurses rendering bug on Windows that garbles Japanese (and other
+double-width) text; English display is unaffected everywhere. macOS is
+untested for Japanese display. See "About this fork" below._
+
+
+## Quick Start / クイック起動手順
+
+Just want to play in Japanese? Pick your platform (full details in the
+matching subsection under "Notes on Compiling Umoria" below):
+
+- **Windows**: download `umoria-jp-<version>-win64.zip` from
+  [Releases](https://github.com/whitehara/umoria-jp/releases), extract it
+  anywhere, and run `umoria-ja.cmd`. No installer, no build tools needed.
+- **Fedora**: `sudo dnf copr enable whitehara/umoria-jp && sudo dnf install
+  umoria-jp`, then run `umoria-jp -l ja`.
+- **Debian / Ubuntu**: download `umoria-jp_<version>_amd64.deb` from
+  [Releases](https://github.com/whitehara/umoria-jp/releases), install it
+  with `sudo apt install ./umoria-jp_<version>_amd64.deb`, then run
+  `umoria-jp -l ja`.
+- **Other platforms, or building from source**: see "Notes on Compiling
+  Umoria" below, then run `./umoria -l ja` from the build output directory.
+
+日本語でプレイしたいだけなら、お使いの環境に合わせて選んでください
+（詳細は下記「Notes on Compiling Umoria」内の該当節を参照）。
+
+- **Windows**: [Releases](https://github.com/whitehara/umoria-jp/releases)
+  から `umoria-jp-<version>-win64.zip` をダウンロードして任意の場所に展開し、
+  `umoria-ja.cmd` を実行してください。インストーラもビルド環境も不要です。
+- **Fedora**: `sudo dnf copr enable whitehara/umoria-jp && sudo dnf install
+  umoria-jp` を実行後、`umoria-jp -l ja` で起動してください。
+- **Debian / Ubuntu**: [Releases](https://github.com/whitehara/umoria-jp/releases)
+  から `umoria-jp_<version>_amd64.deb` をダウンロードし
+  `sudo apt install ./umoria-jp_<version>_amd64.deb` でインストール後、
+  `umoria-jp -l ja` で起動してください。
+- **その他の環境・ソースからビルドする場合**: 下記「Notes on Compiling
+  Umoria」を参照してビルドし、生成物ディレクトリで `./umoria -l ja` を
+  実行してください。
 
 
 ## About this fork / 本フォークについて
@@ -228,6 +267,25 @@ Debian 12 以降、x86_64）は、各
 `dpkg -i` ではなく `apt install ./...` を使うのが重要です（先頭の `./` に
 より `apt` が依存関係を自動的に解決してインストールします）。Copr版と
 同様、英語版の `umoria` パッケージと衝突なく併存できます。
+
+
+### Installing on Windows
+
+A portable `.zip` (no installer, x86_64, requires Windows 10 1803+) is
+attached to each [GitHub Release](https://github.com/whitehara/umoria-jp/releases).
+Download `umoria-jp-<version>-win64.zip`, extract it anywhere, and run
+`umoria-ja.cmd` (Japanese) or `umoria-en.cmd` (English). See the bundled
+`README-windows.txt` for setup details, including which terminal to use for
+correct Japanese display (see the platform note near the top of this file).
+
+Windows向けのポータブル `.zip`（インストーラ不要、x86_64、Windows 10 1803
+以降が必要）は、各
+[GitHub Release](https://github.com/whitehara/umoria-jp/releases) に
+添付されています。`umoria-jp-<version>-win64.zip` をダウンロードして
+任意の場所に展開し、`umoria-ja.cmd`（日本語）または `umoria-en.cmd`
+（英語）を実行してください。セットアップの詳細（日本語表示に適した
+ターミナルの選び方を含む）は、同梱の `README-windows.txt` を参照して
+ください（本ファイル冒頭のプラットフォーム注記も参照）。
 
 
 ## Language / 言語設定
