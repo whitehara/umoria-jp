@@ -41,9 +41,13 @@ for this project — it is not a mirror of any other branch.
    - `.github/workflows/windows.yml` builds a portable Windows `.zip` via
      `scripts/make-winzip.sh` (on an MSYS2 UCRT64 environment,
      `windows-latest` runner) and attaches it to the **same** GitHub Release.
-   All three workflows share a `concurrency` group keyed on the tag, so they
-   run one after another rather than racing to create the Release at the
-   same time.
+   All three workflows share a `concurrency` group keyed on the tag with
+   `queue: max` set, so they queue up (rather than one cancelling another's
+   pending run) and run one after another rather than racing to create the
+   Release at the same time. Without `queue: max`, only one pending run per
+   group is kept and a third near-simultaneous trigger cancels the second —
+   this was observed in practice for the `jp-v5.7.15-5` release, where the
+   Copr build was cancelled before it started and had to be re-run manually.
 6. Watch all three Actions runs and the linked Copr build page to confirm
    success across all configured chroots, and that the Release ends up with
    a `.src.rpm`, a `.deb`, and a `.zip` all attached.
