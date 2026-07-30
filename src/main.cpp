@@ -122,6 +122,8 @@ int main(int argc, char *argv[]) {
     // English, with every _() call passing its argument through unchanged.
     (void) lang::loadCatalog(lang::resolveLanguage(language_option));
 
+    warnIfConsoleMayGarbleText();
+
     startMoria(seed, new_game, roguelike_keys);
 
     return 0;

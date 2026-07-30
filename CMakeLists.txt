@@ -256,7 +256,7 @@ endif(MSVC)
 # include/lib inside the /mingw32 or /mingw64 directories, and with
 # `ncurses-devel` installed, it won't compile.
 if ((MSYS OR MINGW) AND "$ENV{MINGW}" STREQUAL "")
-    message(FATAL_ERROR "You must set the MINGW environment variable ('mingw64' or 'mingw32'). Example: MINGW=mingw64 cmake .")
+    message(FATAL_ERROR "You must set the MINGW environment variable ('ucrt64', 'mingw64', or 'mingw32'). Example: MINGW=ucrt64 cmake . (UCRT64 with mingw-w64-ucrt-x86_64-ncurses is required for Japanese/wide-character display.)")
     message(FATAL_ERROR "This will be the directory used for locating the ncurses library files.")
 elseif ((MSYS OR MINGW) AND NOT "$ENV{MINGW}" STREQUAL "")
     message(STATUS "NOTE: Configuring build for Windows release...")
@@ -265,8 +265,21 @@ elseif ((MSYS OR MINGW) AND NOT "$ENV{MINGW}" STREQUAL "")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -static -lpthread -DNCURSES_STATIC")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -static -lpthread -DNCURSES_STATIC")
 
-    set(CURSES_INCLUDE_DIR "/$ENV{MINGW}/include/")
-    set(CURSES_LIBRARIES "/$ENV{MINGW}/lib/libncursesw.a")
+    # cmake here is a native (non-MSYS-runtime) binary, so a literal
+    # "/$ENV{MINGW}/..." path is never translated to the real filesystem
+    # location the way MSYS2's shell/argv translation would do it for other
+    # programs. Resolve it to a real Windows path via cygpath instead.
+    execute_process(
+            COMMAND cygpath -m "/$ENV{MINGW}"
+            OUTPUT_VARIABLE MINGW_PREFIX_NATIVE
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+    if (NOT MINGW_PREFIX_NATIVE)
+        message(FATAL_ERROR "Failed to resolve the MSYS2 prefix for MINGW=$ENV{MINGW} via cygpath.")
+    endif ()
+
+    set(CURSES_INCLUDE_DIR "${MINGW_PREFIX_NATIVE}/include/")
+    set(CURSES_LIBRARIES "${MINGW_PREFIX_NATIVE}/lib/libncursesw.a")
 else ()
     message(STATUS "NOTE: Configuring build for macOS/Linux release...")
     set(CURSES_NEED_NCURSES TRUE)

@@ -18,6 +18,16 @@ bool stringToNumber(const char *str, int &number);
 uint32_t getCurrentUnixTime();
 void humanDateString(char *day);
 
+// Approximate per-character display width (0, 1, or 2 columns; -1 for
+// non-printable), classifying the Unicode ranges our translations actually
+// use (CJK ideographs, hiragana/katakana, hangul, fullwidth forms as width
+// 2; combining marks as width 0). Always compiled on every platform (so it
+// is directly unit-testable via ctest) even though only displayWidth()/
+// truncateToWidth() on Windows call it at runtime -- MinGW-w64's UCRT
+// <wchar.h> does not declare wcwidth()/wcswidth() (glibc-only extensions),
+// so Windows builds use this instead of the system wcwidth().
+int fallbackWcwidth(wchar_t ch);
+
 // Returns the terminal display width (in columns) of a locale-encoded
 // (e.g. UTF-8) string, accounting for multi-byte and wide characters.
 // Falls back to the byte length if the string can't be decoded under
@@ -56,3 +66,15 @@ std::string padToDisplayWidth(const std::string &str, int width);
 // string, so no dangling continuation bytes are left behind. No-op on
 // an empty string.
 void replaceLastCharSafely(char *str, char replacement);
+
+// Returns true if the current environment does not look like one of the
+// known ConPTY-based terminals (Windows Terminal, VS Code's integrated
+// terminal, ConEmu, WezTerm). On Windows, ncurses's legacy console driver
+// (used for anything that isn't one of these) has a bug where double-width
+// (e.g. Japanese) characters are drawn one column too narrow, so this is
+// used to decide whether to warn the player before starting a non-English
+// game (see phase17.md). Always compiled on every platform (so it is
+// directly unit-testable via ctest), though only Windows actually needs to
+// act on it -- ncursesw on Linux/macOS renders double-width characters
+// correctly regardless of terminal.
+bool consoleMayGarbleWideCharacters();

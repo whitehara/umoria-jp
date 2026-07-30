@@ -62,6 +62,7 @@ extern bool panic_save;
 // UI - IO
 bool terminalInitialize();
 void terminalRestore();
+void warnIfConsoleMayGarbleText();
 void terminalSaveScreen();
 void terminalRestoreScreen();
 ssize_t terminalBellSound();

@@ -96,3 +96,10 @@ data/lang/pseudo/
 
 # scripts/make-deb.sh output (.deb + tarball), regenerate as needed.
 /deb-out/
+
+# scripts/build-windows.sh / scripts/make-winzip.sh output (Windows build + zip), regenerate as needed.
+/win-out/
+
+# Not a kernel module build artifact: our own Windows launcher batch scripts,
+# unignored from the generic "*.cmd" rule above (Kernel Module Compile Results).
+!/packaging/windows/*.cmd

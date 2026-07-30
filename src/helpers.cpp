@@ -186,6 +186,123 @@ void humanDateString(char *day) {
 #endif
 }
 
+int fallbackWcwidth(wchar_t ch) {
+    if (ch == L'\0') {
+        return 0;
+    }
+
+    // Combining marks (zero width): the main combining diacritical blocks.
+    if ((ch >= 0x0300 && ch <= 0x036F) || (ch >= 0x1AB0 && ch <= 0x1AFF) || (ch >= 0x1DC0 && ch <= 0x1DFF) || (ch >= 0x20D0 && ch <= 0x20FF)) {
+        return 0;
+    }
+
+    // Non-printable control characters.
+    if (ch < 0x20 || (ch >= 0x7F && ch < 0xA0)) {
+        return -1;
+    }
+
+    // Unicode East Asian Width Wide/Fullwidth ranges covering the CJK
+    // ideographs, hiragana/katakana, hangul, and fullwidth forms our
+    // Japanese translations actually use (not an exhaustive EAW table).
+    if ((ch >= 0x1100 && ch <= 0x115F) ||                                 // Hangul Jamo
+        ch == 0x2329 || ch == 0x232A || (ch >= 0x2E80 && ch <= 0x303E) || // CJK radicals, Kangxi, punctuation
+        (ch >= 0x3041 && ch <= 0x33FF) ||                                 // Hiragana, Katakana, CJK symbols
+        (ch >= 0x3400 && ch <= 0x4DBF) ||                                 // CJK Unified Ideographs Extension A
+        (ch >= 0x4E00 && ch <= 0x9FFF) ||                                 // CJK Unified Ideographs
+        (ch >= 0xA000 && ch <= 0xA4CF) ||                                 // Yi
+        (ch >= 0xAC00 && ch <= 0xD7A3) ||                                 // Hangul Syllables
+        (ch >= 0xF900 && ch <= 0xFAFF) ||                                 // CJK Compatibility Ideographs
+        (ch >= 0xFF00 && ch <= 0xFF60) ||                                 // Fullwidth forms
+        (ch >= 0xFFE0 && ch <= 0xFFE6)) {                                 // Fullwidth signs
+        return 2;
+    }
+
+    return 1;
+}
+
+namespace {
+
+// MinGW-w64's UCRT <wchar.h> does not declare wcwidth()/wcswidth() (they
+// are glibc-only extensions), so Windows builds use fallbackWcwidth()
+// instead. This is the only platform branch point; displayWidth() and
+// truncateToWidth() below always call this wrapper, never the system
+// function or fallbackWcwidth() directly.
+int platformWcwidth(wchar_t ch) {
+#ifdef _WIN32
+    return fallbackWcwidth(ch);
+#else
+    return wcwidth(ch);
+#endif
+}
+
+// mbstowcs()/wcstombs()/wcrtomb() depend on the C locale correctly
+// recognizing UTF-8 multibyte sequences. In practice, MinGW-w64 UCRT's
+// locale-based conversion has proven unreliable for Japanese text (observed:
+// silent decode failure, which falls back to the byte-length path below and
+// wildly over-pads screen fields with wide characters). Decode/encode UTF-8
+// explicitly via the Win32 API (CP_UTF8) on Windows instead of relying on
+// whatever the C locale ended up being; non-Windows keeps the existing
+// locale-based conversion, which works correctly there.
+#ifdef _WIN32
+size_t decodeUtf8(const std::string &str, std::vector<wchar_t> &wide_buffer) {
+    if (str.empty()) {
+        // MultiByteToWideChar() fails on cbMultiByte == 0; match mbstowcs("")'s
+        // behavior on the non-Windows side (returns 0), not a decode failure.
+        return 0;
+    }
+    int written = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), (int) str.size(), wide_buffer.data(), (int) wide_buffer.size());
+    if (written == 0) {
+        return (size_t) -1;
+    }
+    return (size_t) written;
+}
+
+size_t encodeUtf8(const wchar_t *wide_str, size_t wide_char_count, std::vector<char> &multi_byte_buffer) {
+    int written = WideCharToMultiByte(CP_UTF8, 0, wide_str, (int) wide_char_count, multi_byte_buffer.data(), (int) multi_byte_buffer.size(), nullptr, nullptr);
+    if (written == 0 && wide_char_count != 0) {
+        return (size_t) -1;
+    }
+    return (size_t) written;
+}
+
+size_t singleWideCharByteLength(wchar_t ch, std::mbstate_t & /*state*/) {
+    char buffer[8];
+    int written = WideCharToMultiByte(CP_UTF8, 0, &ch, 1, buffer, sizeof(buffer), nullptr, nullptr);
+    return written > 0 ? (size_t) written : 1;
+}
+
+// MB_CUR_MAX is itself the same locale-dependent value that caused the bug
+// above, so buffer sizing can't trust it here either: use the fixed UTF-8
+// worst case (4 bytes/code unit) instead.
+size_t maxBytesPerWideChar() {
+    return 4;
+}
+#else
+size_t decodeUtf8(const std::string &str, std::vector<wchar_t> &wide_buffer) {
+    return mbstowcs(wide_buffer.data(), str.c_str(), wide_buffer.size());
+}
+
+size_t encodeUtf8(const wchar_t *wide_str, size_t /*wide_char_count*/, std::vector<char> &multi_byte_buffer) {
+    return wcstombs(multi_byte_buffer.data(), wide_str, multi_byte_buffer.size());
+}
+
+size_t singleWideCharByteLength(wchar_t ch, std::mbstate_t &state) {
+    char mb_buffer[MB_LEN_MAX];
+    int char_bytes = (int) wcrtomb(mb_buffer, ch, &state);
+    if (char_bytes < 0) {
+        state = std::mbstate_t{};
+        return 1;
+    }
+    return (size_t) char_bytes;
+}
+
+size_t maxBytesPerWideChar() {
+    return (size_t) MB_CUR_MAX;
+}
+#endif
+
+} // namespace
+
 int displayWidth(const std::string &str) {
     if (str.empty()) {
         return 0;
@@ -193,13 +310,22 @@ int displayWidth(const std::string &str) {
 
     std::vector<wchar_t> wide_buffer(str.size() + 1);
 
-    size_t wide_char_count = mbstowcs(wide_buffer.data(), str.c_str(), wide_buffer.size());
+    size_t wide_char_count = decodeUtf8(str, wide_buffer);
     if (wide_char_count == (size_t) -1) {
         // Not valid multibyte data for the current locale, fall back to byte length.
         return (int) str.size();
     }
 
-    int width = wcswidth(wide_buffer.data(), wide_char_count);
+    int width = 0;
+    for (size_t i = 0; i < wide_char_count; i++) {
+        int char_width = platformWcwidth(wide_buffer[i]);
+        if (char_width < 0) {
+            width = -1;
+            break;
+        }
+        width += char_width;
+    }
+
     if (width < 0) {
         // Contains a non-printable wide character, fall back to byte length.
         return (int) str.size();
@@ -215,7 +341,7 @@ std::string truncateToWidth(const std::string &str, int columns) {
 
     std::vector<wchar_t> wide_buffer(str.size() + 1);
 
-    size_t wide_char_count = mbstowcs(wide_buffer.data(), str.c_str(), wide_buffer.size());
+    size_t wide_char_count = decodeUtf8(str, wide_buffer);
     if (wide_char_count == (size_t) -1) {
         // Not valid multibyte data for the current locale, fall back to a plain byte cut.
         return str.substr(0, (size_t) columns);
@@ -225,7 +351,7 @@ std::string truncateToWidth(const std::string &str, int columns) {
     size_t accepted_wide_chars = 0;
 
     for (size_t i = 0; i < wide_char_count; i++) {
-        int char_width = wcwidth(wide_buffer[i]);
+        int char_width = platformWcwidth(wide_buffer[i]);
         if (char_width < 0) {
             char_width = 0; // non-printable, doesn't consume a column.
         }
@@ -246,8 +372,8 @@ std::string truncateToWidth(const std::string &str, int columns) {
     // string, so the cut always lands on a character boundary.
     wide_buffer[accepted_wide_chars] = L'\0';
 
-    std::vector<char> multi_byte_buffer((accepted_wide_chars * (size_t) MB_CUR_MAX) + 1);
-    size_t byte_count = wcstombs(multi_byte_buffer.data(), wide_buffer.data(), multi_byte_buffer.size());
+    std::vector<char> multi_byte_buffer((accepted_wide_chars * maxBytesPerWideChar()) + 1);
+    size_t byte_count = encodeUtf8(wide_buffer.data(), accepted_wide_chars, multi_byte_buffer);
     if (byte_count == (size_t) -1) {
         return str.substr(0, (size_t) columns);
     }
@@ -266,7 +392,7 @@ std::string truncateToByteCapacity(const std::string &str, size_t max_bytes) {
 
     std::vector<wchar_t> wide_buffer(str.size() + 1);
 
-    size_t wide_char_count = mbstowcs(wide_buffer.data(), str.c_str(), wide_buffer.size());
+    size_t wide_char_count = decodeUtf8(str, wide_buffer);
     if (wide_char_count == (size_t) -1) {
         // Not valid multibyte data for the current locale, fall back to a plain byte cut.
         return str.substr(0, max_bytes);
@@ -274,21 +400,16 @@ std::string truncateToByteCapacity(const std::string &str, size_t max_bytes) {
 
     size_t used_bytes = 0;
     size_t accepted_wide_chars = 0;
-    char mb_buffer[MB_LEN_MAX];
     std::mbstate_t state{};
 
     for (size_t i = 0; i < wide_char_count; i++) {
-        int char_bytes = (int) wcrtomb(mb_buffer, wide_buffer[i], &state);
-        if (char_bytes < 0) {
-            char_bytes = 1; // encoding error; conservatively count it as one byte.
-            state = std::mbstate_t{};
-        }
+        size_t char_bytes = singleWideCharByteLength(wide_buffer[i], state);
 
-        if (used_bytes + (size_t) char_bytes > max_bytes) {
+        if (used_bytes + char_bytes > max_bytes) {
             break;
         }
 
-        used_bytes += (size_t) char_bytes;
+        used_bytes += char_bytes;
         accepted_wide_chars++;
     }
 
@@ -300,8 +421,8 @@ std::string truncateToByteCapacity(const std::string &str, size_t max_bytes) {
     // string, so the cut always lands on a character boundary.
     wide_buffer[accepted_wide_chars] = L'\0';
 
-    std::vector<char> multi_byte_buffer((accepted_wide_chars * (size_t) MB_CUR_MAX) + 1);
-    size_t byte_count = wcstombs(multi_byte_buffer.data(), wide_buffer.data(), multi_byte_buffer.size());
+    std::vector<char> multi_byte_buffer((accepted_wide_chars * maxBytesPerWideChar()) + 1);
+    size_t byte_count = encodeUtf8(wide_buffer.data(), accepted_wide_chars, multi_byte_buffer);
     if (byte_count == (size_t) -1) {
         return str.substr(0, max_bytes);
     }
@@ -334,4 +455,27 @@ void replaceLastCharSafely(char *str, char replacement) {
 
     str[last_char_start] = replacement;
     str[last_char_start + 1] = '\0';
+}
+
+bool consoleMayGarbleWideCharacters() {
+    static const char *const safe_env_vars[] = {
+        "WT_SESSION",    // Windows Terminal
+        "WT_PROFILE_ID", // Windows Terminal
+        "ConEmuPID",     // ConEmu
+        "ConEmuANSI",    // ConEmu
+        "WEZTERM_PANE",  // WezTerm
+    };
+
+    for (const char *name : safe_env_vars) {
+        if (getenv(name) != nullptr) {
+            return false;
+        }
+    }
+
+    const char *term_program = getenv("TERM_PROGRAM");
+    if (term_program != nullptr && strcmp(term_program, "vscode") == 0) {
+        return false; // VS Code's integrated terminal
+    }
+
+    return true;
 }

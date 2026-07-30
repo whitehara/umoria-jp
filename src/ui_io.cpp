@@ -37,7 +37,19 @@ static void moriaTerminalInitialize() {
 // initializes the terminal / curses routines
 bool terminalInitialize() {
     // Required for ncursesw to render multi-byte (UTF-8) characters correctly.
+#ifdef _WIN32
+    // The system locale ("") maps to the Windows ANSI codepage (e.g. CP932 for
+    // Japanese), not UTF-8, so displayWidth()/mbstowcs() would misinterpret our
+    // UTF-8 .po strings. Request a UTF-8 locale explicitly; only fall back to
+    // the system locale if the C runtime doesn't support it.
+    if (setlocale(LC_ALL, ".UTF-8") == nullptr) {
+        (void) setlocale(LC_ALL, "");
+    }
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#else
     (void) setlocale(LC_ALL, "");
+#endif
 
     initscr();
 
@@ -59,6 +71,41 @@ bool terminalInitialize() {
     (void) refresh();
 
     return true;
+}
+
+// Warns the player if the current console may not display Japanese (or
+// other double-width) characters correctly (see phase17.md for why:
+// ncurses's legacy Windows console driver has a rendering bug that ConPTY-
+// based terminals such as Windows Terminal avoid). Only relevant on
+// Windows; a no-op elsewhere.
+void warnIfConsoleMayGarbleText() {
+#ifdef _WIN32
+    if (lang::currentLanguage() == "en") {
+        return;
+    }
+
+    if (!consoleMayGarbleWideCharacters()) {
+        return;
+    }
+
+    if (getenv("UMORIA_NO_CONSOLE_WARNING") != nullptr) {
+        return;
+    }
+
+    clearScreen();
+    putString("This console may not display Japanese (or other double-width)", Coord_t{2, 2});
+    putString("characters correctly. For correct display, please run this game", Coord_t{3, 2});
+    putString("from Windows Terminal (or a similar modern terminal) instead.", Coord_t{4, 2});
+    putString("English text is unaffected.", Coord_t{6, 2});
+    putString("Set UMORIA_NO_CONSOLE_WARNING=1 to suppress this warning.", Coord_t{8, 2});
+    // Deliberately not waitForContinueKey(): that pulls its prompt through
+    // _(), which would render the just-loaded Japanese catalog's translation
+    // here -- reproducing, in this very warning screen, the double-width
+    // rendering bug it exists to warn about. Keep this screen ASCII-only.
+    putString("[ press any key to continue ]", Coord_t{10, 2});
+    (void) getKeyInput();
+    clearScreen();
+#endif
 }
 
 // Put the terminal in the original mode. -CJS-

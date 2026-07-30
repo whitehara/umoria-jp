@@ -7,12 +7,51 @@
 // helpers (src/helpers.cpp). No external test framework.
 
 #include "headers.h"
+#include "test_env.h"
 
 #include <cassert>
 #include <clocale>
 #include <cstdio>
 
 int main() {
+    // consoleMayGarbleWideCharacters() only looks at a fixed whitelist of
+    // environment variables, but some CI/dev environments (e.g. VS Code's
+    // integrated terminal) already set one of them -- clear them all first
+    // for a deterministic baseline.
+    unsetTestEnv("WT_SESSION");
+    unsetTestEnv("WT_PROFILE_ID");
+    unsetTestEnv("ConEmuPID");
+    unsetTestEnv("ConEmuANSI");
+    unsetTestEnv("WEZTERM_PANE");
+    unsetTestEnv("TERM_PROGRAM");
+
+    assert(consoleMayGarbleWideCharacters()); // nothing set: assume unsafe by default
+
+    setTestEnv("WT_SESSION", "1");
+    assert(!consoleMayGarbleWideCharacters()); // Windows Terminal
+    unsetTestEnv("WT_SESSION");
+
+    setTestEnv("TERM_PROGRAM", "vscode");
+    assert(!consoleMayGarbleWideCharacters()); // VS Code's integrated terminal
+    unsetTestEnv("TERM_PROGRAM");
+
+    setTestEnv("TERM_PROGRAM", "Apple_Terminal");
+    assert(consoleMayGarbleWideCharacters()); // checks the value, not just presence
+    unsetTestEnv("TERM_PROGRAM");
+
+    // fallbackWcwidth() is always compiled (used at runtime on Windows,
+    // where MinGW-w64's UCRT doesn't declare wcwidth()/wcswidth()), so it
+    // is testable directly here regardless of locale/platform.
+    assert(fallbackWcwidth(L'\0') == 0);
+    assert(fallbackWcwidth(L'A') == 1);
+    assert(fallbackWcwidth(L'0') == 1);
+    assert(fallbackWcwidth(0x3042) == 2);  // U+3042 HIRAGANA LETTER A
+    assert(fallbackWcwidth(0x30A2) == 2);  // U+30A2 KATAKANA LETTER A
+    assert(fallbackWcwidth(0x4E00) == 2);  // U+4E00 CJK UNIFIED IDEOGRAPH (一)
+    assert(fallbackWcwidth(0xFF21) == 2);  // U+FF21 FULLWIDTH LATIN CAPITAL LETTER A
+    assert(fallbackWcwidth(0x0301) == 0);  // U+0301 COMBINING ACUTE ACCENT
+    assert(fallbackWcwidth(0x0007) == -1); // BEL, a non-printable control character
+
     // ASCII behavior must hold regardless of locale.
     assert(displayWidth("") == 0);
     assert(displayWidth("hello") == 5);

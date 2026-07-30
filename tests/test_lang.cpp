@@ -14,6 +14,7 @@
 #include <fstream>
 
 #include "headers.h"
+#include "test_env.h"
 
 #include <cassert>
 #include <cstdio>
@@ -22,20 +23,20 @@
 int main() {
     // --- resolveLanguage() priority: cli arg > MORIA_LANG > LANG > LC_ALL > "en" ---
 
-    setenv("MORIA_LANG", "fr", 1);
-    setenv("LANG", "de_DE.UTF-8", 1);
+    setTestEnv("MORIA_LANG", "fr");
+    setTestEnv("LANG", "de_DE.UTF-8");
     assert(lang::resolveLanguage("ja") == "ja"); // explicit cli arg wins over everything
 
     assert(lang::resolveLanguage("") == "fr"); // no cli arg: MORIA_LANG wins over LANG
 
-    unsetenv("MORIA_LANG");
+    unsetTestEnv("MORIA_LANG");
     assert(lang::resolveLanguage("") == "de"); // falls back to first 2 chars of LANG
 
-    unsetenv("LANG");
-    setenv("LC_ALL", "es_ES.UTF-8", 1);
+    unsetTestEnv("LANG");
+    setTestEnv("LC_ALL", "es_ES.UTF-8");
     assert(lang::resolveLanguage("") == "es"); // falls back to LC_ALL when LANG is unset
 
-    unsetenv("LC_ALL");
+    unsetTestEnv("LC_ALL");
     assert(lang::resolveLanguage("") == "en"); // nothing set at all: default
 
     // --- loadCatalog() / _() : missing catalog file is a graceful pass-through ---
